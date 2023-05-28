@@ -1,0 +1,91 @@
+.navbar.navbar.navbar {
+  background-color: #e67e22 !important;
+  line-height: 0.6em !important;
+}
+a.nav-link {
+  color: rgb(255, 255, 255);
+  font-weight:400;
+}
+/* INCREASE THE DEFAULT SIZE OF THE HAMBURGER ICON */
+.navbar-toggler-icon {
+  width: 3rem !important;
+  height: 3rem !important;
+  font-weight: bolder !important;
+}
+.navbar .navbar-nav .nav-link:hover {
+  color: gold;
+  font-weight:500;
+}
+.dropdown-menu {
+  background-color: #fdf2e9;
+}
+.dropdown-menu .dropdown-item {
+  color: rgb(44, 44, 44);
+  background-color: #fdf2e9;
+  font-size: 1.6rem;
+  font-weight: 500;
+  transition: all 0.3s;
+  line-height: 1.6;
+}
+/* .dropdown-item.active,
+.dropdown-item:active {
+  background-color: black;
+  color: white;
+} */
+.dropdown-menu .dropdown-item:hover {
+  background-color: #fae5d3;
+  color: rgb(46, 46, 46);
+  font-weight: 700;
+}
+.dropdown-menu .dropdown-item.active {
+  color: rgb(255, 255, 255);
+  background-color: #fc815c;
+
+}
+ 
+@media only screen and (min-width: 992px) {
+  .dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+  }
+  .dropdown .dropdown-menu {
+    display: none;
+  }
+  .dropdown:hover .dropdown-toggle::after {
+    border-bottom: 0.3em solid;
+    border-top: 0;
+  }
+}
+@media screen and (max-width: 991px) {
+  .dropdown-toggle.show::after {
+    border-top: 0;
+    border-bottom: 0.3em solid;
+  }
+  .navbar:hover .navbar-nav:hover .nav-link:hover .bg-dark {
+    color: black;
+    background-color: white;
+    font-size: 1rem;
+  }
+}
+.navbar-brand,
+.navbar-collapse {
+  /* margin-left: 2vw; */
+  /* order: 0; */
+}
+a.navbar-brand {
+  color: gold;
+  font-weight: bold;
+  font-size: 1.8rem;
+  margin-right: 2rem;
+}
+.navbar-nav .nav-link {
+  /* font-weight: 500; */
+  font-size: 1.8rem;
+  transition: all 0.3s;
+  line-height: 1.2;
+  margin-left: 2.2rem;
+}
+a.nav-link.nav-link.active {
+  color: #ffffff;
+  font-weight: bold;
+}
