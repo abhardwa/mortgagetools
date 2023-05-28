@@ -1,5 +1,5 @@
 import ChartComponent, {renderChart } from "./chart.js";
-import { useState, useEffect, useRef} from "react";
+import { useState, useEffect} from "react";
 import {Tab, Tabs, Accordion} from "react-bootstrap";
 import axios from "axios";
 import DatePicker from 'react-datepicker'
@@ -77,9 +77,7 @@ function Amortization() {
         }
    
         const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-        // set up slider variables for use in the following code lines
-        const rangeSlider = document.getElementById("rs-range-line");
-        const rangeBullet = document.getElementById("rs-bullet");
+        // set up slider variables for use in the following code linea
         
         const arg0 ="/api/add?" +
         "lamount=" +
@@ -190,14 +188,6 @@ function Amortization() {
             const currency = new Intl.NumberFormat("us-US", { style: "currency", currency: "USD", useGrouping: true, minimumFractionDigits: 0, maximumFractionDigits: 0 });
             let ybalance, yprincipal, yinterest;
 
-            const renderHeader = () => {
-                return (<tr className="banner"> 
-                    {hdr.map((item, idx) => <th key={idx}>{item}</th>)}
-                    </tr>
-                );
-            }
-
-            // console.log(renderHeader);
             let dt = new Date(lStartDate);
             let dt1 = dt;
             dt.setMonth(dt1.getMonth());

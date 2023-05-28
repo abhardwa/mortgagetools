@@ -4,7 +4,7 @@ export function amortization(purchase, action) {
   const loanTerm = 12 * purchase.term;
   const R = 1 + purchase.intRate / (12 * 100);
   const monthlyRate = purchase.intRate / 100 / 12;
-  const X2 = (purchase.loanAmt * R ** loanTerm * (1 - R)) / (1 - R ** loanTerm); // X is monthly loan payment
+  // const X2 = (purchase.loanAmt * R ** loanTerm * (1 - R)) / (1 - R ** loanTerm); // X is monthly loan payment
   const X = (purchase.loanAmt * monthlyRate) / (1 - (1 + monthlyRate) ** -loanTerm);
   // console.log(`Old monthlyPayAmt: ${X2}`);
   // console.log(`New monthlyPayAmt: ${X}`);

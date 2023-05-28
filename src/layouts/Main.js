@@ -1,8 +1,9 @@
-import { Row, Col, Container } from 'react-bootstrap';
+// import { Row, Col, Container } from 'react-bootstrap';
 import ResponsiveNavbar from '../components/ResponsiveNavbar';
 import Footer from '../components/Footer';
-import Item from '../components/Item';
-import {BrowserRouter, Routes, Route, Link, Navigate} from "react-router-dom";
+// import Item from '../components/Item';
+import {BrowserRouter, Routes, Route} from "react-router-dom";
+// import {Link, Navigate} from 'react-router-dom';
 import Home from '../components/Home';
 import Contact from '../components/Contact';
 import About from '../components/About' ;
@@ -13,6 +14,7 @@ import PreQual from '../components/PreQual' ;
 import Services from '../components/Services' ;
 
 function Main() {
+  console.log("Inside Main.js");
   return (
     <div>
         <BrowserRouter>

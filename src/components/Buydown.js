@@ -36,12 +36,12 @@ function Buydown() {
 
     }
     const currency = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", minimumFractionDigits: 2, maximumFractionDigits: 2 });
-    const noDecimals = new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: "USD",
-        minimumFractionDigits: 0,
-        maximumFractionDigits: 0,
-    });
+    // const noDecimals = new Intl.NumberFormat("en-US", {
+    //     style: "currency",
+    //     currency: "USD",
+    //     minimumFractionDigits: 0,
+    //     maximumFractionDigits: 0,
+    // });
     function calcBuydown () {
 
         // calcAll(e.target, e.target.dataset.type);

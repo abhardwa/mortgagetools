@@ -32,7 +32,7 @@ function PreQual() {
         ratioDebt:0,
         moDebts:0,
     }
-    const currency = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    // const currency = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", minimumFractionDigits: 2, maximumFractionDigits: 2 });
     const noDecimals = new Intl.NumberFormat("en-US", {
         style: "currency",
         currency: "USD",

@@ -63,7 +63,7 @@ class LoanTable extends Component {
       <tr className="parent-row" key={year.id} >
         <td>
           {detail.length > 0 && (
-            <button onClick={() => this.handleExpand(year)} style={{color:color,  fontWeight:"bold", border:"none", backgroundColor:"none", fontWeight:"bold"}}>
+            <button onClick={() => this.handleExpand(year)} style={{color:color,  fontWeight:"bold", border:"none", backgroundColor:"none"}}>
               {this.isExpanded(year) ? "--" : "+"}
             </button>
           )}

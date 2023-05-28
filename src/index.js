@@ -9,6 +9,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 const el = document.getElementById('root');
 const root = ReactDOM.createRoot(el);
+console.log("Inside index.js");
 root.render(
   <div>
     <App />
