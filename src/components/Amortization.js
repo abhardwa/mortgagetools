@@ -1,6 +1,8 @@
 import ChartComponent, {renderChart } from "./chart.js";
 import { useState, useEffect} from "react";
-import {Tab, Tabs, Accordion} from "react-bootstrap";
+import Tab from "react-bootstrap/Tab";
+import Tabs from "react-bootstrap/tabs";
+import Accordion from "react-bootstrap/Accordion";
 import axios from "axios";
 import DatePicker from 'react-datepicker'
 import LoanTable from "./AmortTable.js";
@@ -184,7 +186,7 @@ function Amortization() {
         // Function to load the amortization schedule in a table and present it on the web page
         function generateSchedule(data, lStartDate) {
 
-            const hdr = ["Date", "Loan Balance", "Interest", "Principal"];
+            // const hdr = ["Date", "Loan Balance", "Interest", "Principal"];
             const currency = new Intl.NumberFormat("us-US", { style: "currency", currency: "USD", useGrouping: true, minimumFractionDigits: 0, maximumFractionDigits: 0 });
             let ybalance, yprincipal, yinterest;
 

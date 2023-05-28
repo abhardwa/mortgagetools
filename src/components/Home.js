@@ -2,7 +2,7 @@
 import {NavLink} from 'react-router-dom';
 
 function Home() {
-    console.log("Inside Home.js");
+    console.log("Inside Home.js")
     return (
         <div id="home" className="tabcontent">
             <div className="container-fluid">

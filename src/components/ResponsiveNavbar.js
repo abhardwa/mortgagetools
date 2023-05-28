@@ -1,4 +1,7 @@
-import {Navbar, NavDropdown, Nav, Container} from 'react-bootstrap';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import Nav from 'react-bootstrap/Nav';
+import Container from 'react-bootstrap/Container';
 import { useLocation } from "react-router-dom";
 import "../css/menu.css";
 
