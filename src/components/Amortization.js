@@ -1,7 +1,7 @@
 import ChartComponent, {renderChart } from "./chart.js";
 import { useState, useEffect} from "react";
 import Tab from "react-bootstrap/Tab";
-import Tabs from "react-bootstrap/tabs";
+import Tabs from "react-bootstrap/Tabs";
 import Accordion from "react-bootstrap/Accordion";
 import axios from "axios";
 import DatePicker from 'react-datepicker'
