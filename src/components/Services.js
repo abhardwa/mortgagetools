@@ -1,6 +1,6 @@
 function Services() {
     return (
-        <h1>Services</h1>
+        <h1>Coming Soon...</h1>
     )
 }
 
