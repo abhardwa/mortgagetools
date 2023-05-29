@@ -48,9 +48,10 @@ function Amortization() {
 
 
     const getLoan = async (arg) => {
+        const url="https://abhardwa.pythonanywhere.com";
         setState('pending');
         try {
-            const response = await axios.get(arg);
+            const response = await axios.get(url+arg);
             // console.log(response.data);
             // console.log(response.status);
             // console.log(response.statusText);
