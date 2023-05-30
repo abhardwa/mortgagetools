@@ -408,8 +408,8 @@ function Amortization() {
                                     </form>
                                     <form className="input-item item-separator">
                                         <label className="small-text">Interest Rate %</label>
-                                        <input id="lrate" className="form-input" name="lrate" step=".125" data-type="pct"
-                                            type="number"  value={data.lrate} onChange={handleChange}  />
+                                        <input id="lrate" className="form-input" name="lrate"  step="any" min = "0.1"  data-type="pct"
+                                            type="number"  value={data.lrate||''} onChange={handleChange}  />
                                     </form>
                                     <form className="input-item item-separator">
                                         <label className="small-text">Loan Start Date </label>

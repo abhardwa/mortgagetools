@@ -44,14 +44,6 @@ function Buydown() {
     // });
     function calcBuydown () {
 
-        // calcAll(e.target, e.target.dataset.type);
-        // t: target; type : currency or number
-        // const vars = Object.keys(obj);
-        // console.log(t.id, type, dmap);
-        // if (type === "currency") obj[t.id] = Number(t.value.replace(/[^0-9.-]+/g, "")); // .replace(/[^\d.]/g, "")
-        // else if (type === "number") obj[t.id] = Number(t.value.replace(/[^0-9.-]+/g, ""));
-        // else obj[t.id] = Number(t.value.replace(/[^\d.]/g, ""));
-
         const loan = {
         loanAmt: data.loanAmt,
         intRate: data.intRate,
@@ -154,8 +146,8 @@ function Buydown() {
                     </form>
                     <form className="form form--intRate">
                         <label className="form-label">Interest Rate:</label>
-                        <input data-type="number" type="number" step=".125" name="intRate" id="intRate" 
-                            className="form-input" value={data.intRate} onChange={handleChange}/>
+                        <input data-type="number" type="number"  step="any" min = "0.1"  name="intRate" id="intRate" 
+                            className="form-input" value={data.intRate||''} onChange={handleChange}/>
                         <span className="form-suffix">%</span>
                     </form>
                     <form className="form form--term">

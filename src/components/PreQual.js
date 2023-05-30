@@ -157,7 +157,7 @@ function PreQual() {
                                                 pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" data-type="currency" type="text"/>
                                             <span className="form-suffix">$</span>
                                             <label className="form-label" >Interest Rate:</label>
-                                            <input data-type="number" type="number" step=".125" name="intRate" id="intRate" value={data.intRate} onChange={handleChange}
+                                            <input data-type="number" type="number" step="any" min = "0.1" name="intRate" id="intRate" value={data.intRate||''} onChange={handleChange}
                                                 className="form-input"/>
                                             <span className="form-suffix">%</span>
                                             <label className="form-label">Loan Term:</label>
