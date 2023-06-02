@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { amortization } from "./calcAmort.js";
+import { amortization } from "../components/calcAmort.js";
 function PreQual() {
     const [data, setData] = useState({
         "purchaseAmt": 350000,

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { amortization } from "./calcAmort.js";
-import Slider from "./slider.js";
+import { amortization } from "../components/calcAmort.js";
+import Slider from "../components/slider.js";
 
 function Buydown() {
     const [months, setMonths] = useState(0);

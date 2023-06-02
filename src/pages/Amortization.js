@@ -1,11 +1,11 @@
-import ChartComponent, {renderChart } from "./chart.js";
+import ChartComponent, {renderChart } from "../components/chart.js";
 import { useState, useEffect} from "react";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import Accordion from "react-bootstrap/Accordion";
 import axios from "axios";
 import DatePicker from 'react-datepicker'
-import LoanTable from "./AmortTable.js";
+import LoanTable from "../components/AmortTable.js";
 
 function Amortization() {
     const [data, setData] = useState({
@@ -343,7 +343,27 @@ function Amortization() {
     const handleOnePayDateChange = (e) => {
         setData(data => {return {...data, 'onePayDate':(e).toISOString().substring(0, 10)}});
     };
-    // const RenderSched = useRef('');
+    // const fetchData = useCallback(async () => {
+    // try {
+    //     const [res, loantbl, xLoan] = await calcAmortization();
+    //     if (res) {
+    //     setResult(result => ({ ...result, ...res }));
+    //     setState('done');
+    //     setLtbl([...loantbl]);
+    //     setLoan(xLoan);
+    //     } else {
+    //     console.log("Error: Async function pending...");
+    //     }
+    // } catch (error) {
+    //     console.error(error);
+    // }
+    // }, [btnState]);
+
+    // useEffect(() => {
+    //     fetchData();
+    // }, [fetchData]);
+
+  
     useEffect(() => {
         const fetchData = async () => {
             try {

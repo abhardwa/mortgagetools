@@ -1,5 +1,5 @@
 import {useState} from "react";
-import months from './months';
+import months from '../components/months';
 
 
 function Escrow() {
