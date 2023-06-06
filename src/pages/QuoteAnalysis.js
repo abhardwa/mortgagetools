@@ -17,6 +17,7 @@ function QuoteAnalysis() {
         escrowTotal:0,
         HOATotal:0,
         totalCosts:0,
+        totalNormalizedCosts:0,
     };
     const out = {
         q1: {...outTemplate},
@@ -56,7 +57,7 @@ function QuoteAnalysis() {
     const catDescriptions = {
         loanInfo:"",
         lenderFees:"These fees are lender dependent. Lenders may list these fees under different labels. Not all fees will be listed by every lender. ",
-        titleFees:"These fees are dependent on the closing attorney and will be same for all lenders. For new construction the builder decides the lender. A resale contract will also specify the closing attorney. These fees will be same across all the lenders you are comparing since the closing attorney will be the same, irrespective of which lender you go with.",
+        titleFees:"These fees are dependent on the closing attorney and will be same for all lenders. For new construction the builder decides the attorney. A resale contract will also specify the closing attorney. These fees will be same across all the lenders you are comparing since the closing attorney will be the same, irrespective of which lender you go with.",
         govTaxFees:"These are government and state fees and will be same for all the lenders. These fees will be the same across all the lenders you are comparing since these will be the same no matter which lender you go with.",
         estPrepaid:"The insurance premium will depend on the policy you pick and per diem interest will depend on your closing date. These fees will remain the same across all the lenders you are comparing since these will be the same no matter which lender you go with.",
         escrowDeposit:"The account is established for you by your lender at a purchase/refinance closing when you take out a home mortgage. You'll begin funding your escrow accounts by making an initial deposit into the account at closing. A federally mandated formula is used to figure out exactly how much money is needed to satisfy this initial deposit into the escrow account. You can use https://mortgagetoolsusa.com/escrow to get an estimate of the funds that will be deposited in the escrow account.",
@@ -118,6 +119,7 @@ function QuoteAnalysis() {
                 data[obj].HOACapitalContr;
 
             out[obj].totalCosts=out[obj].lenderFees+out[obj].titleFees+out[obj].govTaxFees+out[obj].prepaidTotal+out[obj].escrowTotal+out[obj].HOATotal;
+            out[obj].totalNormalizedCosts=out[obj].lenderFees+out.q1.titleFees+out.q1.govTaxFees+out.q1.prepaidTotal+out.q1.escrowTotal+out.q1.HOATotal;
         });
             // console.log(out.q1);
     }
@@ -138,7 +140,11 @@ function QuoteAnalysis() {
     }, []);
 
     const handleChange = (e) => {
-        // console.log(e.target.id.slice(3));
+        // const table = e.target.parentElement.parentElement.parentElement.parentElement;
+        // if (table) {
+        //     console.log(table.id);
+        // }
+        
         // Since Data is a 2 level deep object, we need to first spread the top level and then the nested level
         if (e.target.id.slice(0,2)==='q1') {
             setData(data => {
@@ -179,25 +185,26 @@ function QuoteAnalysis() {
                                     <h3 className="heading-primary centered-text">Closing Costs Analysis</h3>
                                     <h4 className="heading-tertiary centered-text">A Comparison Guide to help you compare different quotes side by side</h4>
                                     <br></br>
-                                    <p className="main-text max-text-box">The objective of this worksheet is to remove all distracting variations from the quotes you are evaluating, thereby
-                                    allowing you to make a sound logical choice based on facts alone. Now that you have received loan quotes from multiple vendors, you need to evaluate them to pick the best quote. 
-                                    The challenge is that quotes from different vendors can look different - different line items organized in different order. 
-                                    Some items may be rolled into a higher grouping in some cases, or called out differently. This comparison guide
-                                    tries to make the task a little easier by providing you with a consistent structure for all cost items, combined 
-                                    with a side-by-side view that allows an easy comparison of different quotes. You can enter upto 4 quotes below 
-                                    and see how they compare. As you enter the quotes, you will realize that some items may not be called by that exact name here.
-                                    No worries, as you can always tell which of the broader categories (listed on the left) that item belongs to. 
-                                    Just enter the number in one of the listed items in that category. </p>
+                                    <p className="main-text max-text-box"><b>Congratulations!!!</b> You have found your dream home and have also done your due diligence
+                                    to request quotes from different lenders. Now you need to evaluate them and pick the best quote. </p>
+                                    <p className="main-text max-text-box">The challenge with this task, as you may have already realized, is that quotes from different vendors can look different - 
+                                    different line items organized in different order. Certain items may be rolled into a lump sum in some cases, or labeled 
+                                    differently.</p>
+                                    <p className="main-text max-text-box">This comparison guide tries to make the task a little easier by providing you with a consistent structure for all cost items, 
+                                    combined with a side-by-side view that allows an easy comparison of different quotes.</p>
+                                    <p className="main-text max-text-box"> You can enter upto 4 quotes below and see how they compare. As you enter the quotes, you will realize that some items may not
+                                     be called by that exact name here. No worries, as you can always tell which of the broader categories (listed on the left) that 
+                                     item belongs to. Just enter the number in one of the listed items in that category. </p>
                                     <p className="main-text max-text-box"> To further help you do an apples-to-apples comparison, 2 views of the quotes
                                     are provided here. The first and default view shows the original information you have entered. 
                                     The second "Normalized" view is accessed by clicking on the 'Normalized' tab. On this view, all cost items
-                                    that will remain the same, regardless of the lender you pick, are normalized. This allows you to isolated and focused on 
-                                    the lender specific costs on each quote. 
+                                    that will remain the same across all lenders(title fees, government taxes & fees, escrow/pre-paids, and HOA/Condo dues) 
+                                    regardless of the lender you pick, are normalized. This allows you to isolated and focused on the lender specific costs on each quote. 
                                     </p>
                                 </div>
                                         <Tabs defaultActiveKey="first" style={{fontSize:"2rem", fontWeight:"700"}}>
                                             <Tab eventKey="first" title="Original">
-                                                <table style={{width: "100%", tableLayout:"fixed"}} className="gap-8">
+                                                <table style={{width: "100%", tableLayout:"fixed"}} id="originalTbl" className="gap-8">
                                                     <colgroup>
                                                     <col span="1" style={{width:"30%", overflow:"hidden"}}></col>
                                                     <col span="1" className={dClass} style={{width:"22%", overflow:"hidden"}}></col>
@@ -221,10 +228,10 @@ function QuoteAnalysis() {
                                                         <tr className="">
                                                             <td rowSpan="15" className={legendClass1}><div className={lHeadingClass}>Lender Fees </div>{catDescriptions.lenderFees}</td>
                                                             <td>Origination Fees</td>
-                                                            <td><input id="q1-originationFees" className={q1Class} value={data.q1.originationFees||""} onChange={handleChange} type="number" step=".01"/></td>
-                                                            <td><input id="q2-originationFees" className={q2Class} value={data.q2.originationFees||""} onChange={handleChange} type="number" step=".01"/></td>
-                                                            <td><input id="q3-originationFees" className={q3Class} value={data.q3.originationFees||""} onChange={handleChange} type="number" step=".01"/></td>
-                                                            <td><input id="q4-originationFees" className={q4Class} value={data.q4.originationFees||""} onChange={handleChange} type="number" step=".01"/></td>
+                                                            <td><input id="q1-originationFees" className="" value={data.q1.originationFees||""} onChange={handleChange} type="number" step=".01"/></td>
+                                                            <td><input id="q2-originationFees" className="" value={data.q2.originationFees||""} onChange={handleChange} type="number" step=".01"/></td>
+                                                            <td><input id="q3-originationFees" className="" value={data.q3.originationFees||""} onChange={handleChange} type="number" step=".01"/></td>
+                                                            <td><input id="q4-originationFees" className="" value={data.q4.originationFees||""} onChange={handleChange} type="number" step=".01"/></td>
                                                         </tr>
                                                         <tr>
                                                             <td>Discount Points</td>
@@ -537,7 +544,7 @@ function QuoteAnalysis() {
                                                 </table>
                                             </Tab>
                                             <Tab eventKey="second" title="Normalized">
-                                                <table style={{width: "100%", tableLayout:"fixed"}} className="gap-8">
+                                                <table style={{width: "100%", tableLayout:"fixed"}} id="normalizedTbl"  className="gap-8">
                                                     <colgroup>
                                                     <col span="1" style={{width:"30%", overflow:"hidden"}}></col>
                                                     <col span="1" className={dClass} style={{width:"22%", overflow:"hidden"}}></col>
@@ -887,9 +894,9 @@ function QuoteAnalysis() {
                                                             <td></td>
                                                             <td className="text-white text-bold">Normalized Costs</td>
                                                             <td id="q1-totalCosts" className="text-white text-bold">{currency.format(out.q1.totalCosts)}</td>
-                                                            <td id="q2-totalCosts" className="text-white text-bold">{currency.format(out.q2.totalCosts)}</td>
-                                                            <td id="q3-totalCosts" className="text-white text-bold">{currency.format(out.q3.totalCosts)}</td>
-                                                            <td id="q4-totalCosts" className="text-white text-bold">{currency.format(out.q4.totalCosts)}</td>
+                                                            <td id="q2-totalCosts" className="text-white text-bold">{currency.format(out.q2.totalNormalizedCosts)}</td>
+                                                            <td id="q3-totalCosts" className="text-white text-bold">{currency.format(out.q3.totalNormalizedCosts)}</td>
+                                                            <td id="q4-totalCosts" className="text-white text-bold">{currency.format(out.q4.totalNormalizedCosts)}</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
