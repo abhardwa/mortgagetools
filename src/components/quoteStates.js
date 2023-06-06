@@ -7,8 +7,8 @@ export const qRecord = {
     adminstrationFee:0,
     documentReviewFee:425.00,
     applicationFee:0,
-    appraisalFee:0,
-    appraisalRushFee:610.00,
+    appraisalFee:560.00,
+    appraisalRushFee:0,
     NCFinalInspectionFee:0,
     creditReportFee:55.50,
     floodCertification:13.50,
@@ -41,5 +41,8 @@ export const qRecord = {
     ProratedHOADues:0,
     HOAClosingLetter:0,
     HOACapitalContr:0,
+
+    builderCredit:0,
+    lenderCredit:0,
 
 };

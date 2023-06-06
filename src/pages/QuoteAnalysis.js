@@ -25,6 +25,7 @@ function QuoteAnalysis() {
         q3: {...outTemplate},
         q4: {...outTemplate},  
     }
+    //Following fields can change in Normalized view
     const quote = {
         originationFees: 0,
         discountPoint: 0,
@@ -40,10 +41,14 @@ function QuoteAnalysis() {
         floodCertification: 0,
         taxServiceCharge: 0,
         mortgageElectronicRegSystem: 0,
+        builderCredit:0,
+        lenderCredit:0,
     }
 
     const legendClass1="shadow-md border-2 rounded-xl text-base md:text-2xl/[2.5rem] tracking-wide text-center align-top mt-[40px] font-light bg-blue-900  text-white ";
     const legendClass2="shadow-md border-2 rounded-xl text-base md:text-2xl/[2.5rem] tracking-wide text-center align-top mt-[40px] font-normal bg-orange-100  text-slate-950 ";
+    const legendClass3="shadow-md border-2 rounded-xl text-base md:text-2xl/[2.5rem] tracking-wide text-center align-top mt-[40px] font-normal bg-green-300  text-slate-950 ";
+    
     const cellClass= "text-base md:text-2xl";
     const lHeadingClass="mt-[4rem] text-base md:text-4xl/[4rem] text-center font-bold";
     const subtotalClass="shadow-md border-2 rounded-xl text-base md:text-3xl/[2.5rem] tracking-wide text-center align-top mt-[40px] bg-gray-500  text-white ";
@@ -57,11 +62,11 @@ function QuoteAnalysis() {
     const catDescriptions = {
         loanInfo:"",
         lenderFees:"These fees are lender dependent. Lenders may list these fees under different labels. Not all fees will be listed by every lender. ",
-        titleFees:"These fees are dependent on the closing attorney and will be same for all lenders. For new construction the builder decides the attorney. A resale contract will also specify the closing attorney. These fees will be same across all the lenders you are comparing since the closing attorney will be the same, irrespective of which lender you go with.",
-        govTaxFees:"These are government and state fees and will be same for all the lenders. These fees will be the same across all the lenders you are comparing since these will be the same no matter which lender you go with.",
-        estPrepaid:"The insurance premium will depend on the policy you pick and per diem interest will depend on your closing date. These fees will remain the same across all the lenders you are comparing since these will be the same no matter which lender you go with.",
+        titleFees:"These fees are dependent on the closing attorney and will be same for all lenders. For new construction the builder decides the closing attorney. A resale contract will also specify the closing attorney. These fees will be same across all the lenders you are comparing since the closing attorney will be the same, irrespective of which lender you go with.",
+        govTaxFees:"These are standard state and county fees that will stay the same for all lenders you are comparing.",
+        estPrepaid:"The insurance premium will depend on the policy you pick. Per diem interest will depend on your closing date. These fees will remain the same across all the lenders you are comparing, since the insurance premium and per diem interest are determined by the aforementioned factos and not the lender.",
         escrowDeposit:"The account is established for you by your lender at a purchase/refinance closing when you take out a home mortgage. You'll begin funding your escrow accounts by making an initial deposit into the account at closing. A federally mandated formula is used to figure out exactly how much money is needed to satisfy this initial deposit into the escrow account. You can use https://mortgagetoolsusa.com/escrow to get an estimate of the funds that will be deposited in the escrow account.",
-        HOADues:"You will be responsible for these fees if your home is part of a Home Owner's association/condo association. These fees will be the same across all the lenders you are comparing since these will be the same no matter which lender you go with.",
+        HOADues:"You will be responsible for these fees if your home is part of a Home Owner's association/condo association. These fees will be the same across all the lenders you are comparing since these are determined by the Homeowners/Condo Association for your property.",
     }
     
     const currency = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -117,9 +122,13 @@ function QuoteAnalysis() {
                 data[obj].ProratedHOADues +
                 data[obj].HOAClosingLetter +
                 data[obj].HOACapitalContr;
+            
+            out[obj].creditTotal=
+                data[obj].builderCredit +
+                data[obj].lenderCredit;
 
-            out[obj].totalCosts=out[obj].lenderFees+out[obj].titleFees+out[obj].govTaxFees+out[obj].prepaidTotal+out[obj].escrowTotal+out[obj].HOATotal;
-            out[obj].totalNormalizedCosts=out[obj].lenderFees+out.q1.titleFees+out.q1.govTaxFees+out.q1.prepaidTotal+out.q1.escrowTotal+out.q1.HOATotal;
+            out[obj].totalCosts=out[obj].lenderFees+out[obj].titleFees+out[obj].govTaxFees+out[obj].prepaidTotal+out[obj].escrowTotal+out[obj].HOATotal-out[obj].creditTotal;
+            out[obj].totalNormalizedCosts=out[obj].lenderFees+out.q1.titleFees+out.q1.govTaxFees+out.q1.prepaidTotal+out.q1.escrowTotal+out.q1.HOATotal-out[obj].creditTotal;
         });
             // console.log(out.q1);
     }
@@ -201,6 +210,7 @@ function QuoteAnalysis() {
                                     that will remain the same across all lenders(title fees, government taxes & fees, escrow/pre-paids, and HOA/Condo dues) 
                                     regardless of the lender you pick, are normalized. This allows you to isolated and focused on the lender specific costs on each quote. 
                                     </p>
+                                    <p className="main-text max-text-box">Hope this normalized comparison guide helps you make a smart decision!</p>
                                 </div>
                                         <Tabs defaultActiveKey="first" style={{fontSize:"2rem", fontWeight:"700"}}>
                                             <Tab eventKey="first" title="Original">
@@ -532,9 +542,32 @@ function QuoteAnalysis() {
                                                             <td id="q4-HOATotal" className="text-white text-bold">{currency.format(out.q4.HOATotal)}</td>
                                                         </tr>
                                                         <br/>
+                                                        <tr>
+                                                            <td rowSpan='3'  className={legendClass3}><div className={lHeadingClass}>Builder/Lender Credits</div>{catDescriptions.credits}</td>
+                                                            <td>Builder Credit Towards Closing Costs</td>
+                                                            <td><input id="q1-builderCredit" className="" value={data.q1.builderCredit||""} onChange={handleChange} type="number" step=".01"/></td>
+                                                            <td><input id="q2-builderCredit" className="" value={data.q2.builderCredit||""} onChange={handleChange} type="number" step=".01"/></td>
+                                                            <td><input id="q3-builderCredit" className="" value={data.q3.builderCredit||""} onChange={handleChange} type="number" step=".01"/></td>
+                                                            <td><input id="q4-builderCredit" className="" value={data.q4.builderCredit||""} onChange={handleChange} type="number" step=".01"/></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Lender Credit Towards Closing Costs</td>
+                                                            <td><input id="q1-lenderCredit" className="" value={data.q1.lenderCredit||""} onChange={handleChange} type="number" step=".01"/></td>
+                                                            <td><input id="q2-lenderCredit" className="" value={data.q2.lenderCredit||""} onChange={handleChange} type="number" step=".01"/></td>
+                                                            <td><input id="q3-lenderCredit" className="" value={data.q3.lenderCredit||""} onChange={handleChange} type="number" step=".01"/></td>
+                                                            <td><input id="q4-lenderCredit" className="" value={data.q4.lenderCredit||""} onChange={handleChange} type="number" step=".01"/></td>
+                                                        </tr> 
+                                                        <tr className={subtotalClass}>
+                                                            <td className="text-white text-bold">Builder/Lender Credits</td>
+                                                            <td id="q1-creditTotal" className="text-white text-bold">{currency.format(out.q1.creditTotal)}</td>
+                                                            <td id="q2-creditTotal" className="text-white text-bold">{currency.format(out.q2.creditTotal)}</td>
+                                                            <td id="q3-creditTotal" className="text-white text-bold">{currency.format(out.q3.creditTotal)}</td>
+                                                            <td id="q4-creditTotal" className="text-white text-bold">{currency.format(out.q4.creditTotal)}</td>
+                                                        </tr>
+                                                        <br/>
                                                         <tr className={totalClass}>
                                                             <td></td>
-                                                            <td className="text-white text-bold">Total Costs</td>
+                                                            <td className="text-white text-bold">Total Loan Related Costs</td>
                                                             <td id="q1-totalCosts" className="text-white text-bold">{currency.format(out.q1.totalCosts)}</td>
                                                             <td id="q2-totalCosts" className="text-white text-bold">{currency.format(out.q2.totalCosts)}</td>
                                                             <td id="q3-totalCosts" className="text-white text-bold">{currency.format(out.q3.totalCosts)}</td>
@@ -888,6 +921,29 @@ function QuoteAnalysis() {
                                                             <td id="q2-HOATotal" className="text-white text-bold">{currency.format(out.q1.HOATotal)}</td>
                                                             <td id="q3-HOATotal" className="text-white text-bold">{currency.format(out.q1.HOATotal)}</td>
                                                             <td id="q4-HOATotal" className="text-white text-bold">{currency.format(out.q1.HOATotal)}</td>
+                                                        </tr>
+                                                        <br/>
+                                                        <tr>
+                                                            <td rowSpan='3'  className={legendClass3}><div className={lHeadingClass}>Builder/Lender Credits</div>{catDescriptions.credits}</td>
+                                                            <td>Builder Credit Towards Closing Costs</td>
+                                                            <td><input id="q1-builderCredit" className="" value={data.q1.builderCredit||""} onChange={handleChange} type="number" step=".01"/></td>
+                                                            <td><input id="q2-builderCredit" className="" value={data.q2.builderCredit||""} onChange={handleChange} type="number" step=".01"/></td>
+                                                            <td><input id="q3-builderCredit" className="" value={data.q3.builderCredit||""} onChange={handleChange} type="number" step=".01"/></td>
+                                                            <td><input id="q4-builderCredit" className="" value={data.q4.builderCredit||""} onChange={handleChange} type="number" step=".01"/></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Lender Credit Towards Closing Costs</td>
+                                                            <td><input id="q1-lenderCredit" className="" value={data.q1.lenderCredit||""} onChange={handleChange} type="number" step=".01"/></td>
+                                                            <td><input id="q2-lenderCredit" className="" value={data.q2.lenderCredit||""} onChange={handleChange} type="number" step=".01"/></td>
+                                                            <td><input id="q3-lenderCredit" className="" value={data.q3.lenderCredit||""} onChange={handleChange} type="number" step=".01"/></td>
+                                                            <td><input id="q4-lenderCredit" className="" value={data.q4.lenderCredit||""} onChange={handleChange} type="number" step=".01"/></td>
+                                                        </tr> 
+                                                        <tr className={subtotalClass}>
+                                                            <td className="text-white text-bold">Builder/Lender Credits</td>
+                                                            <td id="q1-creditTotal" className="text-white text-bold">{currency.format(out.q1.creditTotal)}</td>
+                                                            <td id="q2-creditTotal" className="text-white text-bold">{currency.format(out.q2.creditTotal)}</td>
+                                                            <td id="q3-creditTotal" className="text-white text-bold">{currency.format(out.q3.creditTotal)}</td>
+                                                            <td id="q4-creditTotal" className="text-white text-bold">{currency.format(out.q4.creditTotal)}</td>
                                                         </tr>
                                                         <br/>
                                                         <tr className={totalClass}>
