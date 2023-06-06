@@ -41,17 +41,17 @@ function QuoteAnalysis() {
         mortgageElectronicRegSystem: 0,
     }
 
-    const legendClass1="shadow-md border-2 rounded-xltext-3xl/[2.5rem] tracking-wide text-center align-top mt-[40px] font-light bg-blue-900  text-white ";
-    const legendClass2="shadow-md border-2 rounded-xltext-3xl/[2.5rem] tracking-wide text-center align-top mt-[40px] font-normal bg-orange-100  text-slate-950 ";
-    
-    const lHeadingClass="mt-[4rem] text-4xl/[4rem] text-center font-bold";
-    const subtotalClass="shadow-md border-2 rounded-xl text-3xl/[2.5rem] tracking-wide text-center align-top mt-[40px] bg-gray-500  text-white ";
-    const totalClass="shadow-md border-2 rounded-xl text-4xl/[2.5rem] tracking-wide text-center align-top mt-[40px] bg-gray-600  text-ehite ";
-    const q1Class = "bg-orange-100 text-3xl text-center";
-    const q2Class = "bg-orange-200 text-3xl text-center";
-    const q3Class = "bg-orange-300 text-3xl text-center";
-    const q4Class = "bg-orange-400 text-3xl text-center";
-    const dClass = "bg-gray-200 text-3xl text-center";
+    const legendClass1="shadow-md border-2 rounded-xl text-base md:text-2xl/[2.5rem] tracking-wide text-center align-top mt-[40px] font-light bg-blue-900  text-white ";
+    const legendClass2="shadow-md border-2 rounded-xl text-base md:text-2xl/[2.5rem] tracking-wide text-center align-top mt-[40px] font-normal bg-orange-100  text-slate-950 ";
+    const cellClass= "text-base md:text-2xl";
+    const lHeadingClass="mt-[4rem] text-base md:text-4xl/[4rem] text-center font-bold";
+    const subtotalClass="shadow-md border-2 rounded-xl text-base md:text-3xl/[2.5rem] tracking-wide text-center align-top mt-[40px] bg-gray-500  text-white ";
+    const totalClass="shadow-md border-2 rounded-xl text-base md:text-4xl/[2.5rem] tracking-wide text-center align-top mt-[40px] bg-gray-600  text-ehite ";
+    const q1Class = "bg-orange-100 text-base md:text-3xl text-center";
+    const q2Class = "bg-orange-200 text-base md:text-3xl text-center";
+    const q3Class = "bg-orange-300 text-base md:text-3xl text-center";
+    const q4Class = "bg-orange-400 text-base md:text-3xl text-center";
+    const dClass = "bg-gray-200 text-base md:text-3xl text-center";
 
     const catDescriptions = {
         loanInfo:"",
@@ -208,8 +208,8 @@ function QuoteAnalysis() {
                                                     </colgroup>
                                                     <thead>
                                                         <tr >
-                                                            <th className="text-3xl text-center">About these items</th>
-                                                            <th className="text-3xl border-b-2">Item Description</th>                                              
+                                                            <th className="text-base md:text-3xl text-center">About these items</th>
+                                                            <th className="text-base md:text-3xl">Item Description</th>                                              
                                                             <th className={q1Class}>BankSouth Quote</th>
                                                             <th className={q2Class}>Quote 1</th>
                                                             <th className={q3Class}>Quote 2</th>
@@ -217,7 +217,7 @@ function QuoteAnalysis() {
                                                 
                                                         </tr>
                                                     </thead>
-                                                    <tbody>
+                                                    <tbody className={cellClass}>
                                                         <tr className="">
                                                             <td rowSpan="15" className={legendClass1}><div className={lHeadingClass}>Lender Fees </div>{catDescriptions.lenderFees}</td>
                                                             <td>Origination Fees</td>
@@ -548,8 +548,8 @@ function QuoteAnalysis() {
                                                     </colgroup>
                                                     <thead>
                                                         <tr>
-                                                            <th className="text-3xl text-center">About these items</th>
-                                                            <th className="text-3xl border-b-2">Item Description</th>                                             
+                                                            <th className="text-base md:text-3xl text-center">About these items</th>
+                                                            <th className="text-base md:text-3xl">Item Description</th>                                             
                                                             <th className={q1Class}>BankSouth Quote</th>
                                                             <th className={q2Class}>Quote 1</th>
                                                             <th className={q3Class}>Quote 2</th>
@@ -557,7 +557,7 @@ function QuoteAnalysis() {
                                                 
                                                         </tr>
                                                     </thead>
-                                                    <tbody>
+                                                    <tbody  className={cellClass}>
                                                         <tr>
                                                             <td rowSpan="15" className={legendClass1}><div className={lHeadingClass}>Lender Fees </div>{catDescriptions.lenderFees}</td>
                                                             <td>Origination Fees</td>
