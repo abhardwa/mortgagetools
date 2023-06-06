@@ -12,6 +12,7 @@ import Buydown from '../pages/Buydown';
 import Escrow from '../pages/Escrow' ;
 import PreQual from '../pages/PreQual' ;
 import Services from '../pages/Services' ;
+import QuoteAnalysis from '../pages/QuoteAnalysis' ;
 
 function Main() {
   console.log("Inside Main.js");
@@ -27,6 +28,7 @@ function Main() {
                 <Route path="/buydown" element={<Buydown />} />
                 <Route path="/escrow" element={<Escrow />} />
                 <Route path="/prequal" element={<PreQual />} />
+                <Route path="/quoteanalysis" element={<QuoteAnalysis />} />
                 <Route path="/services" element={<Services />} />
             </Routes>
             <Footer/>

@@ -6,6 +6,7 @@ import Accordion from "react-bootstrap/Accordion";
 import axios from "axios";
 import DatePicker from 'react-datepicker'
 import LoanTable from "../components/AmortTable.js";
+import Slider from "../components/MySlider.js";
 
 function Amortization() {
     const [data, setData] = useState({
@@ -34,6 +35,7 @@ function Amortization() {
     const [state, setState] = useState('done');
     const [ltbl, setLtbl] = useState([]);
     const [loan, setLoan] = useState({});
+    const [sData, setSData] = useState({});
     const [slider, setSlider] = useState({
         "rs-range-line":0,
         "rs-bullet":"",
@@ -130,11 +132,9 @@ function Amortization() {
         return (async () => {
             baseLoan = await getLoan(arg0)
             loan = await getLoan(arg1);
-            // calcButton();
-            // console.log(out);
             const [loantbl, xLoan] = calcButton();
-            // console.log(xLoan);
-            return[out, loantbl, xLoan];
+            const sliderData = calcSliderData();
+            return[out, loantbl, xLoan, sliderData];
         })();
 
         function calcButton() {
@@ -142,10 +142,10 @@ function Amortization() {
             out.totalInt = out.totalCost = totalIntBase= 0;
             cumP = [];
             cumI = [];
-  
+
             out.mPayment = loan[0].mPayment;
             let dt2 = new Date(data.startDate);
-            // console.log(loan);
+
             for (let i in loan) {
                 out.totalInt += loan[i].interest;
                 out.totalCost += loan[i].interest + loan[i].principal;
@@ -176,10 +176,9 @@ function Amortization() {
                 cumSum += Math.trunc(interest);
                 return cumSum;
             });
-            const timeLabels = loan.map(({ month }) => month);
+            const timeLabels = loan.map(({ year }) => year);
             let loanLabels = [0, 100000, 200000, 300000, 400000];
-            // console.log(out);
-            // console.log(cbalance);
+
             renderChart(data.startDate, cbalance, cumP, cumI, timeLabels, loanLabels);
             return[generateSchedule(loan, data.startDate), loan];
         }
@@ -217,10 +216,24 @@ function Amortization() {
                 // console.log(i, yidx, loantbl[yidx] );
                 loantbl[yidx].detail.push({ id:i, Date:loan[i].year+" "+loan[i].month, Balance:currency.format(loan[i].balance), Interest:currency.format(loan[i].interest), Principal:currency.format(loan[i].principal)});
             }
-            // console.log(Array.from(loantbl));
+
             return(Array.from(loantbl));
 
         }
+    }
+    const calcSliderData = () => {
+        //setup the sliderData from the loan
+        let sliderData = [];
+
+        for (let i in loan) {
+            sliderData.push({
+                Month: loan[i].month+"-"+loan[i].year,
+                Principal: currency.format(loan[i].principal),
+                Interest: currency.format(loan[i].interest),
+                Balance: currency.format(loan[i].balance),
+            })
+        }
+        return sliderData;
     }
 
     function download(loan) {
@@ -240,60 +253,9 @@ function Amortization() {
         document.getElementById("csv").appendChild(link);
 
         link.click();
-        // return (
-        //     <a href={encodeURI} download="amortization.csv">Amortization Data</a>
-        // );
+
     };
 
-    function calcSliderValues() {
-        //i = the selected month
-        // based on the selected month, calculate the display offset and read loan json object to
-        // build the amortization data slider info.
-
-        // set up slider variables for use in the following code lines
-        const rangeSlider = document.getElementById("rs-range-line");
-        const rangeBullet = document.getElementById("rs-bullet");
-
-        rangeSlider.max = loan.length;  
-        let i = (Number(rangeSlider.value)<rangeSlider.max?Number(rangeSlider.value): rangeSlider.max-1);
-        if (!rangeSlider.max) {
-        rangeSlider.max = "";
-        }
-        console.log(rangeSlider.value, i, rangeSlider.max);
-
-        let sliderPosition = (Number(rangeSlider.value)<rangeSlider.max?Number(rangeSlider.value): rangeSlider.max-1) / rangeSlider.max;
-        let viewportWidth = window.innerWidth;
-        let bulletPosition = sliderPosition * 0.17 * viewportWidth;
-        rangeBullet.style.left = bulletPosition;
-        document.getElementById("box-max").innerHTML = rangeSlider.max;
-        setSlider(slider=>({...slider, "rs-bullet":bulletPosition}));
-
-        // console.log(rangeSlider.value, i, rangeSlider.max, bulletPosition);
-
-        const princ = loan[i].principal.toLocaleString("us-US", { style: "currency", currency: "USD" });
-        const int = loan[i].interest.toLocaleString("us-US", { style: "currency", currency: "USD" });
-        const bal = loan[i].balance.toLocaleString("us-US", { style: "currency", currency: "USD" });
-        // This statement constructs the pop up window details from the loan json object
-        rangeBullet.innerHTML =
-        "<p>Month:     " +
-        "<span style='color:black; font-weight:700;'>" +
-        (Number(i) + 1) +
-        "</span></p>" +
-        "<p>Principal: " +
-        "<span style='color:black; font-weight:700;'>" +
-        princ +
-        "</span></p>" +
-        "<p>Interest:  " +
-        "<span style='color:black; font-weight:700;'>" +
-        int +
-        "</span></p>" +
-        "<p>Balance:   " +
-        "<span style='color:black; font-weight:700;'>" +
-        bal +
-        "</span></p>";
-
-        rangeBullet.style.visibility = "visible";
-    }
     function monthYear(dt, nbr) {
         const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
         dt.setMonth(dt.getMonth() + nbr);
@@ -305,6 +267,7 @@ function Amortization() {
     const handleChange = (e) => {
 
         if (e.target.id==="rs-range-line" && ltbl.length) {
+            // setSData(calcSliderData());
             setSlider(slider => {
                 return {
                 ...slider, [e.target.id]:Number(e.target.value)
@@ -317,13 +280,10 @@ function Amortization() {
                 }
             });
         }
-
-        if (e.target.id==="rs-range-line" && ltbl.length)
-            calcSliderValues();
     };
 
     const handleDownload = (e) => {
-        console.log(loan);
+        // console.log(loan);
         download(loan);
 
     };
@@ -343,37 +303,17 @@ function Amortization() {
     const handleOnePayDateChange = (e) => {
         setData(data => {return {...data, 'onePayDate':(e).toISOString().substring(0, 10)}});
     };
-    // const fetchData = useCallback(async () => {
-    // try {
-    //     const [res, loantbl, xLoan] = await calcAmortization();
-    //     if (res) {
-    //     setResult(result => ({ ...result, ...res }));
-    //     setState('done');
-    //     setLtbl([...loantbl]);
-    //     setLoan(xLoan);
-    //     } else {
-    //     console.log("Error: Async function pending...");
-    //     }
-    // } catch (error) {
-    //     console.error(error);
-    // }
-    // }, [btnState]);
-
-    // useEffect(() => {
-    //     fetchData();
-    // }, [fetchData]);
-
   
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const [res, loantbl, xLoan] = await calcAmortization(); // Wait for the promise to resolve
-                // console.log(xLoan);
+                const [res, loantbl, xLoan, sliderData] = await calcAmortization(); // Wait for the promise to resolve
                 if (res) {
                     setResult(result => ({ ...result, ...res })); // Update the result state
                     setState('done');
                     setLtbl([...loantbl]);
                     setLoan(xLoan);
+                    setSData(sliderData);
                 } else {
                     console.log("Error: Async function pending...");
                 }
@@ -391,7 +331,7 @@ function Amortization() {
             console.log("Loading...")
             return <div>Loading...</div>
     };
-    // console.log(sched, state);
+
     return (
         <div id="amortization" className="tabcontent">
             <section className="colored-section" id="title">
@@ -571,13 +511,7 @@ function Amortization() {
                                                                     <Accordion.Body>
                                                                         <div className="container slider-section">
                                                                             <div className="range-slider">
-                                                                                <div className="">
-                                                                                    <span id="rs-bullet" className="rs-label" style={{left:slider["rs-bullet"]}}></span>
-                                                                                    <input id="rs-range-line" className="rs-range" type="range"  value={slider["rs-range-line"]} onChange={handleChange}
-                                                                                        min="0" max="200" />
-                                                                                </div>
-                                                                                <div className="box-minmax"><span id="box-min">0</span><span
-                                                                                        id="box-max">360</span></div>
+                                                                                <Slider max={sData.length} data={sData} minmax="flex" handleChange={handleChange}></Slider>
                                                                             </div>
                                                                             <br></br>
                                                                             <div id="csv">

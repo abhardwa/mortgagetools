@@ -195,25 +195,26 @@ hr {
   font-weight: bold;
 }
 .box-minmax {
-  margin-top: 20px;
+  /* margin-top: .5rem; */
   width: 100%;
   display: flex;
   justify-content: space-between;
-  font-size: 20px;
+  font-size: 1.6rem;
   color: #000000;
 }
 .box-minmax span:first-child {
   margin-left: 0px;
 }
-.rs-range {
-  margin-top: 29px;
+#rs-range-line.rs-range-line {
+  margin-top: 2rem;
   width: 100%;
   -webkit-appearance: none;
 }
-.rs-range::focus {
+.rs-bullet.rs-range-line.rs-range-line::focus {
+  border:none;
   outline: none;
 }
-.rs-range::-webkit-slider-runnable-track {
+.rs-range-line::-webkit-slider-runnable-track {
   width: 100%;
   height: 1px;
   cursor: pointer;
@@ -222,7 +223,7 @@ hr {
   border-radius: 0px;
   border: 0px solid #010101;
 }
-.rs-range::-moz-range-track {
+.rs-range-line::-moz-range-track {
   width: 100%;
   height: 1px;
   cursor: pointer;
@@ -232,7 +233,7 @@ hr {
   border: 0px solid #010101;
 }
 
-.rs-range::-webkit-slider-thumb {
+.rs-range-line::-webkit-slider-thumb {
   box-shadow: none;
   border: 0px solid #ffffff;
   box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
@@ -244,7 +245,7 @@ hr {
   -webkit-appearance: none;
   margin-top: -20px;
 }
-.rs-range::-moz-range-thumb {
+.rs-range-line::-moz-range-thumb {
   box-shadow: none;
   border: 0px solid #ffffff;
   box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
@@ -256,12 +257,12 @@ hr {
   -webkit-appearance: none;
   margin-top: -20px;
 }
-.rs-range::-moz-focus-outer {
+.rs-range-line::-moz-focus-outer {
   border: 0;
 }
 
-.rs-label {
-  visibility: hidden;
+.rs-bullet {
+  /* visibility: hidden; */
   position: relative;
   transform-origin: center center;
   display: block;
@@ -270,14 +271,14 @@ hr {
   background: #fae5d3;
   border-radius: 25px;
   /* border-radius: 50%; */
-  line-height: 30px;
+  line-height: 1.6rem;
   text-align: left;
   font-weight: bold;
   padding-top: 10px;
   padding-left: 10px;
   box-sizing: border-box;
   border: 2px solid #fae5d3;
-  margin-top: 20px;
+  /* margin-top: 20px; */
   margin-left: -38px;
   left: attr(value);
   color: rgb(44, 44, 44);
@@ -286,7 +287,7 @@ hr {
   line-height: normal;
   font-size: 1.2rem;
 }
-.rs-label::after {
+.rs-bullet::after {
   /* content: "months"; */
   display: block;
   font-size: 1.4rem;
@@ -308,28 +309,23 @@ hr {
   margin: 0 auto;
 }
 
-.range-slider-simple {
-  margin-top: 2vh;
-  padding-left: 0%;
-  padding-right: 1%;
-  position:relative;
-  display:inline;
-}
-/* input[type=range].range-slider {
-  width:35%;
-  display:inline;
-} */
-.range-slider__wrap {
-  width:35%;
-  position:relative;
-  display:inline-block;
-}
 .embed-slider {
-  position: relative;
-  display: inline;
   padding-left: 1.3rem;
   padding-right: 1.5rem;
+  line-height: 2.5rem;
 }
+
+/* The next 2 classes allow a slider to be inflow with the text */
+.range-slider__wrap {
+  display:inline; 
+  align-items:center;
+}
+.slider-container {
+  width: 35%;
+  display:inline-block;
+  align-items: center;
+}
+
 /* Style the tab content */
 .tabcontent {
   /* display: none; */
@@ -371,6 +367,7 @@ table {
 .input-field {
   color: rgb(44, 44, 44);
   font-weight: bold;
+  background-color: #fae5d3;
 }
 
 td,
@@ -391,11 +388,17 @@ td {
 }
 
 tr:nth-child(even) td {
-  background-color: rgb(255, 255, 255);
+  /* background-color: rgb(255, 255, 255); */
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: hsla(0, 2%, 42%, 0.315);
 }
 
 tr:nth-child(odd) td {
-  background-color: #fdf2e9;
+  /* background-color: #fdf2e9; */
+  border-bottom-color: hsla(0, 2%, 42%, 0.459);
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
 }
 
 caption {
@@ -459,20 +462,7 @@ position:sticky;
 top: 30%;
 background-color: #dbe6d5;
 }
-/* .backdrop-only {
-  grid-column: 2/3;
-  grid-row: 1/4;
-  background-color: rgba(10, 10, 10, 0.1);
-  box-shadow: -.5rem .8rem 1.0rem rgba(0, 0, 0, 0.10);
-  border-radius: 5%;
-  backdrop-filter: blur(5rem);
-  overflow: hidden;
-  filter: blur();
-  margin:0;
-  padding:0;
-  z-index: -1;
-  opacity: .4;
-} */
+
 .form {
   display: grid;
   /* width: 50%; */
@@ -1128,6 +1118,12 @@ span[type="text"]:hover::before,
   transform: translateX(-50%);
   opacity: 1;
   transition: opacity 0.3s ease;
+}
+input[type='number'] {
+    width: 100%; 
+    box-sizing: border-box;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing: border-box;
 }
 
 input[type="text"]:hover::after,

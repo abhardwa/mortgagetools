@@ -21,6 +21,7 @@ const ResponsiveNavbar = (props) => {
                     <NavDropdown.Item href="/amortization">Amortization</NavDropdown.Item>
                     <NavDropdown.Item href="/buydown">Buy Down</NavDropdown.Item>
                     <NavDropdown.Item href="/escrow">Escrow Calculator</NavDropdown.Item>
+                    <NavDropdown.Item href="/quoteanalysis">Quotes Comparison & Analysis</NavDropdown.Item>                    
                     </NavDropdown>
                     <Nav.Link href="/services">Services</Nav.Link>
                     <Nav.Link href="/contact">Contact</Nav.Link>

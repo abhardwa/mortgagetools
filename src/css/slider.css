@@ -1,15 +1,15 @@
 /* input[type="range"] { */
-.slider-simple {
+.rs-range-line {
   -webkit-appearance: none;
   margin: 10px 0;
   width: 30%;
 }
 
-.slider-simple:focus {
+.rs-range-line:focus {
   outline: none;
 }
 
-.slider-simple::-webkit-slider-runnable-track {
+.rs-range-line::-webkit-slider-runnable-track {
   width: 100%;
   height: 5px;
   cursor: pointer;
@@ -17,7 +17,7 @@
   border-radius: 2px;
 }
 
-.slider-simple::-webkit-slider-thumb {
+.rs-range-line::-webkit-slider-thumb {
   height: 20px;
   width: 20px;
   border-radius: 50%;
@@ -27,11 +27,11 @@
   margin-top: -8px;
 }
 
-.slider-simple:focus::-webkit-slider-runnable-track {
+.rs-range-line:focus::-webkit-slider-runnable-track {
   background: #000000;
 }
 
-.slider-simple::-moz-range-track {
+.rs-range-line::-moz-range-track {
   width: 100%;
   height: 5px;
   cursor: pointer;
@@ -39,7 +39,7 @@
   border-radius: 2px;
 }
 
-.slider-simple::-moz-range-thumb {
+.rs-range-line::-moz-range-thumb {
   height: 20px;
   width: 20px;
   border: 0;
@@ -48,7 +48,7 @@
   cursor: pointer;
 }
 
-.slider-simple::-ms-track {
+.rs-range-line::-ms-track {
   width: 100%;
   height: 5px;
   cursor: pointer;
@@ -57,17 +57,17 @@
   color: transparent;
 }
 
-.slider-simple::-ms-fill-lower {
+.rs-range-line::-ms-fill-lower {
   background: #000000;
   border-radius: 2px;
 }
 
-.slider-simple::-ms-fill-upper {
+.rs-range-line::-ms-fill-upper {
   background: #000000;
   border-radius: 2px;
 }
 
-.slider-simple::-ms-thumb {
+.rs-range-line::-ms-thumb {
   height: 20px;
   width: 20px;
   border-radius: 50%;
@@ -81,14 +81,14 @@
   /*Expand the click area*/
 }
 
-.slider-simple:focus::-ms-fill-lower {
+.rs-range-line:focus::-ms-fill-lower {
   background: #000000;
 }
 
-.slider-simple:focus::-ms-fill-upper {
+.rs-range-line:focus::-ms-fill-upper {
   background: #000000;
 }
-#slider-simple-value {
+#rs-value {
   /* position: absolute; */
   align-content: center;
   display: inline;
@@ -98,7 +98,7 @@
 }
 
 @media screen and (min-width: 922px) {
-  #slider-simple-value {
+  #rs-value {
     width: 10vw;
     margin-top: 1rem;
   }

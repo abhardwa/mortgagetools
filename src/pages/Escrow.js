@@ -128,8 +128,8 @@ function Escrow() {
             // console.log(table);
             // if (table) table.parentNode.removeChild(table);
             const renderHeader = () => {
-                return <tr className="banner"> 
-                    {hdr.map((item, idx) => <th key={idx}>{item}</th>)}
+                return <tr> 
+                    {hdr.map((item, idx) => <th  className="banner" key={idx}>{item}</th>)}
                     </tr>
             }
 
@@ -145,7 +145,7 @@ function Escrow() {
             }
             // console.log(renderBody);
             return (
-                <div style={{ margin: '50px' }}>
+                <div  className="w-2/3" style={{ margin:'auto' }}>
                     <h1>Escrow Table</h1>
                     <table>
                         <tbody>
@@ -348,10 +348,11 @@ insurance, they will give you what is called an escrow refund. If their analysis
                     <tbody>
                         <tr>
                             <th className="banner left-text">Closing Disclosure</th>
+                            <th className="banner"></th>
                         </tr>
                         <tr>
                             <td>Initial Escrow Payment at Closing</td>
-                            <td className="result" id="calc-initial-amt">{out.initAmount}</td>
+                            <td className="" id="calc-initial-amt">{out.initAmount}</td>
                         </tr>
                         <tr>
                             <td>
@@ -395,7 +396,7 @@ insurance, they will give you what is called an escrow refund. If their analysis
                         </tr>
                         <tr>
                             <td>Aggregate Adjustment:</td>
-                            <td className="result" id="aggr-adj">{out.aggrAdjustment.toFixed(2)}</td>
+                            <td className="" id="aggr-adj">{out.aggrAdjustment.toFixed(2)}</td>
                         </tr>
                     </tbody>
                 </table>
