@@ -522,7 +522,7 @@ background-color: #dbe6d5;
   border-bottom-right-radius: 0;
   transition: all 0.3s;
   border-bottom-color:#010101;
-  border-bottom-style:solid;
+  /* border-bottom-style:solid; */
   border-bottom-width: 1px;
 }
 

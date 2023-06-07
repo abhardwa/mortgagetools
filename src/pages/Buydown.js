@@ -122,11 +122,11 @@ function Buydown() {
                                     <h3 className="heading-primary centered-text">Mortgage BuyDown Calculator</h3>
                                     <h4 className="heading-tertiary centered-text">Does it make sense to get a buy-down option?</h4>
                                     <br></br>
-                                    <p className="main-text max-text-box">You've seen seller-paid buydowns advertised in communities just being built or being discussed in other media articles,
+                                    <p className="main-text max-text-box">You've seen seller-paid 2-1 buydowns advertised in communities just being built or being discussed in other media articles,
                                     but you may be asking <i>“What is a buydown and how can it help me?” </i>I would like to give you some details on how this
                                     financing arrangement works so that you can negotiate the contract accordingly.</p>
                                     <p className="main-text max-text-box">
-                                    A buydown is a way for a borrower to obtain a lower interest rate for a period of time. The seller will pay a lump sum
+                                    A temporary buydown is a way for a borrower to obtain a lower interest rate for a period of time. The seller will pay a lump sum
                                     at closing to cover a portion of the borrower's interest during the buydown period. It allows the buyer to make lower
                                     mortgage payments for the first few years of their loan, with payments increasing slightly once the buydown period is
                                     over. A seller-paid buydown helps reduce the buyer's monthly mortgage payment for an initial period — typically one or
@@ -149,7 +149,7 @@ function Buydown() {
                             </form>
                             <form className="form form--intRate">
                                 <label className="form-label">Interest Rate:</label>
-                                <input data-type="number" type="number"  step="any" min = "0.1"  name="intRate" id="intRate" 
+                                <input data-type="number" type="number"  step="0.125" min = "0.125"  name="intRate" id="intRate" 
                                     className="form-input" value={data.intRate||''} onChange={handleChange}/>
                                 <span className="form-suffix">%</span>
                             </form>

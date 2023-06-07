@@ -3,8 +3,8 @@ import { amortization } from "../components/calcAmort.js";
 function PreQual() {
     const [data, setData] = useState({
         "purchaseAmt": 350000,
-        "downPayPercAmt": 20,
         "downPayAmt": 70000,
+        "downPayPercAmt": 20,
         "loanAmt": 280000,
         "intRate": 6.25,
         "term":30,
@@ -21,7 +21,6 @@ function PreQual() {
 
     });
     const out = {
-        downPayPercAmt: 20,
         pmiAmt: 0,
         pmtPI: 0,
         pmtPITI: 0,
@@ -43,13 +42,13 @@ function PreQual() {
     function calcPreQual () {
         // ///////////////////////////////////////////////
         // Now update the remaining output fields
-        console.log(data);
-        console.log(out);
+        // console.log(data);
+        // console.log(out);
         out.pmiAmt = (data.pmiPercAmt * data.purchaseAmt) / 12 / 100;
         out.pmtPI = amortization(data, "");
         out.pmtPITI = Number(out.pmtPI + data.propTaxAmt / 12 + data.insAmt / 12 + out.pmiAmt + data.assocAmt);
         out.moDebts = data.moMPay + data.caMPay + data.otMPay + (data.stLoanBal * .005) + data.ccMPay;
-        out.downPayPercAmt = data.downPayAmt * 100 / data.purchaseAmt;
+
 
 
         if (((out.moDebts + out.pmtPITI) * 12) / data.grossPay <= 0.45) {
@@ -65,7 +64,7 @@ function PreQual() {
         out.qualifyMax = calcLoanAmt(data, maxPiAmtB);
         out.ratioIncome = ((out.pmtPITI * 12) / data.grossPay) * 100;
         out.ratioDebt = (((out.pmtPITI + out.moDebts) * 12) / data.grossPay) * 100;
-        console.log(`out.moDebts: ${out.moDebts}`);
+        // console.log(`out.moDebts: ${out.moDebts}`);
        
         function calcLoanAmt(purchase, X) {
             const monthlyRate = purchase.intRate / 100 / 12;
@@ -83,22 +82,32 @@ function PreQual() {
         switch (e.target.id) {
             case "purchaseAmt": {
                 updatedValues = { 
-                    "purchaseAmt": Number(e.target.value), 
-                    "loanAmt": Number(e.target.value) - data.downPayAmt,
+                    purchaseAmt: Number(e.target.value), 
+                    loanAmt: Number(e.target.value) - data.downPayAmt,
                 }
                 break;
             }
             case "downPayAmt": {
                 updatedValues = { 
-                    "downPayAmt": Number(e.target.value), 
-                    "loanAmt": data.purchaseAmt - Number(e.target.value),
+                    downPayAmt: Number(e.target.value), 
+                    get downPayPercAmt() {return (this.downPayAmt * 100 / data.purchaseAmt)},
+                    loanAmt: data.purchaseAmt- Number(e.target.value),
+                }
+                break;
+            }
+            case "downPayPercAmt": {
+                updatedValues = { 
+                    downPayPercAmt: Number(e.target.value), 
+                    loanAmt: data.purchaseAmt- (data.purchaseAmt * Number(e.target.value)/100),
+                    get downPayAmt() {return (data.purchaseAmt - this.loanAmt);},
                 }
                 break;
             }
             case "loanAmt": {
                 updatedValues = { 
-                    "loanAmt": Number(e.target.value), 
-                    "downPayAmt": data.purchaseAmt - Number(e.target.value),
+                    loanAmt: Number(e.target.value), 
+                    downPayPercAmt: Number(e.target.value)*100/data.purchaseAmt,
+                    get downPayAmt() {return (data.purchaseAmt - this.loanAmt);},
                 }
                 break;
             }
@@ -128,9 +137,9 @@ function PreQual() {
                                     <h3 className="heading-primary centered-text">Pre-Qual Calculator</h3>
                                     <h4 className="heading-tertiary centered-text">How much house can you afford or qualify for?</h4>
                                     <br></br>
-                                    <p className="main-text max-text-box">Enter the Property detail, Income, and Liabilities below to see how much loan you could qualify for. The
-                                        calculator will calculate your payments and determine if you qualify for the entered loan, based on
-                                        your income and liabilities. The calculator will also provide you on the right, with an estimated maximum amount you can qualify for, given the entered loan rate and term.</p>
+                                    <p className="main-text max-text-box">Enter the Property detail, Income, and Liabilities below to get an estimate of how much loan you could qualify for. The
+                                        calculator will calculate your estimated monthly payments and determine if you qualify for the entered loan, based on
+                                        your income and liabilities. The calculator will also provide you on the right, with an estimated maximum amount you may qualify for, given the entered loan rate and term.</p>
                                 </div>
                             </div>
                             <div className = "grid-container">
@@ -145,19 +154,19 @@ function PreQual() {
                                                 pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" data-type="currency" type="text" className="form-input"/>
                                             <span className="form-suffix">$</span>
                                             <label className="form-label">Down Payment:</label>
-                                            <input name="downPayAmt" id="downPayAmt" value={data.downPayAmt} onChange={handleChange} step="1000"
-                                                pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" data-type="currency" type="text" className="form-input"/>
+                                            <input name="downPayAmt" id="downPayAmt" step="1000" value={data.downPayAmt} onChange={handleChange} 
+                                                pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" data-type="currency" type="text" className="form-input"></input> 
                                             <span className="form-suffix">$</span>
-                                            <label className="form-label" >Down Payment:</label>
-                                            <span data-type="number" type="number" step=".125" name="downPayPercAmt" id="downPayPercAmt"
-                                                className="form-out">{out.downPayPercAmt.toFixed(0)}</span>
+                                            <label className="form-label" >Down Payment Pct:</label>
+                                            <input data-type="number" value={Math.trunc(data.downPayPercAmt)} onChange={handleChange} type="number" step="1" name="downPayPercAmt" id="downPayPercAmt"
+                                                className="form-input"></input>
                                             <span className="form-suffix">%</span>
                                             <label className="form-label" >Loan Amount:</label>
                                             <input name="loanAmt" id="loanAmt" size="15" value={data.loanAmt} onChange={handleChange} className="form-input"
                                                 pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" data-type="currency" type="text"/>
                                             <span className="form-suffix">$</span>
                                             <label className="form-label" >Interest Rate:</label>
-                                            <input data-type="number" type="number" step="any" min = "0.1" name="intRate" id="intRate" value={data.intRate||''} onChange={handleChange}
+                                            <input data-type="number" type="number" step="0.125" min = "0.125" name="intRate" id="intRate" value={data.intRate||''} onChange={handleChange}
                                                 className="form-input"/>
                                             <span className="form-suffix">%</span>
                                             <label className="form-label">Loan Term:</label>

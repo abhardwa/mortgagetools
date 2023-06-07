@@ -1,9 +1,8 @@
 import { useState, useEffect} from "react";
-import { amortization } from "../components/calcAmort.js";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
-import Table from 'react-bootstrap/Table';
 import { qRecord} from "../components/quoteStates";
+// import Panel from '../components/Panel';
 
 function QuoteAnalysis() {
     const [data, setData] = useState({q1:{...qRecord},q2:{...qRecord},q3:{...qRecord},q4:{...qRecord}});
@@ -45,15 +44,15 @@ function QuoteAnalysis() {
         lenderCredit:0,
     }
 
-    const legendClass1="shadow-md border-2 rounded-xl text-base md:text-2xl/[2.5rem] tracking-wide text-center align-top mt-[40px] font-light bg-blue-900  text-white ";
-    const legendClass2="shadow-md border-2 rounded-xl text-base md:text-2xl/[2.5rem] tracking-wide text-center align-top mt-[20px] font-normal bg-orange-100  text-slate-950 ";
-    const legendClass3="shadow-md border-2 rounded-xl text-base md:text-2xl/[2.5rem] tracking-wide text-center align-top mt-[20px] font-normal bg-green-300  text-slate-950 ";
+    const legendClass1="shadow-lg border-3 rounded-xl text-base md:text-2xl/[2.5rem] tracking-wide text-center align-top mt-[40px] font-light bg-blue-900  text-white ";
+    const legendClass2="shadow-lg border-3 rounded-xl text-base md:text-2xl/[2.5rem] tracking-wide text-center align-top mt-[20px] font-normal bg-orange-100  text-slate-950 ";
+    const legendClass3="shadow-lg border-3 rounded-xl text-base md:text-2xl/[2.5rem] tracking-wide text-center align-top mt-[20px] font-normal bg-green-300  text-slate-950 ";
     
     const cellClass= "text-base md:text-2xl";
     const lHeadingClass="mt-[0rem] text-base md:text-4xl/[4rem] text-center font-bold";
     const lHeadingClass2="mt-[2rem] text-base md:text-4xl/[4rem] text-center font-bold";
     const subtotalClass="shadow-md border-2 rounded-xl text-base md:text-3xl/[2.5rem] tracking-wide text-center align-top mt-[40px] bg-gray-500  text-white ";
-    const totalClass="shadow-md border-2 rounded-xl text-base md:text-4xl/[2.5rem] tracking-wide text-center align-top mt-[40px] bg-gray-600  text-ehite ";
+    const totalClass="shadow-md border-2 rounded-xl text-base md:text-4xl/[2.5rem] tracking-wide text-center align-top mt-[40px] bg-gray-600  text-white ";
     const q1Class = "bg-orange-100 text-base md:text-3xl text-center";
     const q2Class = "bg-orange-200 text-base md:text-3xl text-center";
     const q3Class = "bg-orange-300 text-base md:text-3xl text-center";
@@ -239,6 +238,7 @@ function QuoteAnalysis() {
                                                     <tbody className={cellClass}>
                                                         <tr className="">
                                                             <td rowSpan="15" className={legendClass1}><div className={lHeadingClass2}>Lender Fees </div>{catDescriptions.lenderFees}</td>
+                                                            
                                                             <td>Origination Fees</td>
                                                             <td><input id="q1-originationFees" className="" value={data.q1.originationFees||""} onChange={handleChange} type="number" step=".01"/></td>
                                                             <td><input id="q2-originationFees" className="" value={data.q2.originationFees||""} onChange={handleChange} type="number" step=".01"/></td>

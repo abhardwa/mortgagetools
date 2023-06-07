@@ -178,13 +178,14 @@ function Escrow() {
                     <h3 className="heading-primary">Escrow Amount Calculator</h3>
                     <h4 className="heading-tertiary">What is Escrow and how much Escrow amount do you need at closing? </h4>
                     <br></br>
-                    <p className="main-text">Throughout the term of the mortgage, an escrow account will hold funds for taxes and homeowner's insurance. It is a credit to the buyer for an amount that is in excess of what's allowed,
+                    <p className="main-text">
 After you purchase a home, your lender will establish an escrow account to pay for your taxes and insurance. After
 closing, your mortgage servicer takes a portion of your monthly mortgage payment and holds it in the escrow account
 until your tax and insurance payments are due. <br></br><br></br>
 
 
-The amount required for escrow is a moving target. Your tax bill and insurance premiums can change from year to year.
+A federally mandated formula is used to figure out exactly how much money is needed to satisfy this initial deposit into the escrow account. 
+Your tax bill and insurance premiums can change from year to year.
 Your servicer will determine your escrow payments for the next year based on what bills they paid the previous year. To
 ensure there is enough cash in escrow, most lenders require a minimum of 2 months worth of extra payments to be held in
 your account.<br></br><br></br>
