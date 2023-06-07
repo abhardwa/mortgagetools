@@ -64,7 +64,7 @@ function QuoteAnalysis() {
         lenderFees:"These fees are lender dependent. Lenders may list these fees under different labels. Not all fees will be listed by every lender. ",
         titleFees:"These fees are dependent on the closing attorney and will be same for all lenders. For new construction the builder decides the closing attorney. A resale contract will also specify the closing attorney. These fees will be same across all the lenders you are comparing since the closing attorney will be the same, irrespective of which lender you go with.",
         govTaxFees:"These are standard state and county fees that will stay the same for all lenders you are comparing.",
-        estPrepaid:"The insurance premium will depend on the policy you pick. Per diem interest will depend on your closing date. These fees will remain the same across all the lenders you are comparing, since the insurance premium and per diem interest are determined by the aforementioned factos and not the lender.",
+        estPrepaid:"The insurance premium will depend on the policy you pick. Per diem interest will depend on your closing date. These fees will remain the same across all the lenders you are comparing, since the insurance premium and per diem interest are determined by the aforementioned factors and not the lender.",
         escrowDeposit:"The account is established for you by your lender at a purchase/refinance closing when you take out a home mortgage. You'll begin funding your escrow accounts by making an initial deposit into the account at closing. A federally mandated formula is used to figure out exactly how much money is needed to satisfy this initial deposit into the escrow account. You can use https://mortgagetoolsusa.com/escrow to get an estimate of the funds that will be deposited in the escrow account.",
         HOADues:"You will be responsible for these fees if your home is part of a Home Owner's association/condo association. These fees will be the same across all the lenders you are comparing since these are determined by the Homeowners/Condo Association for your property.",
     }
@@ -206,9 +206,9 @@ function QuoteAnalysis() {
                                      item belongs to. Just enter the number in one of the listed items in that category. </p>
                                     <p className="main-text max-text-box"> To further help you do an apples-to-apples comparison, 2 views of the quotes
                                     are provided here. The first and default view shows the original information you have entered. 
-                                    The second "Normalized" view is accessed by clicking on the 'Normalized' tab. On this view, all cost items
+                                    The second "Normalized" view is accessed by clicking on the 'Normalized' tab. On this view, cost items
                                     that will remain the same across all lenders(title fees, government taxes & fees, escrow/pre-paids, and HOA/Condo dues) 
-                                    regardless of the lender you pick, are normalized. This allows you to isolated and focused on the lender specific costs on each quote. 
+                                    regardless of the lender you pick, are normalized. This allows you to isolate and focus on the lender specific costs on each quote. 
                                     </p>
                                     <p className="main-text max-text-box">Hope this normalized comparison guide helps you make a smart decision!</p>
                                 </div>
