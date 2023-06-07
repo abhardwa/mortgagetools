@@ -67,6 +67,7 @@ function QuoteAnalysis() {
         estPrepaid:"The insurance premium will depend on the policy you pick. Per diem interest will depend on your closing date. These fees will remain the same across all the lenders you are comparing, since the insurance premium and per diem interest are determined by the aforementioned factors and not the lender.",
         escrowDeposit:"The account is established for you by your lender at a purchase/refinance closing when you take out a home mortgage. You'll begin funding your escrow accounts by making an initial deposit into the account at closing. A federally mandated formula is used to figure out exactly how much money is needed to satisfy this initial deposit into the escrow account. You can use https://mortgagetoolsusa.com/escrow to get an estimate of the funds that will be deposited in the escrow account.",
         HOADues:"You will be responsible for these fees if your home is part of a Home Owner's association/condo association. These fees will be the same across all the lenders you are comparing since these are determined by the Homeowners/Condo Association for your property.",
+        credits:"Enter if your Builder/Lender has offered a credit towards closing costs."
     }
     
     const currency = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", minimumFractionDigits: 2, maximumFractionDigits: 2 });
