@@ -58,8 +58,9 @@ function PreQual() {
             out.qualifyYN = "Sorry, You do not Qualify 😞 Please see the Max Loan Amount Below";
             out.qualifyColor = "rgb(139, 54, 79)";
         };
-
-        const maxPiAmtB = ((data.grossPay / 12) * 0.45 - out.moDebts) * (data.pmiPercAmt > 0 ? 0.77 : 0.8); // This accounts for 1.9% for taxes, insurance, PMI
+        // Calculate the max monthly payment by subtracting from 45% of gross income all monthly payments (debts and taxes and insurance, but not P&I)
+        // const maxPiAmtB = ((data.grossPay / 12) * 0.45 - out.moDebts) * (data.pmiPercAmt > 0 ? 0.9 : 1); // This accounts for 1.9% for taxes, insurance, PMI
+        const maxPiAmtB = ((data.grossPay / 12) * 0.45 - (out.moDebts + out.pmtPITI - out.pmtPI)); 
         // console.log(maxPiAmtB);
         out.qualifyMax = calcLoanAmt(data, maxPiAmtB);
         out.ratioIncome = ((out.pmtPITI * 12) / data.grossPay) * 100;
@@ -67,6 +68,7 @@ function PreQual() {
         // console.log(`out.moDebts: ${out.moDebts}`);
        
         function calcLoanAmt(purchase, X) {
+            // given the loan terms (purchase) and the max monthly payment (X), calculate the loan amount
             const monthlyRate = purchase.intRate / 100 / 12;
             const numPayments = 12 * purchase.term;
             const loanAmount = X / (monthlyRate / (1 - (1 + monthlyRate) ** -numPayments));
