@@ -242,7 +242,7 @@ function QuoteAnalysis() {
                                                     <thead>
                                                         <tr >
                                                             <th className="text-base md:text-3xl text-center">About these items</th>
-                                                            <th className="text-base md:text-3xl">Item Description</th>                                              
+                                                            <th className="text-base md:text-3xl text-right">Item Description</th>                                              
                                                             <th className={q1Class}>BankSouth Quote</th>
                                                             <th className={q2Class}>Quote 1</th>
                                                             <th className={q3Class}>Quote 2</th>
