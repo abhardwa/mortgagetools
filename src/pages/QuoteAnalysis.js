@@ -17,6 +17,7 @@ function QuoteAnalysis() {
         HOATotal:0,
         totalCosts:0,
         totalNormalizedCosts:0,
+        totalDiff:0,
     };
     const out = {
         q1: {...outTemplate},
@@ -53,6 +54,8 @@ function QuoteAnalysis() {
     const lHeadingClass2="mt-[2rem] text-base md:text-4xl/[4rem] text-center font-bold";
     const subtotalClass="shadow-md border-2 rounded-xl text-base md:text-3xl/[2.5rem] tracking-wide text-center align-top mt-[40px] bg-gray-500  text-white ";
     const totalClass="shadow-md border-2 rounded-xl text-base md:text-4xl/[2.5rem] tracking-wide text-center align-top mt-[40px] bg-gray-600  text-white ";
+    const diffClass="shadow-md border-2 rounded-xl text-base md:text-4xl/[2.5rem] tracking-wide text-center align-top mt-[40px] bg-slate-200 text-white  ";
+        
     const q1Class = "bg-orange-100 text-base md:text-3xl text-center";
     const q2Class = "bg-orange-200 text-base md:text-3xl text-center";
     const q3Class = "bg-orange-300 text-base md:text-3xl text-center";
@@ -130,11 +133,16 @@ function QuoteAnalysis() {
 
             out[obj].totalCosts=out[obj].lenderFees+out[obj].titleFees+out[obj].govTaxFees+out[obj].prepaidTotal+out[obj].escrowTotal+out[obj].HOATotal-out[obj].creditTotal;
             out[obj].totalNormalizedCosts=out[obj].lenderFees+out.q1.titleFees+out.q1.govTaxFees+out.q1.prepaidTotal+out.q1.escrowTotal+out.q1.HOATotal-out[obj].creditTotal;
+            out[obj].totalDiff=out["q1"].totalNormalizedCosts-out[obj].totalNormalizedCosts
         });
             // console.log(out.q1);
     }
 
     compareQuotes(q);
+    const q1DiffClass = "text-green-600";
+    const q2DiffClass = out.q1.totalNormalizedCosts>=out.q2.totalNormalizedCosts?"text-green-600":"text-rose-500";
+    const q3DiffClass = out.q1.totalNormalizedCosts>=out.q3.totalNormalizedCosts?"text-green-600":"text-rose-500";
+    const q4DiffClass = out.q1.totalNormalizedCosts>=out.q4.totalNormalizedCosts?"text-green-600":"text-rose-500";
 
     useEffect(() => {
         setData(data => {
@@ -962,6 +970,15 @@ function QuoteAnalysis() {
                                                             <td id="q2-totalCosts" className="text-white text-bold">{currency.format(out.q2.totalNormalizedCosts)}</td>
                                                             <td id="q3-totalCosts" className="text-white text-bold">{currency.format(out.q3.totalNormalizedCosts)}</td>
                                                             <td id="q4-totalCosts" className="text-white text-bold">{currency.format(out.q4.totalNormalizedCosts)}</td>
+                                                        </tr>
+<br/>
+                                                        <tr className={diffClass+" align-right text-rose-600"}>
+                                                            <td></td>
+                                                            <td className="align-right text-text-slate-800">Cost Difference</td>
+                                                            <td id="q1-totalDiff" className={q1DiffClass}>{currency.format(out.q1.totalDiff)}</td>
+                                                            <td id="q2-totalDiff" className={q2DiffClass}>{currency.format(out.q2.totalDiff)}</td>
+                                                            <td id="q3-totalDiff" className={q3DiffClass}>{currency.format(out.q3.totalDiff)}</td>
+                                                            <td id="q4-totalDiff" className={q4DiffClass}>{currency.format(out.q4.totalDiff)}</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
