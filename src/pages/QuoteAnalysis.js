@@ -7,7 +7,7 @@ import { qRecord} from "../components/quoteStates";
 function QuoteAnalysis() {
     const [data, setData] = useState({q1:{...qRecord},q2:{...qRecord},q3:{...qRecord},q4:{...qRecord}});
     const [q, setQ] = useState("q1");
-
+    const [key, setKey] = useState("2");
     const outTemplate = {
         lenderFees:0,
         titleFees:0,
@@ -184,6 +184,12 @@ function QuoteAnalysis() {
         setQ(e.target.id.slice(0,2));
     };
 
+    const handleSelect = (e, newKey) => {
+        e.target==="button"&&e.preventDefault();
+        setKey(newKey);
+        // console.log(key, e);
+    }
+
     return (
             <div id="quoteAnalysis" className="tabcontent">
             <div className="container-fluid">
@@ -213,8 +219,8 @@ function QuoteAnalysis() {
                                     </p>
                                     <p className="main-text max-text-box">Hope this normalized comparison guide helps you make a smart decision!</p>
                                 </div>
-                                        <Tabs defaultActiveKey="first" style={{fontSize:"2rem", fontWeight:"700"}}>
-                                            <Tab eventKey="first" title="Original">
+                                        <Tabs activeKey={key} onSelect={(event) => handleSelect(event)}style={{fontSize:"2rem", fontWeight:"700"}}>
+                                            <Tab eventKey="1" title="Original">
                                                 <table style={{width: "100%", tableLayout:"fixed"}} id="originalTbl" className="gap-8">
                                                     <colgroup>
                                                     <col span="1" style={{width:"30%", overflow:"hidden"}}></col>
@@ -577,8 +583,9 @@ function QuoteAnalysis() {
                                                         </tr>
                                                     </tbody>
                                                 </table>
+                                                <div className='calcAmort-btn  form-btn'><button onClick={(event)=>handleSelect(event, "2")}>Go to Normalized View</button></div>
                                             </Tab>
-                                            <Tab eventKey="second" title="Normalized">
+                                            <Tab eventKey="2" title="Normalized">
                                                 <table style={{width: "100%", tableLayout:"fixed"}} id="normalizedTbl"  className="gap-8">
                                                     <colgroup>
                                                     <col span="1" style={{width:"30%", overflow:"hidden"}}></col>
@@ -958,10 +965,10 @@ function QuoteAnalysis() {
                                                         </tr>
                                                     </tbody>
                                                 </table>
+                                                <div className='calcAmort-btn  form-btn'><button onClick={(event)=>handleSelect(event, "1")}>Go to Original View</button></div>
                                             </Tab>
                                         </Tabs>
                                     </div>
-
                         </div>
                     </div>
                 </div>

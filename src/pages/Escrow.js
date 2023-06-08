@@ -168,7 +168,7 @@ function Escrow() {
             }
         });
     };
-    console.log(out)
+    // console.log(out)
     return (
         <div id="aggrAdjustment" className="tabcontent">
     <div className="container-fluid">

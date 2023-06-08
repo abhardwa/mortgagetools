@@ -15,7 +15,7 @@ import Services from '../pages/Services' ;
 import QuoteAnalysis from '../pages/QuoteAnalysis' ;
 
 function Main() {
-  console.log("Inside Main.js");
+  // console.log("Inside Main.js");
   return (
     <div>
         <BrowserRouter>
