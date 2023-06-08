@@ -2,6 +2,7 @@ import { useState, useEffect} from "react";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import { qRecord} from "../components/quoteStates";
+import { twMerge } from "tailwind-merge";
 // import Panel from '../components/Panel';
 
 function QuoteAnalysis() {
@@ -591,7 +592,7 @@ function QuoteAnalysis() {
                                                         </tr>
                                                     </tbody>
                                                 </table>
-                                                <div className='calcAmort-btn  form-btn'><button onClick={(event)=>handleSelect(event, "2")}>Go to Normalized View</button></div>
+                                                <div className='calcAmort-btn  form-btn'><button onClick={(event)=>handleSelect(event, "2")}>Go to Normalized View for an Apples-to-Apples Comparison</button></div>
                                             </Tab>
                                             <Tab eventKey="2" title="Normalized">
                                                 <table style={{width: "100%", tableLayout:"fixed"}} id="normalizedTbl"  className="gap-8">
@@ -721,6 +722,14 @@ function QuoteAnalysis() {
                                                             <td id="q3-lenderFees" className="text-white">{currency.format(out.q3.lenderFees)}</td>
                                                             <td id="q4-lenderFees" className="text-white">{currency.format(out.q4.lenderFees)}</td>
                                                         </tr>
+                                                        <tr className={twMerge(`${diffClass}`, 'md:text-3xl/[1.0rem]')}>
+                                                            <td></td>
+                                                            <td className="align-right text-slate-800">Cost Difference</td>
+                                                            <td id="q1-totalDiff" className={q1DiffClass}>{currency.format(out.q1.totalDiff)}</td>
+                                                            <td id="q2-totalDiff" className={q2DiffClass}>{currency.format(out.q2.totalDiff)}</td>
+                                                            <td id="q3-totalDiff" className={q3DiffClass}>{currency.format(out.q3.totalDiff)}</td>
+                                                            <td id="q4-totalDiff" className={q4DiffClass}>{currency.format(out.q4.totalDiff)}</td>
+                                                        </tr>        
                                                         <br/>
                                                         <tr>
                                                             <td rowSpan='9' className={legendClass2}><div className={lHeadingClass}>Title Fees</div>{catDescriptions.titleFees}</td>
@@ -785,7 +794,7 @@ function QuoteAnalysis() {
                                                             <td id="q4-additionalTitleFees" className="">{data.q1.additionalTitleFees}</td>
                                                         </tr>
                                                         <tr className={subtotalClass}>
-                                                            <td className="text-white text-bold">Title Fees</td>
+                                                            <td className="text-white text-bold">Title Fees<div className='text-xl md:text-xl italic font-light'>(Same across all lenders)</div></td>
                                                             <td id="q1-titleFees" className="text-white text-bold">{currency.format(out.q1.titleFees)}</td>
                                                             <td id="q2-titleFees" className="text-white text-bold">{currency.format(out.q1.titleFees)}</td>
                                                             <td id="q3-titleFees" className="text-white text-bold">{currency.format(out.q1.titleFees)}</td>
@@ -833,7 +842,7 @@ function QuoteAnalysis() {
                                                             <td id="q4-eRecordingFee" className="">{data.q1.eRecordingFee}</td>
                                                         </tr>
                                                         <tr className={subtotalClass}>
-                                                            <td className="text-white text-bold">Government Taxes and Fees</td>
+                                                            <td className="text-white text-bold">Government Taxes and Fees<div className='text-xl md:text-xl italic font-light'>(Same across all lenders)</div></td>
                                                             <td id="q1-govTaxFees" className="text-white text-bold">{currency.format(out.q1.govTaxFees)}</td>
                                                             <td id="q2-govTaxFees" className="text-white text-bold">{currency.format(out.q1.govTaxFees)}</td>
                                                             <td id="q3-govTaxFees" className="text-white text-bold">{currency.format(out.q1.govTaxFees)}</td>
@@ -858,7 +867,7 @@ function QuoteAnalysis() {
                                                             <td id="q4-firstYearHomeownerInsPremium" className="">{data.q1.firstYearHomeownerInsPremium}</td>
                                                         </tr>
                                                         <tr className={subtotalClass}>
-                                                            <td className="text-white text-bold">Estimated Pre-paid Items</td>
+                                                            <td className="text-white text-bold">Estimated Pre-paid Items<div className='text-xl md:text-xl italic font-light'>(Same across all lenders)</div></td>
                                                             <td id="q1-prepaidTotal" className="text-white text-bold">{currency.format(out.q1.prepaidTotal)}</td>
                                                             <td id="q2-prepaidTotal" className="text-white text-bold">{currency.format(out.q1.prepaidTotal)}</td>
                                                             <td id="q3-prepaidTotal" className="text-white text-bold">{currency.format(out.q1.prepaidTotal)}</td>
@@ -891,7 +900,7 @@ function QuoteAnalysis() {
                                                             <td id="q4-cityPropTax" className="">{data.q1.cityPropTax}</td>
                                                         </tr>
                                                         <tr className={subtotalClass}>
-                                                            <td className="text-white text-bold">Escrow Items</td>
+                                                            <td className="text-white text-bold">Escrow Items<div className='text-xl md:text-xl italic font-light'>(Same across all lenders)</div></td>
                                                             <td id="q1-escrowTotal" className="text-white text-bold">{currency.format(out.q1.escrowTotal)}</td>
                                                             <td id="q2-escrowTotal" className="text-white text-bold">{currency.format(out.q1.escrowTotal)}</td>
                                                             <td id="q3-escrowTotal" className="text-white text-bold">{currency.format(out.q1.escrowTotal)}</td>
@@ -933,7 +942,7 @@ function QuoteAnalysis() {
                                                             <td id="q4-HOACapitalContr" className="">{data.q1.HOACapitalContr}</td>
                                                         </tr>
                                                         <tr className={subtotalClass}>
-                                                            <td className="text-white text-bold">HOA Items</td>
+                                                            <td className="text-white text-bold">HOA Items<div className='text-xl md:text-xl italic font-light'>(Same across all lenders)</div></td>
                                                             <td id="q1-HOATotal" className="text-white text-bold">{currency.format(out.q1.HOATotal)}</td>
                                                             <td id="q2-HOATotal" className="text-white text-bold">{currency.format(out.q1.HOATotal)}</td>
                                                             <td id="q3-HOATotal" className="text-white text-bold">{currency.format(out.q1.HOATotal)}</td>
@@ -971,7 +980,7 @@ function QuoteAnalysis() {
                                                             <td id="q3-totalCosts" className="text-white text-bold">{currency.format(out.q3.totalNormalizedCosts)}</td>
                                                             <td id="q4-totalCosts" className="text-white text-bold">{currency.format(out.q4.totalNormalizedCosts)}</td>
                                                         </tr>
-<br/>
+                                                        <br/>
                                                         <tr className={diffClass+" align-right text-rose-600"}>
                                                             <td></td>
                                                             <td className="align-right text-text-slate-800">Cost Difference</td>
