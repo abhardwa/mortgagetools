@@ -53,6 +53,9 @@ function Home() {
                                                 escrow amount you will need
                                                 at closing</p>
                                         </li>
+                                        <li><NavLink  className="link" to="/quoteanalysis">Quotes Comparison Guide</NavLink>
+                                            <p className="small-text link-text">A Comparison Guide to help you compare different quotes side by side</p>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
