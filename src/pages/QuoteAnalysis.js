@@ -50,12 +50,12 @@ function QuoteAnalysis() {
     const legendClass2="shadow-lg border-3 rounded-xl text-base md:text-2xl/[2.5rem] tracking-wide text-center align-top mt-[20px] font-normal bg-orange-100  text-slate-950 ";
     const legendClass3="shadow-lg border-3 rounded-xl text-base md:text-2xl/[2.5rem] tracking-wide text-center align-top mt-[20px] font-normal bg-green-300  text-slate-950 ";
     
-    const cellClass= "text-base md:text-2xl";
+    const cellClass= "text-base md:text-2xl text-right";
     const lHeadingClass="mt-[0rem] text-base md:text-4xl/[4rem] text-center font-bold";
     const lHeadingClass2="mt-[2rem] text-base md:text-4xl/[4rem] text-center font-bold";
-    const subtotalClass="shadow-md border-2 rounded-xl text-base md:text-3xl/[2.5rem] tracking-wide text-center align-top mt-[40px] bg-gray-500  text-white ";
-    const totalClass="shadow-md border-2 rounded-xl text-base md:text-4xl/[2.5rem] tracking-wide text-center align-top mt-[40px] bg-gray-600  text-white ";
-    const diffClass="shadow-md border-2 rounded-xl text-base md:text-4xl/[2.5rem] tracking-wide text-center align-top mt-[40px] bg-slate-200 text-white  ";
+    const subtotalClass="shadow-md border-2 rounded-xl text-base md:text-3xl/[2.5rem] tracking-wide text-right align-top mt-[40px] bg-gray-500  text-white ";
+    const totalClass="shadow-md border-2 rounded-xl text-base md:text-4xl/[2.5rem] tracking-wide text-right align-top mt-[40px] bg-gray-600  text-white ";
+    const diffClass="shadow-md border-2 rounded-xl text-base md:text-4xl/[2.5rem] tracking-wide text-right align-top mt-[40px] bg-slate-200 text-white  ";
         
     const q1Class = "bg-orange-100 text-base md:text-3xl text-center";
     const q2Class = "bg-orange-200 text-base md:text-3xl text-center";
