@@ -7,7 +7,7 @@ import "../css/menu.css";
 
 const ResponsiveNavbar = (props) => {
     const location = useLocation();
-    console.log("Inside ResponsiveNavbar.js");
+    // console.log("Inside ResponsiveNavbar.js");
     return (
         <Navbar bg="dark" collapseOnSelect expand="sm">
             <Container>

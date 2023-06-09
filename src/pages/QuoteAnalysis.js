@@ -1,4 +1,4 @@
-import { useState, useEffect} from "react";
+import { useState, useEffect, Fragment } from "react";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import { qRecord} from "../components/quoteStates";
@@ -358,7 +358,7 @@ function QuoteAnalysis() {
                                                             <td id="q3-lenderFees" className="text-white">{currency.format(out.q3.lenderFees)}</td>
                                                             <td id="q4-lenderFees" className="text-white">{currency.format(out.q4.lenderFees)}</td>
                                                         </tr>
-                                                        <br/>
+                                                        <tr className="h-8"></tr>
                                                         <tr>
                                                             <td rowSpan='9' className={legendClass2}><div className={lHeadingClass}>Title Fees</div>{catDescriptions.titleFees}</td>
                                                             <td>Attorney/Settlement Fee</td>
@@ -423,7 +423,7 @@ function QuoteAnalysis() {
                                                             <td id="q3-titleFees" className="text-white text-bold">{currency.format(out.q3.titleFees)}</td>
                                                             <td id="q4-titleFees" className="text-white text-bold">{currency.format(out.q4.titleFees)}</td>
                                                         </tr>  
-                                                        <br/>  
+                                                        <tr className="h-8"></tr>  
                                                         <tr>
                                                             <td rowSpan="6"  className={legendClass2}><div className={lHeadingClass}>Government Fees</div>{catDescriptions.govTaxFees}</td>
                                                             <td>Government Recording Fees</td>
@@ -467,7 +467,7 @@ function QuoteAnalysis() {
                                                             <td id="q3-govTaxFees" className="text-white text-bold">{currency.format(out.q3.govTaxFees)}</td>
                                                             <td id="q4-govTaxFees" className="text-white text-bold">{currency.format(out.q4.govTaxFees)}</td>
                                                         </tr>
-                                                        <br/>
+                                                        <tr className="h-8"></tr>
                                                         <tr>
                                                             <td rowSpan='3'  className={legendClass2}><div className={lHeadingClass}>Estimated Pre-paid Items</div>{catDescriptions.estPrepaid}</td>
                                                             <td>Interest due ( from closing date until month end)</td>
@@ -490,7 +490,7 @@ function QuoteAnalysis() {
                                                             <td id="q3-prepaidTotal" className="text-white text-bold">{currency.format(out.q3.prepaidTotal)}</td>
                                                             <td id="q4-prepaidTotal" className="text-white text-bold">{currency.format(out.q4.prepaidTotal)}</td>
                                                         </tr>
-                                                        <br/>
+                                                        <tr className="h-8"></tr>
                                                         <tr>
                                                             <td rowSpan='4'  className={legendClass2}><div className={lHeadingClass}>Escrow Items</div>{catDescriptions.escrowDeposit}</td>
                                                             <td>Homeowner's Insurance</td>
@@ -520,7 +520,7 @@ function QuoteAnalysis() {
                                                             <td id="q3-escrowTotal" className="text-white text-bold">{currency.format(out.q3.escrowTotal)}</td>
                                                             <td id="q4-escrowTotal" className="text-white text-bold">{currency.format(out.q4.escrowTotal)}</td>
                                                         </tr>
-                                                        <br/>
+                                                        <tr className="h-8"></tr>
                                                         <tr>
                                                             <td rowSpan='5'  className={legendClass2}><div className={lHeadingClass}>HOA Items</div>{catDescriptions.HOADues}</td>
                                                             <td>HOA Initiation Dues</td>
@@ -558,7 +558,7 @@ function QuoteAnalysis() {
                                                             <td id="q3-HOATotal" className="text-white text-bold">{currency.format(out.q3.HOATotal)}</td>
                                                             <td id="q4-HOATotal" className="text-white text-bold">{currency.format(out.q4.HOATotal)}</td>
                                                         </tr>
-                                                        <br/>
+                                                        <tr className="h-8"></tr>
                                                         <tr>
                                                             <td rowSpan='3'  className={legendClass3}><div className={lHeadingClass}>Builder/Lender Credits</div>{catDescriptions.credits}</td>
                                                             <td>Builder Credit Towards Closing Costs</td>
@@ -581,7 +581,7 @@ function QuoteAnalysis() {
                                                             <td id="q3-creditTotal" className="text-white text-bold">{currency.format(out.q3.creditTotal)}</td>
                                                             <td id="q4-creditTotal" className="text-white text-bold">{currency.format(out.q4.creditTotal)}</td>
                                                         </tr>
-                                                        <br/>
+                                                        <tr className="h-8"></tr>
                                                         <tr className={totalClass}>
                                                             <td></td>
                                                             <td className="text-white text-bold">Total Loan Related Costs</td>
@@ -730,7 +730,7 @@ function QuoteAnalysis() {
                                                             <td id="q3-totalDiff" className={q3DiffClass}>{currency.format(out.q3.totalDiff)}</td>
                                                             <td id="q4-totalDiff" className={q4DiffClass}>{currency.format(out.q4.totalDiff)}</td>
                                                         </tr>        
-                                                        <br/>
+                                                        <tr className="h-8"></tr>
                                                         <tr>
                                                             <td rowSpan='9' className={legendClass2}><div className={lHeadingClass}>Title Fees</div>{catDescriptions.titleFees}</td>
                                                             <td>Attorney/Settlement Fee</td>
@@ -800,7 +800,7 @@ function QuoteAnalysis() {
                                                             <td id="q3-titleFees" className="text-white text-bold">{currency.format(out.q1.titleFees)}</td>
                                                             <td id="q4-titleFees" className="text-white text-bold">{currency.format(out.q1.titleFees)}</td>
                                                         </tr>  
-                                                        <br/>  
+                                                        <tr className="h-8"></tr>  
                                                         <tr>
                                                             <td rowSpan="6"  className={legendClass2}><div className={lHeadingClass}>Government Fees</div>{catDescriptions.govTaxFees}</td>
                                                             <td>Government Recording Fees</td>
@@ -848,7 +848,7 @@ function QuoteAnalysis() {
                                                             <td id="q3-govTaxFees" className="text-white text-bold">{currency.format(out.q1.govTaxFees)}</td>
                                                             <td id="q4-govTaxFees" className="text-white text-bold">{currency.format(out.q1.govTaxFees)}</td>
                                                         </tr>
-                                                        <br/>
+                                                        <tr className="h-8"></tr>
                                                         <tr>
                                                             <td rowSpan='3'  className={legendClass2}><div className={lHeadingClass}>Estimated Pre-paid Items</div>{catDescriptions.estPrepaid}</td>
                                                             <td>Interest due ( from closing date until month end)</td>
@@ -873,7 +873,7 @@ function QuoteAnalysis() {
                                                             <td id="q3-prepaidTotal" className="text-white text-bold">{currency.format(out.q1.prepaidTotal)}</td>
                                                             <td id="q4-prepaidTotal" className="text-white text-bold">{currency.format(out.q1.prepaidTotal)}</td>
                                                         </tr>
-                                                        <br/>
+                                                        <tr className="h-8"></tr>
                                                         <tr>
                                                             <td rowSpan='4'  className={legendClass2}><div className={lHeadingClass}>Escrow Items</div>{catDescriptions.escrowDeposit}</td>
                                                             <td>Homeowner's Insurance</td>
@@ -906,7 +906,7 @@ function QuoteAnalysis() {
                                                             <td id="q3-escrowTotal" className="text-white text-bold">{currency.format(out.q1.escrowTotal)}</td>
                                                             <td id="q4-escrowTotal" className="text-white text-bold">{currency.format(out.q1.escrowTotal)}</td>
                                                         </tr>
-                                                        <br/>
+                                                        <tr className="h-8"></tr>
                                                         <tr>
                                                             <td rowSpan='5'  className={legendClass2}><div className={lHeadingClass}>HOA Items</div>{catDescriptions.HOADues}</td>
                                                             <td>HOA Initiation Dues</td>
@@ -948,7 +948,7 @@ function QuoteAnalysis() {
                                                             <td id="q3-HOATotal" className="text-white text-bold">{currency.format(out.q1.HOATotal)}</td>
                                                             <td id="q4-HOATotal" className="text-white text-bold">{currency.format(out.q1.HOATotal)}</td>
                                                         </tr>
-                                                        <br/>
+                                                        <tr className="h-8"></tr>
                                                         <tr>
                                                             <td rowSpan='3'  className={legendClass3}><div className={lHeadingClass}>Builder/Lender Credits</div>{catDescriptions.credits}</td>
                                                             <td>Builder Credit Towards Closing Costs</td>
@@ -971,7 +971,7 @@ function QuoteAnalysis() {
                                                             <td id="q3-creditTotal" className="text-white text-bold">{currency.format(out.q3.creditTotal)}</td>
                                                             <td id="q4-creditTotal" className="text-white text-bold">{currency.format(out.q4.creditTotal)}</td>
                                                         </tr>
-                                                        <br/>
+                                                        <tr className="h-8"></tr>
                                                         <tr className={totalClass}>
                                                             <td></td>
                                                             <td className="text-white text-bold">Normalized Costs</td>
@@ -980,7 +980,7 @@ function QuoteAnalysis() {
                                                             <td id="q3-totalCosts" className="text-white text-bold">{currency.format(out.q3.totalNormalizedCosts)}</td>
                                                             <td id="q4-totalCosts" className="text-white text-bold">{currency.format(out.q4.totalNormalizedCosts)}</td>
                                                         </tr>
-                                                        <br/>
+                                                        <tr className="h-8"></tr>
                                                         <tr className={diffClass+" align-right text-rose-600"}>
                                                             <td></td>
                                                             <td className="align-right text-text-slate-800">Cost Difference</td>
