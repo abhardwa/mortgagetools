@@ -794,7 +794,7 @@ function QuoteAnalysis() {
                                                             <td id="q4-additionalTitleFees" className="">{data.q1.additionalTitleFees}</td>
                                                         </tr>
                                                         <tr className={subtotalClass}>
-                                                            <td className="text-white text-bold">Title Fees<div className='text-xl md:text-xl italic font-light'>(Same across all lenders)</div></td>
+                                                            <td className="text-white text-bold">Title Fees<div className='text-xl md:text-xl italic font-light'>(Will be same across all lenders)</div></td>
                                                             <td id="q1-titleFees" className="text-white text-bold">{currency.format(out.q1.titleFees)}</td>
                                                             <td id="q2-titleFees" className="text-white text-bold">{currency.format(out.q1.titleFees)}</td>
                                                             <td id="q3-titleFees" className="text-white text-bold">{currency.format(out.q1.titleFees)}</td>
@@ -842,7 +842,7 @@ function QuoteAnalysis() {
                                                             <td id="q4-eRecordingFee" className="">{data.q1.eRecordingFee}</td>
                                                         </tr>
                                                         <tr className={subtotalClass}>
-                                                            <td className="text-white text-bold">Government Taxes and Fees<div className='text-xl md:text-xl italic font-light'>(Same across all lenders)</div></td>
+                                                            <td className="text-white text-bold">Government Taxes and Fees<div className='text-xl md:text-xl italic font-light'>(Will be same across all lenders)</div></td>
                                                             <td id="q1-govTaxFees" className="text-white text-bold">{currency.format(out.q1.govTaxFees)}</td>
                                                             <td id="q2-govTaxFees" className="text-white text-bold">{currency.format(out.q1.govTaxFees)}</td>
                                                             <td id="q3-govTaxFees" className="text-white text-bold">{currency.format(out.q1.govTaxFees)}</td>
@@ -867,7 +867,7 @@ function QuoteAnalysis() {
                                                             <td id="q4-firstYearHomeownerInsPremium" className="">{data.q1.firstYearHomeownerInsPremium}</td>
                                                         </tr>
                                                         <tr className={subtotalClass}>
-                                                            <td className="text-white text-bold">Estimated Pre-paid Items<div className='text-xl md:text-xl italic font-light'>(Same across all lenders)</div></td>
+                                                            <td className="text-white text-bold">Estimated Pre-paid Items<div className='text-xl md:text-xl italic font-light'>(Will be same across all lenders)</div></td>
                                                             <td id="q1-prepaidTotal" className="text-white text-bold">{currency.format(out.q1.prepaidTotal)}</td>
                                                             <td id="q2-prepaidTotal" className="text-white text-bold">{currency.format(out.q1.prepaidTotal)}</td>
                                                             <td id="q3-prepaidTotal" className="text-white text-bold">{currency.format(out.q1.prepaidTotal)}</td>
@@ -900,7 +900,7 @@ function QuoteAnalysis() {
                                                             <td id="q4-cityPropTax" className="">{data.q1.cityPropTax}</td>
                                                         </tr>
                                                         <tr className={subtotalClass}>
-                                                            <td className="text-white text-bold">Escrow Items<div className='text-xl md:text-xl italic font-light'>(Same across all lenders)</div></td>
+                                                            <td className="text-white text-bold">Escrow Items<div className='text-xl md:text-xl italic font-light'>(Will be same across all lenders)</div></td>
                                                             <td id="q1-escrowTotal" className="text-white text-bold">{currency.format(out.q1.escrowTotal)}</td>
                                                             <td id="q2-escrowTotal" className="text-white text-bold">{currency.format(out.q1.escrowTotal)}</td>
                                                             <td id="q3-escrowTotal" className="text-white text-bold">{currency.format(out.q1.escrowTotal)}</td>
@@ -942,7 +942,7 @@ function QuoteAnalysis() {
                                                             <td id="q4-HOACapitalContr" className="">{data.q1.HOACapitalContr}</td>
                                                         </tr>
                                                         <tr className={subtotalClass}>
-                                                            <td className="text-white text-bold">HOA Items<div className='text-xl md:text-xl italic font-light'>(Same across all lenders)</div></td>
+                                                            <td className="text-white text-bold">HOA Items<div className='text-xl md:text-xl italic font-light'>(Will be same across all lenders)</div></td>
                                                             <td id="q1-HOATotal" className="text-white text-bold">{currency.format(out.q1.HOATotal)}</td>
                                                             <td id="q2-HOATotal" className="text-white text-bold">{currency.format(out.q1.HOATotal)}</td>
                                                             <td id="q3-HOATotal" className="text-white text-bold">{currency.format(out.q1.HOATotal)}</td>
