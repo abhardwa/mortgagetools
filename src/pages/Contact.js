@@ -11,7 +11,7 @@ function Contact() {
         <div>
             <span className="text-2xl font-bold py-8 px-8 max-w-lg mx-auto bg-white rounded-xl shadow-lg space-y-2 lg:py-4 lg:flex lg:items-center lg:space-y-0 lg:space-x-6">More details coming soon...</span>
             <div className={myClassName}>
-                <img className="block mx-auto h-24 rounded-full lg:mx-0 lg:shrink-0" src={require("../img/sbhardwaj.jpg")} alt="Woman's Face" />
+                <img className="block mx-auto h-24 rounded-full lg:mx-0 lg:shrink-0" src={require("../img/shachiHeadShot.png")} alt="Woman's Face" />
                 <div className="text-center space-y-2 lg:text-left">
                     <div className="space-y-0.5">
                     <p className="text-3xl text-black font-semibold">
