@@ -1,14 +1,22 @@
-import { useState, useEffect, Fragment } from "react";
+import { useState, useEffect, useRef } from "react";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import { qRecord} from "../components/quoteStates";
 import { twMerge } from "tailwind-merge";
-// import Panel from '../components/Panel';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectUser } from '../components/userSlice';
+import axios from 'axios';
+import Login from './login';
+import {auth} from '../firebase_setup/firebase';
+import { url } from '../components/url';
+import classNames from "classnames";
 
 function QuoteAnalysis() {
     const [data, setData] = useState({q1:{...qRecord},q2:{...qRecord},q3:{...qRecord},q4:{...qRecord}});
     const [q, setQ] = useState("q1");
     const [key, setKey] = useState("2");
+    const [state, setState] = useState(false);
+    const savedDataRef = useRef('');
     const outTemplate = {
         lenderFees:0,
         titleFees:0,
@@ -75,6 +83,85 @@ function QuoteAnalysis() {
     }
     
     const currency = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+    let user = useSelector(selectUser);
+    const dispatch = useDispatch();
+
+    const dbData = async (type, arg, userData) => {
+        // const url="https://abhardwa.pythonanywhere.com";
+        // const url="http://127.0.0.1:5000";        
+        setState('pending');
+        try {
+            if (type==='get') {
+                const response = await axios.get(url+arg);
+            // console.log(response.data);
+            // console.log(response.status);
+            // console.log(response.statusText);
+            // console.log(response.headers);
+            // console.log(response.config);
+              return response.data;
+            } else {
+                const response = await axios.post(url+arg, userData);
+                return response.data;
+            }
+        } catch (error) {
+            setState('error');
+            console.error(error);
+            return null;
+        }
+        
+    }
+
+    useEffect( () => {
+        // console.log("inside useEffect");
+        const serverData = async() => {
+            if (user) {
+                // console.log(user);
+                const arg = "/api/getqa?" + "email=" + user.email + "&dataType=qa";
+                // console.log(arg);
+                const response = await dbData ("get", arg);
+                // console.log(response);
+                savedDataRef.current = response;
+                // console.log(savedDataRef.current);
+                setState(!state);
+                return response;
+            } else
+                return '';
+        };
+        serverData();
+    },[user])
+
+    const serverData = async() => {
+        if (user) {
+            // console.log(user);
+            const arg = "/api/getqa?" + "email=" + user.email + "&dataType=qa";
+            // console.log(arg);
+            const response = await dbData ("get", arg);
+            // console.log(response);
+            savedDataRef.current = response;
+            return response;
+        } else
+            return '';
+    };
+
+    const btnSubClass = "h-16 text-3xl font-semibold self-centerrounded-2xl shadow-md hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2 active:outline-none active:ring-1 active:ring-blue-600 active:ring-offset-1";
+
+    const saveOption = () => {
+        return !user ? <button className={classNames("w-96  bg-slate-200", btnSubClass)} onClick={handleLogin}>Login to Save for Later</button>: 
+            <button className={classNames("w-80  bg-green-200", btnSubClass )} onClick={handleSave}>Save for Later</button>
+
+    }
+
+    const LoadOption = () => {
+        // console.log('inside Loadoption:');
+        // console.log(savedDataRef.current);
+
+        if (savedDataRef.current) {
+            return <button className={classNames( "w-80  bg-blue-200", btnSubClass)} onClick={handleDataLoad}>Load Saved Data</button>
+        } else {
+            return'';
+        }
+    }
 
     function compareQuotes () {
 
@@ -145,19 +232,6 @@ function QuoteAnalysis() {
     const q3DiffClass = out.q1.totalNormalizedCosts>=out.q3.totalNormalizedCosts?"text-green-600":"text-rose-500";
     const q4DiffClass = out.q1.totalNormalizedCosts>=out.q4.totalNormalizedCosts?"text-green-600":"text-rose-500";
 
-    useEffect(() => {
-        setData(data => {
-            return {...data, q2:{...data.q2,...quote}};
-        });
-        setData(data => {
-            return {...data, q3:{...data.q3,...quote}};
-        });
-        setData(data => {
-            return {...data, q4:{...data.q4,...quote}};
-        });
-        compareQuotes(q);
-    }, []);
-
     const handleChange = (e) => {
         // const table = e.target.parentElement.parentElement.parentElement.parentElement;
         // if (table) {
@@ -197,7 +271,62 @@ function QuoteAnalysis() {
         e.target==="button"&&e.preventDefault();
         setKey(newKey);
         // console.log(key, e);
-    }
+    };
+    const [showModal, setShowModal] = useState(false);
+    const handleOpenModal = () => {
+    setShowModal(true);
+    };
+
+    const handleCloseModal = () => {
+        setShowModal(false);
+    };
+
+    const handleLogin = () => {
+        setShowModal(true);
+    };    
+
+    // Add logic to login. Render the Login component
+    const loginFlag = showModal? <Login action="login"  show={showModal}  handleOpen={handleOpenModal} handleClose={handleCloseModal}/>: "";
+    
+    const handleSave = (e) =>{
+        e.preventDefault();
+        return (async ()=> {
+            const userData = {
+                data: data,
+                fname: auth.currentUser.displayName.split(":")[0],
+                lname:auth.currentUser.displayName.split(":")[1],
+                email:auth.currentUser.email,
+                dataType: "qa",
+            }
+            // console.log(userData);
+            const response = await dbData ("post", "/api/save", userData);
+            return response;
+        })();
+        // Add logic to call Python API with a POST transaction
+    };
+
+    const handleDataLoad = (e) =>{
+        e.preventDefault();
+        const savedData= async() => {
+            savedDataRef.current = await serverData();
+            // console.log(savedDataRef.current);
+            if (savedDataRef.current) {
+                setData(data => {
+                    return {...data, q1:{...data.q1,...savedDataRef.current.q1}};
+                });
+                setData(data => {
+                    return {...data, q2:{...data.q2,...savedDataRef.current.q2}};
+                });
+                setData(data => {
+                    return {...data, q3:{...data.q3,...savedDataRef.current.q3}};
+                });
+                setData(data => {
+                    return {...data, q4:{...data.q4,...savedDataRef.current.q4}};
+                });
+            };
+        }
+        savedData();
+    };
 
     return (
             <div id="quoteAnalysis" className="tabcontent">
@@ -228,8 +357,13 @@ function QuoteAnalysis() {
                                     </p>
                                     <p className="main-text max-text-box">Hope this normalized comparison guide helps you make a smart decision!</p>
                                 </div>
+                                <div className="relative mb-12 -mr-48">
+                                        <div className = "flex w-6/12 mr-4"><span className = "mr-4">{LoadOption()}</span><span>{saveOption()}</span></div>
+                                        {loginFlag}
+                                </div>
                                         <Tabs activeKey={key} onSelect={(event) => handleSelect(event)}style={{fontSize:"2rem", fontWeight:"700"}}>
                                             <Tab eventKey="1" title="Original">
+                                                
                                                 <table style={{width: "100%", tableLayout:"fixed"}} id="originalTbl" className="gap-8">
                                                     <colgroup>
                                                     <col span="1" style={{width:"30%", overflow:"hidden"}}></col>

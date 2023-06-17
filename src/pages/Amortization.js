@@ -7,6 +7,7 @@ import axios from "axios";
 import DatePicker from 'react-datepicker'
 import LoanTable from "../components/AmortTable.js";
 import Slider from "../components/MySlider.js";
+import { url } from "../components/url";
 
 function Amortization() {
     const [data, setData] = useState({
@@ -50,7 +51,8 @@ function Amortization() {
 
 
     const getLoan = async (arg) => {
-        const url="https://abhardwa.pythonanywhere.com";
+        // const url="https://abhardwa.pythonanywhere.com";
+        // const url="http://127.0.0.1:5000";        
         setState('pending');
         try {
             const response = await axios.get(url+arg);

@@ -2,7 +2,7 @@
 import ResponsiveNavbar from '../components/ResponsiveNavbar';
 import Footer from '../components/Footer';
 // import Item from '../components/Item';
-import {BrowserRouter, Routes, Route} from "react-router-dom";
+import {Routes, Route, useLocation} from "react-router-dom";
 // import {Link, Navigate} from 'react-router-dom';
 import Home from '../pages/Home';
 import Contact from '../pages/Contact';
@@ -13,12 +13,29 @@ import Escrow from '../pages/Escrow' ;
 import PreQual from '../pages/PreQual' ;
 import Services from '../pages/Services' ;
 import QuoteAnalysis from '../pages/QuoteAnalysis' ;
+import Login from '../pages/login';
+import { useState } from 'react';
 
 function Main() {
   // console.log("Inside Main.js");
+  const [showModal, setShowModal] = useState(true);
+  const location=useLocation();
+  const currentPath = location.pathname;
+
+  const handleOpenModal = (e) => {
+    e?.preventDefault();
+    setShowModal(true);
+  };
+
+  const handleCloseModal = (e) => {
+    e?.preventDefault();
+    setShowModal(false);
+  };
+  const login = showModal? <Login action="login"  show={showModal}  handleOpen={handleOpenModal} handleClose={handleCloseModal}/>: "";
+
+  // console.log(currentPath);
   return (
     <div>
-        <BrowserRouter>
             <ResponsiveNavbar/>
             <Routes>
                 <Route path="/" element={<Home />} />
@@ -30,9 +47,12 @@ function Main() {
                 <Route path="/prequal" element={<PreQual />} />
                 <Route path="/quoteanalysis" element={<QuoteAnalysis />} />
                 <Route path="/services" element={<Services />} />
+                <Route path="/login" element={<Login action="login" show={showModal} handleOpen={handleOpenModal} handleClose={handleCloseModal} location={currentPath}/>} />
+                <Route path="/profile" element={<Login action="profile" show={showModal} handleOpen={handleOpenModal} handleClose={handleCloseModal} location={currentPath}/>} />
+                <Route path="/logout" element={<Login action="logout" handleClose={handleCloseModal} location={currentPath}/>} />
+                <Route path="/emailchg" element={<Login action="emailchg" handleClose={handleCloseModal} location={currentPath}/>} />
             </Routes>
             <Footer/>
-        </BrowserRouter>
     </div>
   );
 }
