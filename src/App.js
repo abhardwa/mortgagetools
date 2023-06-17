@@ -21,8 +21,7 @@ const dispatch = useDispatch();
           login({
             email: userAuth.email,
             uid: userAuth.uid,
-            fName: userAuth.displayName?.split(":")[0],
-            lName: userAuth.displayName?.split(":")[1],
+            uName: userAuth.displayName,
           })
         );
       } else {

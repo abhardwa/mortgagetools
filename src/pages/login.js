@@ -22,8 +22,7 @@ function Login({show, handleClose, handleOpen, location, action}) {
   const [email, setEmail] = useState('');
   const [newEmail, setNewEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [fName, setFName] = useState('');
-  const [lName, setLName] = useState('');
+  const [uName, setUName] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showModal, setShowModal] = useState(true);
   const [btnState, setBtnState] = useState(false);
@@ -65,8 +64,7 @@ const handleCloseModal = (e) => {
           login({
             email: userAuth.user.email,
             uid: userAuth.user.uid,
-            fName: userAuth.user.displayName.split(":")[0],
-            LName: userAuth.user.displayName.split(":")[1],
+            uName: userAuth.user.displayName,
           })
         );
         setIsLoggedIn(true);
@@ -89,11 +87,8 @@ const handleCloseModal = (e) => {
         return;
     }
       
-    if (!fName) {
-      return alert('Please enter a first name');
-    }
-    if (!lName) {
-      return alert('Please enter a last name');
+    if (!uName) {
+      return alert('Please enter a username to display');
     }
 
     // Create a new user with Firebase
@@ -102,7 +97,7 @@ const handleCloseModal = (e) => {
       // Update the newly created user with a display name and a picture
         // console.log(userAuth.user);
         updateProfile(userAuth.user, {
-          displayName: fName + ":" + lName,
+          displayName: uName,
         })
           .then((userAuth)=>{
             // console.log(userAuth.user);
@@ -111,8 +106,7 @@ const handleCloseModal = (e) => {
               login({
                 email: userAuth.user.email,
                 uid: userAuth.user.uid,
-                fName: userAuth.user.displayName.split(":")[0],
-                LName: userAuth.user.displayName.split(":")[1],
+                uName: userAuth.user.displayName,
               })
             );
             setIsLoggedIn(true);
@@ -334,22 +328,14 @@ const handleCloseModal = (e) => {
       <Modal.Body>
         <Form>
           <Form.Group>
-            <Form.Label style={{fontSize:'1.6rem'}}>First name</Form.Label>
+            <Form.Label style={{fontSize:'1.6rem'}}>Username</Form.Label>
                 <Form.Control
                   style={{fontSize:'1.6rem'}}
                   type="text"
                   placeholder=""
                   autoFocus
-                  value={fName}
-                  onChange={(e) => setFName(e.target.value)}
-                />
-            <Form.Label style={{fontSize:'1.6rem'}}>Last name</Form.Label>
-                <Form.Control
-                  style={{fontSize:'1.6rem'}}
-                  type="text"
-                  placeholder=""
-                  value={lName}
-                  onChange={(e) => setLName(e.target.value)}
+                  value={uName}
+                  onChange={(e) => setUName(e.target.value)}
                 />
             <Form.Label style={{fontSize:'1.6rem'}}>Email address</Form.Label>
                 <Form.Control

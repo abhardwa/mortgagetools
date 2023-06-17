@@ -306,8 +306,7 @@ function QuoteAnalysis() {
         return (async ()=> {
             const userData = {
                 data: data,
-                fname: auth.currentUser.displayName.split(":")[0],
-                lname:auth.currentUser.displayName.split(":")[1],
+                uname: auth.currentUser.displayName,
                 email:auth.currentUser.email,
                 dataType: "qa",
             }
