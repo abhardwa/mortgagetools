@@ -111,9 +111,22 @@ function QuoteAnalysis() {
         }
         
     }
+    useEffect( () => {
+        // console.log("inside useEffect 1");
+        setData(data => {
+            return {...data, q2:{...data.q2, ...quote}};
+        });
+        setData(data => {
+            return {...data, q3:{...data.q3,...quote}};
+        });
+        setData(data => {
+            return {...data, q4:{...data.q4,...quote}};
+        });
+
+    },[])
 
     useEffect( () => {
-        // console.log("inside useEffect");
+        // console.log("inside useEffect for user");
         const serverData = async() => {
             if (user) {
                 // console.log(user);
@@ -147,8 +160,8 @@ function QuoteAnalysis() {
     const btnSubClass = "h-16 text-3xl font-semibold self-centerrounded-2xl shadow-md hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2 active:outline-none active:ring-1 active:ring-blue-600 active:ring-offset-1";
 
     const saveOption = () => {
-        return !user ? <button className={classNames("w-96  bg-slate-200", btnSubClass)} onClick={handleLogin}>Login to Save for Later</button>: 
-            <button className={classNames("w-80  bg-green-200", btnSubClass )} onClick={handleSave}>Save for Later</button>
+        return !user ? <button className={classNames("w-96  bg-slate-200", btnSubClass)} onClick={handleLogin}>Login to Save your Data</button>: 
+            <button className={classNames("w-80  bg-green-200", btnSubClass )} onClick={handleSave}>Save Data</button>
 
     }
 
