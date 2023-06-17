@@ -14,8 +14,9 @@ import classNames from "classnames";
 function QuoteAnalysis() {
     const [data, setData] = useState({q1:{...qRecord},q2:{...qRecord},q3:{...qRecord},q4:{...qRecord}});
     const [q, setQ] = useState("q1");
-    const [key, setKey] = useState("2");
+    const [key, setKey] = useState("1");
     const [state, setState] = useState(false);
+    const [updatedData, setUpdatedData] = useState(false);
     const savedDataRef = useRef('');
     const outTemplate = {
         lenderFees:0,
@@ -142,7 +143,7 @@ function QuoteAnalysis() {
                 return '';
         };
         serverData();
-    },[user])
+    },[user, updatedData])
 
     const serverData = async() => {
         if (user) {
@@ -303,6 +304,7 @@ function QuoteAnalysis() {
     
     const handleSave = (e) =>{
         e.preventDefault();
+        console.log("inside handleSave")
         return (async ()=> {
             const userData = {
                 data: data,
@@ -312,6 +314,8 @@ function QuoteAnalysis() {
             }
             // console.log(userData);
             const response = await dbData ("post", "/api/save", userData);
+            console.log(response.status);
+            setUpdatedData(!updatedData);
             return response;
         })();
         // Add logic to call Python API with a POST transaction
