@@ -5,7 +5,8 @@ import axios from 'axios';
 
 async function  dbData  (arg, type, userData) {
     // const url="https://abhardwa.pythonanywhere.com";
-    const url="http://127.0.0.1:5000";        
+    // const url="http://127.0.0.1:5000";   
+    const url = process.env.REACT_APP_API_SERVER_URL     
     try {
         if (type==='get') {
             const response = await axios.get(url+arg);

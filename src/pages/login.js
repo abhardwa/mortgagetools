@@ -27,11 +27,13 @@ function Login({show, handleClose, handleOpen, location, action}) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showModal, setShowModal] = useState(true);
   const [btnState, setBtnState] = useState(false);
+  const [showErrorMsg,setShowErrorMsg] = useState('none');
   const dispatch = useDispatch();
   const nav = useNavigate();
   const user = useSelector(selectUser);
   const ref = useRef(action);
   const initialRender = useRef(true);
+
 
   // useEffect (() => {
   //   setUName(auth.currentUser?.displayName);
@@ -209,8 +211,14 @@ const handleCloseModal = (e) => {
   const emailChg = (e) => {
     // console.log("Inside emailChg");
     e.preventDefault();
-    console.log(auth.currentUser.email, newEmail);
+    console.log(auth.currentUser.email, newEmail, password);
     if (newEmail) {
+      console.log(showErrorMsg);
+      if (!password) {
+        setShowErrorMsg('block');
+        console.log(showErrorMsg);
+        return; 
+      }
        const curEmail = auth.currentUser.email;
         updateEmail(auth.currentUser, newEmail)
         .then(() => {
@@ -235,14 +243,15 @@ const handleCloseModal = (e) => {
             // ...
           })
         .catch((error) => {
-            console.log(error.message, curEmail );
+            console.log(error.message, user.email );
             const credential = EmailAuthProvider.credential(
-              curEmail,
+              user.email,
               password
             )
             // Get the current user
             reauthenticateWithCredential(auth.currentUser, credential).then(() => {
               console.log(user, email, newEmail);
+              const curEmail = user.email;
               updateEmail(auth.currentUser, newEmail)
               .then(() => {
                   console.log("email updated");
@@ -256,7 +265,7 @@ const handleCloseModal = (e) => {
                   );
                   console.log("email updated");
                   const userData = {
-                      email:email,
+                      email:curEmail,
                       newEmail:newEmail,
                   }
                   saveUpdates(userData);
@@ -466,7 +475,7 @@ const handleCloseModal = (e) => {
                       value={newUName}
                       onChange={(e) => setNewUName(e.target.value)}
                     />
-                <Form.Label style={{fontSize:'1.6rem'}}>Current Email: <span style={{fontWeight:'bold'}}>{auth.currentUser?.email}</span></Form.Label>
+                <Form.Label style={{fontSize:'1.6rem', marginTop:'2rem',}}>Current Email: <span style={{fontWeight:'bold'}}>{auth.currentUser?.email}</span></Form.Label>
                 <div></div>
                 <Form.Label style={{fontSize:'1.6rem'}}>New Email</Form.Label>
                     <Form.Control
@@ -474,16 +483,20 @@ const handleCloseModal = (e) => {
                       type="email"
                       placeholder=""
                       value={newEmail}
-                      onChange={(e) => setNewEmail(e.target.value)}
+                      onChange={(e) => {setNewEmail(e.target.value);
+                                          document.getElementById('pwd').style.display='block';
+                                          document.getElementById('pwd-lbl').style.display='block'}}
                     />
-                <Form.Label style={{fontSize:'1.6rem'}}>Please enter password</Form.Label>
+                <Form.Label id='pwd-lbl' style={{fontSize:'1.6rem', marginTop:'2rem',textAlign:"left", display:"none"}}>Please enter password</Form.Label>
                     <Form.Control
-                      style={{fontSize:'1.6rem'}}
+                      id = "pwd"
+                      style={{fontSize:'1.6rem', display:"none"}}
                       type="password"
                       placeholder=""
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                     />
+                <Form.Label id='pwd-msg' className='alert alert-danger alert-dismissible fade show' style={{fontSize:'1.6rem', marginTop:'2rem',textAlign:"left", display:showErrorMsg}}>Error! Password is required</Form.Label>
               </Form.Group>
             </Form>
           </Modal.Body>
