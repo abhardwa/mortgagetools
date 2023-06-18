@@ -15,7 +15,7 @@ import {
 } from '../firebase_setup/firebase';
 import { useDispatch, useSelector} from 'react-redux';
 import { login, logout, selectUser } from '../components/userSlice';
-
+import dbData from '../components/myApi';
 
 function Login({show, handleClose, handleOpen, location, action}) {
 // use state constants for the the form inputs
@@ -23,6 +23,7 @@ function Login({show, handleClose, handleOpen, location, action}) {
   const [newEmail, setNewEmail] = useState('');
   const [password, setPassword] = useState('');
   const [uName, setUName] = useState('');
+  const [newUName, setNewUName] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showModal, setShowModal] = useState(true);
   const [btnState, setBtnState] = useState(false);
@@ -32,6 +33,14 @@ function Login({show, handleClose, handleOpen, location, action}) {
   const ref = useRef(action);
   const initialRender = useRef(true);
 
+  // useEffect (() => {
+  //   setUName(auth.currentUser?.displayName);
+  //   setEmail(auth.currentUser?.email);
+  //   console.log(uName, email);
+  // },[showModal]);
+
+  // setUName(auth.currentUser?.displayName);
+  // setEmail(auth.currentUser?.email);
   
 const handleOpenModal = (e) => {
   e?.preventDefault();
@@ -186,48 +195,118 @@ const handleCloseModal = (e) => {
     );
   }
 
+  const saveUpdates = (userData) =>{
+      console.log("inside SaveUpdates")
+      return (async ()=> {
+          // console.log(userData);
+          const response = await dbData ("/api/updprofile", "post", userData);
+          console.log(response.status);
+          return response;
+      })();
+      // Add logic to call Python API with a POST transaction
+  };
+
   const emailChg = (e) => {
     // console.log("Inside emailChg");
     e.preventDefault();
-    console.log(auth.currentUser, newEmail);
-    updateEmail(auth.currentUser, newEmail)
-    .then(() => {
-        console.log("email updated");
-        handleCloseModal(); 
-        nav(-1);
-        return;
-        // Email updated!
-        // ...
-      })
-    .catch((error) => {
-        console.log(error.message );
-        // PromptForCredentials();
-        const credential = EmailAuthProvider.credential(
-          auth.currentUser.email,
-          password
-        )
-        // Get the current user
-        reauthenticateWithCredential(auth.currentUser, credential).then(() => {
-          console.log(user, email);
-          updateEmail(auth.currentUser, newEmail)
-          .then(() => {
-              console.log("email updated");
-              handleCloseModal(); 
-              nav(-1);
-              return;
-              // Email updated!
-              // ...
-            })
-          .catch((error) => {
-              console.log(error.message );
-          });
+    console.log(auth.currentUser.email, newEmail);
+    if (newEmail) {
+       const curEmail = auth.currentUser.email;
+        updateEmail(auth.currentUser, newEmail)
+        .then(() => {
+            // Dispatch the user information for persistence in the redux state
+            dispatch(
+              login({
+                email: auth.currentUser.email,
+                uid: auth.currentUser.uid,
+                uName: auth.currentUser.displayName,
+              })
+            );
+            console.log("email updated");
+            const userData = {
+                email:curEmail,
+                newEmail:newEmail,
+            }
+            saveUpdates(userData);
+            handleCloseModal(); 
+            nav(-1);
+            return;
+            // Email updated!
+            // ...
+          })
+        .catch((error) => {
+            console.log(error.message, curEmail );
+            const credential = EmailAuthProvider.credential(
+              curEmail,
+              password
+            )
+            // Get the current user
+            reauthenticateWithCredential(auth.currentUser, credential).then(() => {
+              console.log(user, email, newEmail);
+              updateEmail(auth.currentUser, newEmail)
+              .then(() => {
+                  console.log("email updated");
+                  // Dispatch the user information for persistence in the redux state
+                  dispatch(
+                    login({
+                      email: auth.currentUser.email,
+                      uid: auth.currentUser.uid,
+                      uName: auth.currentUser.displayName,
+                    })
+                  );
+                  console.log("email updated");
+                  const userData = {
+                      email:email,
+                      newEmail:newEmail,
+                  }
+                  saveUpdates(userData);
+                  handleCloseModal(); 
+                  nav(-1);
+                  return;
+                  // Email updated!
+                  // ...
+                })
+              .catch((error) => {
+                  console.log(error.message );
+              });
 
-          // User re-authenticated.
-        }).catch((error) => {
+              // User re-authenticated.
+            }).catch((error) => {
+                console.log(error.message );
+            });
+            // ..
+        });
+      }
+
+    if (newUName) {
+      const oldUName = auth.currentUser?.displayName;
+      console.log(oldUName, newUName);
+          updateProfile(auth.currentUser, {
+          displayName: newUName,
+        })
+          .then(()=>{
+            // console.log(userAuth.user);
+            // Dispatch the user information for persistence in the redux state
+            dispatch(
+              login({
+                email: auth.currentUser.email,
+                uid: auth.currentUser.uid,
+                uname: uName,
+              })
+            );
+            const userData = {
+              uName:oldUName,
+              email:auth.currentUser.email,
+              newUname:newUName,
+            }
+            saveUpdates(userData);
+            handleCloseModal();
+            nav(-1);
+          })
+        .catch((error) => {
             console.log(error.message );
         });
-        // ..
-      });
+      }
   }
 
   const AppLogout = (e) => {
@@ -255,6 +334,7 @@ const handleCloseModal = (e) => {
           nav(-1); // Redirects to the previous route or history.push('/home') for a specific route
         }
     }
+
     document.body.addEventListener('click', handleMyClick, true);
     // cleanup function to remove this instance of eventlistner
     return () => {
@@ -371,20 +451,23 @@ const handleCloseModal = (e) => {
         <Modal show={showModal} onHide = {handleClose} onClick={() => {setBtnState(btnState => !btnState)}}>
           <Container >
           <Modal.Header closeButton>
-              <Modal.Title  style={{fontSize:'1.6rem', fontWeight:'bold'}} className="text-orange-600">Change Email</Modal.Title>
+              <Modal.Title  style={{fontSize:'1.6rem', fontWeight:'bold'}} className="text-orange-600">Update Profile</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Form>
               <Form.Group>
-                <Form.Label style={{fontSize:'1.6rem'}}>Current Email</Form.Label>
+                <Form.Label style={{fontSize:'1.6rem'}}>Current Username: <span style={{fontWeight:'bold'}}>{auth.currentUser?.displayName}</span></Form.Label>
+                <div></div>
+                <Form.Label style={{fontSize:'1.6rem'}}>New UserName</Form.Label>
                     <Form.Control
                       style={{fontSize:'1.6rem'}}
-                      type="email"
+                      type="text"
                       placeholder=""
-                      autoFocus
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
+                      value={newUName}
+                      onChange={(e) => setNewUName(e.target.value)}
                     />
+                <Form.Label style={{fontSize:'1.6rem'}}>Current Email: <span style={{fontWeight:'bold'}}>{auth.currentUser?.email}</span></Form.Label>
+                <div></div>
                 <Form.Label style={{fontSize:'1.6rem'}}>New Email</Form.Label>
                     <Form.Control
                       style={{fontSize:'1.6rem'}}
@@ -406,7 +489,7 @@ const handleCloseModal = (e) => {
           </Modal.Body>
           <Modal.Footer>
                 <Button className="btn btn-primary" type='submit' onClick={emailChg}>
-                  Change Email
+                  Update
                 </Button>
               <Button className='cancel btn btn-secondary' onClick={(event)=>{ref.current="cancel"; Cancel(event)}}>
                 Cancel

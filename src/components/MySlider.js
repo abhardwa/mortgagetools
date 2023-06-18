@@ -34,7 +34,7 @@ const Slider = (props) => {
         if (props.data) {
             const dataArray = Object.entries(props.data[i]);
             for (let [key, value] of dataArray) {
-                rows.push(<p>{key}:&nbsp;<span style={{color:"black", fontWeight:"700"}}>{value}</span></p>); 
+                rows.push(<p key={key}>{key}:&nbsp;<span style={{color:"black", fontWeight:"700"}}>{value}</span></p>); 
             }
             setSlider(slider=>({...slider, "bulletData":rows}));
             let sliderPosition = (Number(slider.value)<props.max?Number(slider.value): props.max-1) / props.max;

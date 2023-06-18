@@ -8,7 +8,7 @@ import { selectUser } from '../components/userSlice';
 import axios from 'axios';
 import Login from './login';
 import {auth} from '../firebase_setup/firebase';
-import { url } from '../components/url';
+import dbData from '../components/myApi';
 import classNames from "classnames";
 
 function QuoteAnalysis() {
@@ -88,30 +88,6 @@ function QuoteAnalysis() {
     let user = useSelector(selectUser);
     const dispatch = useDispatch();
 
-    const dbData = async (type, arg, userData) => {
-        // const url="https://abhardwa.pythonanywhere.com";
-        // const url="http://127.0.0.1:5000";        
-        setState('pending');
-        try {
-            if (type==='get') {
-                const response = await axios.get(url+arg);
-            // console.log(response.data);
-            // console.log(response.status);
-            // console.log(response.statusText);
-            // console.log(response.headers);
-            // console.log(response.config);
-              return response.data;
-            } else {
-                const response = await axios.post(url+arg, userData);
-                return response.data;
-            }
-        } catch (error) {
-            setState('error');
-            console.error(error);
-            return null;
-        }
-        
-    }
     useEffect( () => {
         // console.log("inside useEffect 1");
         setData(data => {
@@ -133,7 +109,7 @@ function QuoteAnalysis() {
                 // console.log(user);
                 const arg = "/api/getqa?" + "email=" + user.email + "&dataType=qa";
                 // console.log(arg);
-                const response = await dbData ("get", arg);
+                const response = await dbData (arg, 'get');
                 // console.log(response);
                 savedDataRef.current = response;
                 // console.log(savedDataRef.current);
@@ -150,9 +126,10 @@ function QuoteAnalysis() {
             // console.log(user);
             const arg = "/api/getqa?" + "email=" + user.email + "&dataType=qa";
             // console.log(arg);
-            const response = await dbData ("get", arg);
+            const response = await dbData (arg, 'get');
             // console.log(response);
             savedDataRef.current = response;
+            setState(!state);
             return response;
         } else
             return '';
@@ -313,7 +290,7 @@ function QuoteAnalysis() {
                 dataType: "qa",
             }
             // console.log(userData);
-            const response = await dbData ("post", "/api/save", userData);
+            const response = await dbData ("/api/save", "post", userData);
             console.log(response.status);
             setUpdatedData(!updatedData);
             return response;
@@ -372,6 +349,8 @@ function QuoteAnalysis() {
                                     regardless of the lender you pick, are normalized. This allows you to isolate and focus on the lender specific costs on each quote. 
                                     </p>
                                     <p className="main-text max-text-box">Hope this normalized comparison guide helps you make a smart decision!</p>
+                                    <p className="main-text max-text-box text-base md:text-2xl text-orange-500"><b>Bonus Tip:</b> Create an account and login to save your 
+                                       information for later visits with the "Login to Save your Data" button.</p>
                                 </div>
                                 <div className="relative mb-12 -mr-48">
                                         <div className = "flex w-6/12 mr-4"><span className = "mr-4">{LoadOption()}</span><span>{saveOption()}</span></div>
@@ -1142,6 +1121,9 @@ function QuoteAnalysis() {
                                                     </tbody>
                                                 </table>
                                                 <div className='calcAmort-btn  form-btn'><button onClick={(event)=>handleSelect(event, "1")}>Go to Original View</button></div>
+                                                <div className='text-base md:text-2xl text-center font-semibold text-orange-500'>If you have any questions or need further help in understanding the different quotes, please contact me at 
+                                                    <a href="https://banksouthmortgage.com/loan-officer/shachi-bhardwaj/" target="_blank" rel="noopener noreferrer" 
+                                                       className="text-blue-800 font-semibold">&nbsp;shachibhardwaj.com.</a></div>
                                             </Tab>
                                         </Tabs>
                                     </div>

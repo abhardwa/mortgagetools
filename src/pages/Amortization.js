@@ -7,7 +7,7 @@ import axios from "axios";
 import DatePicker from 'react-datepicker'
 import LoanTable from "../components/AmortTable.js";
 import Slider from "../components/MySlider.js";
-import { url } from "../components/url";
+import dbData from "../components/myApi.js";
 
 function Amortization() {
     const [data, setData] = useState({
@@ -48,27 +48,6 @@ function Amortization() {
         minimumFractionDigits: 0,
         maximumFractionDigits: 0,
     });
-
-
-    const getLoan = async (arg) => {
-        // const url="https://abhardwa.pythonanywhere.com";
-        // const url="http://127.0.0.1:5000";        
-        setState('pending');
-        try {
-            const response = await axios.get(url+arg);
-            // console.log(response.data);
-            // console.log(response.status);
-            // console.log(response.statusText);
-            // console.log(response.headers);
-            // console.log(response.config);
-              return response.data;
-        } catch (error) {
-            setState('error');
-            console.error(error);
-            return null;
-        }
-        
-    }
 
     function calcAmortization() {
 
@@ -132,10 +111,13 @@ function Amortization() {
 
         // call getLoan to get the baseLoan and loan data
         return (async () => {
-            baseLoan = await getLoan(arg0)
-            loan = await getLoan(arg1);
+            setState('pending');
+            baseLoan = await dbData(arg0, 'get')
+            loan = await dbData(arg1, 'get');
+            // setState('done');
             const [loantbl, xLoan] = calcButton();
-            const sliderData = calcSliderData();
+            const sliderData = calcSliderData(loan);
+            // console.log(xLoan, sliderData);
             return[out, loantbl, xLoan, sliderData];
         })();
 
@@ -223,10 +205,10 @@ function Amortization() {
 
         }
     }
-    const calcSliderData = () => {
+    const calcSliderData = (loan) => {
         //setup the sliderData from the loan
         let sliderData = [];
-
+        // console.log(loan.length);
         for (let i in loan) {
             sliderData.push({
                 Month: loan[i].month+"-"+loan[i].year,
@@ -316,6 +298,7 @@ function Amortization() {
                     setLtbl([...loantbl]);
                     setLoan(xLoan);
                     setSData(sliderData);
+                    // console.log(xLoan, sliderData, sData);
                 } else {
                     console.log("Error: Async function pending...");
                 }
