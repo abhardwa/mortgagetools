@@ -140,7 +140,7 @@ function QuoteAnalysis() {
     const saveOption = () => {
         return !user ? 
         <div className="">
-            <p className="mx-auto text-center text-base md:text-2xl text-orange-500"><b>Bonus Tip:</b> Create an account and login to save your 
+            <p className="main-text max-text-box mx-auto text-base md:text-2xl text-orange-500"><b>Bonus Tip:</b> Create an account and login to save your 
                                         information for later visits with the "Login to Save your Data" button.</p>
             <button className={classNames("w-96  bg-slate-200", btnSubClass)} onClick={handleLogin}>Login to Save your Data</button>
         </div>: 
