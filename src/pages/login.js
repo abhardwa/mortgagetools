@@ -213,10 +213,10 @@ const handleCloseModal = (e) => {
     e.preventDefault();
     console.log(auth.currentUser.email, newEmail, password);
     if (newEmail) {
-      console.log(showErrorMsg);
+      // console.log(showErrorMsg);
       if (!password) {
         setShowErrorMsg('block');
-        console.log(showErrorMsg);
+        // console.log(showErrorMsg);
         return; 
       }
        const curEmail = auth.currentUser.email;
@@ -230,7 +230,7 @@ const handleCloseModal = (e) => {
                 uName: auth.currentUser.displayName,
               })
             );
-            console.log("email updated");
+            // console.log("email updated");
             const userData = {
                 email:curEmail,
                 newEmail:newEmail,
@@ -250,11 +250,11 @@ const handleCloseModal = (e) => {
             )
             // Get the current user
             reauthenticateWithCredential(auth.currentUser, credential).then(() => {
-              console.log(user, email, newEmail);
+              // console.log(user, email, newEmail);
               const curEmail = user.email;
               updateEmail(auth.currentUser, newEmail)
               .then(() => {
-                  console.log("email updated");
+                  // console.log("email updated");
                   // Dispatch the user information for persistence in the redux state
                   dispatch(
                     login({
@@ -263,7 +263,7 @@ const handleCloseModal = (e) => {
                       uName: auth.currentUser.displayName,
                     })
                   );
-                  console.log("email updated");
+                  // console.log("email updated");
                   const userData = {
                       email:curEmail,
                       newEmail:newEmail,
@@ -289,7 +289,7 @@ const handleCloseModal = (e) => {
 
     if (newUName) {
       const oldUName = auth.currentUser?.displayName;
-      console.log(oldUName, newUName);
+      // console.log(oldUName, newUName);
           updateProfile(auth.currentUser, {
           displayName: newUName,
         })
@@ -319,7 +319,7 @@ const handleCloseModal = (e) => {
   }
 
   const AppLogout = (e) => {
-    console.log("Inside AppLogout");
+    // console.log("Inside AppLogout");
     e.preventDefault();
     auth.signOut();
     setIsLoggedIn(false);

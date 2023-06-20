@@ -138,7 +138,12 @@ function QuoteAnalysis() {
     const btnSubClass = "h-16 text-3xl font-semibold self-centerrounded-2xl shadow-md hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2 active:outline-none active:ring-1 active:ring-blue-600 active:ring-offset-1";
 
     const saveOption = () => {
-        return !user ? <button className={classNames("w-96  bg-slate-200", btnSubClass)} onClick={handleLogin}>Login to Save your Data</button>: 
+        return !user ? 
+        <div className="">
+            <p className="mx-auto text-center text-base md:text-2xl text-orange-500"><b>Bonus Tip:</b> Create an account and login to save your 
+                                        information for later visits with the "Login to Save your Data" button.</p>
+            <button className={classNames("w-96  bg-slate-200", btnSubClass)} onClick={handleLogin}>Login to Save your Data</button>
+        </div>: 
             <button className={classNames("w-80  bg-green-200", btnSubClass )} onClick={handleSave}>Save Data</button>
 
     }
@@ -281,7 +286,7 @@ function QuoteAnalysis() {
     
     const handleSave = (e) =>{
         e.preventDefault();
-        console.log("inside handleSave")
+        // console.log("inside handleSave")
         return (async ()=> {
             const userData = {
                 data: data,
@@ -291,7 +296,7 @@ function QuoteAnalysis() {
             }
             // console.log(userData);
             const response = await dbData ("/api/save", "post", userData);
-            console.log(response.status);
+            // console.log(response.status);
             setUpdatedData(!updatedData);
             return response;
         })();
@@ -349,11 +354,9 @@ function QuoteAnalysis() {
                                     regardless of the lender you pick, are normalized. This allows you to isolate and focus on the lender specific costs on each quote. 
                                     </p>
                                     <p className="main-text max-text-box">Hope this normalized comparison guide helps you make a smart decision!</p>
-                                    <p className="main-text max-text-box text-base md:text-2xl text-orange-500"><b>Bonus Tip:</b> Create an account and login to save your 
-                                       information for later visits with the "Login to Save your Data" button.</p>
                                 </div>
                                 <div className="relative mb-12 -mr-48">
-                                        <div className = "flex w-6/12 mr-4"><span className = "mr-4">{LoadOption()}</span><span>{saveOption()}</span></div>
+                                        <div className = "mr-4"><span className = "mr-4">{LoadOption()}</span><span>{saveOption()}</span></div>
                                         {loginFlag}
                                 </div>
                                         <Tabs activeKey={key} onSelect={(event) => handleSelect(event)}style={{fontSize:"2rem", fontWeight:"700"}}>
