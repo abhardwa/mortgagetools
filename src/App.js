@@ -1,14 +1,13 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { login, logout, selectUser } from './components/userSlice';
+import { useDispatch } from 'react-redux';
+import { login, logout } from './store/store';
 import { auth, onAuthStateChanged } from './firebase_setup/firebase';
 import Main from "./layouts/Main";
 import './App.scss';
 
 function App() {
   // console.log("Inside App.js");
-const user = useSelector(selectUser);
 const dispatch = useDispatch();
 
 // check at page load if a user is authenticated
@@ -28,6 +27,7 @@ const dispatch = useDispatch();
         dispatch(logout());
       }
     });
+  // eslint-disable-next-line
   }, []);
   // console.log(user);
   return (

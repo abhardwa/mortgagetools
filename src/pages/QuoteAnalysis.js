@@ -1,11 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import Tab from "react-bootstrap/Tab";
-import Tabs from "react-bootstrap/Tabs";
+import Tabs from "react-bootstrap/Tabs"; 
 import { qRecord} from "../components/quoteStates";
 import { twMerge } from "tailwind-merge";
-import { useSelector, useDispatch } from 'react-redux';
-import { selectUser } from '../components/userSlice';
-import axios from 'axios';
+import { useSelector } from 'react-redux';
+import { getUser } from '../store/store';
 import Login from './login';
 import {auth} from '../firebase_setup/firebase';
 import dbData from '../components/myApi';
@@ -85,8 +84,7 @@ function QuoteAnalysis() {
     
     const currency = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
-    let user = useSelector(selectUser);
-    const dispatch = useDispatch();
+    let user = useSelector(getUser);
 
     useEffect( () => {
         // console.log("inside useEffect 1");
@@ -99,7 +97,7 @@ function QuoteAnalysis() {
         setData(data => {
             return {...data, q4:{...data.q4,...quote}};
         });
-
+    // eslint-disable-next-line
     },[])
 
     useEffect( () => {
@@ -107,6 +105,7 @@ function QuoteAnalysis() {
         const serverData = async() => {
             if (user) {
                 // console.log(user);
+                // eslint-disable-next-line
                 const arg = "/api/getqa?" + "email=" + user.email + "&dataType=qa";
                 // console.log(arg);
                 const response = await dbData (arg, 'get');
@@ -119,11 +118,13 @@ function QuoteAnalysis() {
                 return '';
         };
         serverData();
+    // eslint-disable-next-line
     },[user, updatedData])
 
     const serverData = async() => {
         if (user) {
             // console.log(user);
+            // eslint-disable-next-line
             const arg = "/api/getqa?" + "email=" + user.email + "&dataType=qa";
             // console.log(arg);
             const response = await dbData (arg, 'get');

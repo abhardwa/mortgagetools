@@ -7,14 +7,14 @@ import {
   createUserWithEmailAndPassword,
   updateProfile,
   updateEmail,
-  sendEmailVerification,
+  // sendEmailVerification,
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
   reauthenticateWithCredential,
   EmailAuthProvider,
 } from '../firebase_setup/firebase';
 import { useDispatch, useSelector} from 'react-redux';
-import { login, logout, selectUser } from '../components/userSlice';
+import { login, logout, getUser } from '../store/store';
 import dbData from '../components/myApi';
 
 function Login({show, handleClose, handleOpen, location, action}) {
@@ -24,25 +24,14 @@ function Login({show, handleClose, handleOpen, location, action}) {
   const [password, setPassword] = useState('');
   const [uName, setUName] = useState('');
   const [newUName, setNewUName] = useState('');
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showModal, setShowModal] = useState(true);
   const [btnState, setBtnState] = useState(false);
   const [showErrorMsg,setShowErrorMsg] = useState('none');
   const dispatch = useDispatch();
   const nav = useNavigate();
-  const user = useSelector(selectUser);
+  const user = useSelector(getUser);
   const ref = useRef(action);
   const initialRender = useRef(true);
-
-
-  // useEffect (() => {
-  //   setUName(auth.currentUser?.displayName);
-  //   setEmail(auth.currentUser?.email);
-  //   console.log(uName, email);
-  // },[showModal]);
-
-  // setUName(auth.currentUser?.displayName);
-  // setEmail(auth.currentUser?.email);
   
 const handleOpenModal = (e) => {
   e?.preventDefault();
@@ -53,12 +42,6 @@ const handleCloseModal = (e) => {
   e?.preventDefault();
   setShowModal(false);
 };
-
-  // console.log(action, show, handleOpen, handleClose);
-  
-  // setShowM(isLoggedIn===true?show:true);
-
-  // console.log(location);
 
   const loginToApp = (e) => {
     e.preventDefault();
@@ -78,7 +61,6 @@ const handleCloseModal = (e) => {
             uName: userAuth.user.displayName,
           })
         );
-        setIsLoggedIn(true);
         handleCloseModal();
         // console.log(user);
         nav(-1);
@@ -120,14 +102,12 @@ const handleCloseModal = (e) => {
                 uName: userAuth.user.displayName,
               })
             );
-            setIsLoggedIn(true);
             handleCloseModal();
             nav(-1);
           })
           .catch((error) => {
             console.log(error.message );
             console.log('user not updated');
-            setIsLoggedIn(true);
             handleCloseModal();
             nav(-1);
           });
@@ -160,6 +140,7 @@ const handleCloseModal = (e) => {
         });
 
   }
+  // eslint-disable-next-line
   const PromptForCredentials = () => {
     return (
     <Modal show={true} onHide = {handleClose}  onClick={() => {setBtnState(btnState => !btnState)}}>
@@ -294,7 +275,6 @@ const handleCloseModal = (e) => {
           displayName: newUName,
         })
           .then(()=>{
-            // console.log(userAuth.user);
             // Dispatch the user information for persistence in the redux state
             dispatch(
               login({
@@ -322,9 +302,8 @@ const handleCloseModal = (e) => {
     // console.log("Inside AppLogout");
     e.preventDefault();
     auth.signOut();
-    setIsLoggedIn(false);
     dispatch(logout());
-    // console.log(useSelector(selectUser));
+    // console.log(useSelector(getUser));
     handleCloseModal();
     nav(-1);
     
@@ -349,6 +328,7 @@ const handleCloseModal = (e) => {
     return () => {
             document.body.removeEventListener('click', handleMyClick, true);
         }
+  // eslint-disable-next-line
   }, [btnState]);
 
     // console.log(showM);

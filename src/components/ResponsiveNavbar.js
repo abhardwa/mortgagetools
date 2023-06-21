@@ -4,7 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 import Container from 'react-bootstrap/Container';
 import { useLocation } from "react-router-dom";
 import { useSelector} from 'react-redux';
-import { selectUser } from '../components/userSlice';
+import { getUser } from '../store/store';
 // import { useState } from "react";
 // import Login from '../pages/login';
 import "../css/menu.css";
@@ -12,7 +12,7 @@ import "../css/menu.css";
 const ResponsiveNavbar = (props) => {
     const location = useLocation();
     // console.log("Inside ResponsiveNavbar.js");
-    const user = useSelector(selectUser); // If the user is logged in this object will be defined and return true
+    const user = useSelector(getUser); // If the user is logged in this object will be defined and return true
     // console.log(user);
     // const dispatch = useDispatch();
 

@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'; // or include from a CDN
 import './css/style.css';
 import 'react-datepicker/dist/react-datepicker.css';
 import {Provider} from 'react-redux';
-import {store} from './app/store';
+import {store} from './store/store';
 
 const el = document.getElementById('root');
 const root = ReactDOM.createRoot(el);

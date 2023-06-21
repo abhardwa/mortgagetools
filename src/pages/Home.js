@@ -1,5 +1,7 @@
 // import "../css/style.css";
 import {NavLink} from 'react-router-dom';
+import Skeleton from '../components/Skeleton';
+import { AiOutlineCheck } from "react-icons/ai";
 
 function Home() {
     console.log("Inside Home.js")
@@ -18,14 +20,25 @@ function Home() {
                                         easy
                                         and fun for the average home buyer.</h4>
                                     <br></br>
-                                    <p className="main-text">Here is a quick roadmap of what to expect on this site. It is a young
-                                        website that we are slowly yet steadily building out. We feel that as we develop each
-                                        tool to help you with your Home buying process, we should make that tool available
-                                        right away. Admitedly, the website may not look as slick as some other
-                                        websites, but here you will find helpful, functional tools that give you the answers you
-                                        are looking for in an easy to understand fashion. So, welcome again, and have a look
-                                        around. We hope you find something useful during your visit. Happy house hunting!
-                                    </p>
+                                    <div className="main-text">Here is a quick roadmap of what to expect on this site. It's a young
+                                        website that we are steadily building out. As we develop a tool to help you with your Home buying process, we will make it available
+                                        right away. Our goal is to provide you the homebuyer, with all the necessary tools to make your home buying experience as smooth as possible. 
+                                        Following tools are currently available on this website:
+                                        <ul><li className="flex"><AiOutlineCheck className='mt-3 mr-2'/><NavLink  className="link" to="/preQual"> a pre-qualification calculator that tells you how much house you can Afford.</NavLink>
+                                            </li>
+                                            <li className="flex"><AiOutlineCheck className='mt-3 mr-2'/><NavLink  className="link" to="/amortization"> an amortization schedule calculator that shows how your loan gets paid off over the term of the loan.</NavLink>
+                                            </li>
+                                            <li className="flex"><AiOutlineCheck className='mt-3 mr-2'/><NavLink className="link" to="/buyDown"> a buy-down calculator that shows how you can benefit from lower monthly payments during first 2 years with this option.</NavLink>
+                                            </li>
+                                            <li className="flex"><AiOutlineCheck className='mt-3 mr-2'/><NavLink  className="link" to="/escrow"> an escrow amount calculator that shows how much escrow funds you will need at closing.</NavLink>
+                                            </li>
+                                            <li className="flex"><AiOutlineCheck className='mt-3 mr-2'/><NavLink  className="link" to="/quoteanalysis"> a tool that alows you to do a meaningful comparison of loan quotes you have received from different vendors.</NavLink> 
+                                            </li>
+                                        </ul>
+                                        We are actively working on adding more helpful tools. In the meantime, welcome again, and have a look around. We hope you find something useful during your visit. Happy house hunting!
+                                    </div>
+                                    {/* <Skeleton times={1} className='h-40 w-25'/>
+                                    <Skeleton times={3} className='h-10 w-full'/>                                     */}
                                 </div>
                                 <div className="tools-section">
                                     <h5 className="subheading centered-text text-padding-top">Tools to Explore</h5>
