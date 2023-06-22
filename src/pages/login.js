@@ -181,7 +181,7 @@ const handleCloseModal = (e) => {
   const saveUpdates = (userData) =>{
       console.log("inside SaveUpdates")
       return (async ()=> {
-          // console.log(userData);
+          console.log(userData);
           const response = await dbData ("/api/updprofile", "post", userData);
           console.log(response.status);
           return response;
@@ -216,10 +216,12 @@ const handleCloseModal = (e) => {
                 email:curEmail,
                 newEmail:newEmail,
             }
-            saveUpdates(userData);
-            handleCloseModal(); 
-            nav(-1);
-            return;
+            return (async ()=> {
+              await saveUpdates(userData);
+              handleCloseModal(); 
+              nav(-1);
+              return;
+              })();
             // Email updated!
             // ...
           })
@@ -249,10 +251,12 @@ const handleCloseModal = (e) => {
                       email:curEmail,
                       newEmail:newEmail,
                   }
-                  saveUpdates(userData);
+                  return (async ()=> {
+                  await saveUpdates(userData);
                   handleCloseModal(); 
                   nav(-1);
                   return;
+                  })();
                   // Email updated!
                   // ...
                 })
@@ -269,7 +273,8 @@ const handleCloseModal = (e) => {
       }
 
     if (newUName) {
-      const oldUName = auth.currentUser?.displayName;
+      // const oldUName = auth.currentUser?.displayName;
+      const oldUName = user.uName;
       // console.log(oldUName, newUName);
           updateProfile(auth.currentUser, {
           displayName: newUName,
@@ -280,17 +285,21 @@ const handleCloseModal = (e) => {
               login({
                 email: auth.currentUser.email,
                 uid: auth.currentUser.uid,
-                uname: uName,
+                uName: auth.currentUser.displayName,
               })
             );
             const userData = {
               uName:oldUName,
               email:auth.currentUser.email,
-              newUname:newUName,
+              newUName:auth.currentUser.displayName,
             }
-            saveUpdates(userData);
-            handleCloseModal();
-            nav(-1);
+            return (async ()=> {
+              console.log(userData);
+              await saveUpdates(userData);
+              handleCloseModal(); 
+              nav(-1);
+              return;
+            })();
           })
         .catch((error) => {
             console.log(error.message );
