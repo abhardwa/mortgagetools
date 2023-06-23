@@ -111,6 +111,10 @@ function Buydown() {
             });
         };
     };
+
+    const handleSliderUpdate = (e) => {
+        return;
+    }
     return (
             <div id="buyDown" className="tabcontent">
             <div className="container-fluid">
@@ -305,7 +309,7 @@ function Buydown() {
                                         <span className="range-slider-simple range-slider__wrap">
                                             {/* <label for="slider">Month</label> */}
                                             <div className="slider-container">
-                                                <Slider max={24} summary={false} minmax="none" handleChange={handleChange}/>
+                                                <Slider max={24} summary={false} minmax="none" value={0} handleChange={handleChange} handleSliderUpdate={handleSliderUpdate}/>
                                             </div>
                                             {/* </span> */}
                                             <span className="rs-value" id="rs-value">&nbsp;{months}</span>

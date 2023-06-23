@@ -271,6 +271,9 @@ function Amortization() {
         download(loan);
 
     };
+    const handleSliderUpdate = ()=> {
+        return;
+    }
     
     const handleStartDateChange = (e) => {
         setData(data => {return {...data, 'startDate':(e).toISOString().substring(0, 10)}});
@@ -496,7 +499,7 @@ function Amortization() {
                                                                     <Accordion.Body>
                                                                         <div className="container slider-section">
                                                                             <div className="range-slider">
-                                                                                <Slider max={sData.length} data={sData} minmax="flex" handleChange={handleChange}></Slider>
+                                                                                <Slider max={sData.length} data={sData} minmax="flex" value={0} handleChange={handleChange} handleSliderUpdate={handleSliderUpdate}></Slider>
                                                                             </div>
                                                                             <br></br>
                                                                             <div id="csv">
