@@ -1,6 +1,6 @@
 import { useFetchAmortizationQuery} from '../store/store';
 import Skeleton from '../components/Skeleton';
-import {Form} from 'react-bootstrap';
+import {Form, Button} from 'react-bootstrap';
 import {useState} from 'react';
 import {setArgs, setLtable } from '../store/store';
 import { useDispatch, useSelector} from 'react-redux';
@@ -19,11 +19,18 @@ function LoanComp({num}) {
         lamount: 350000,
         lterm: 30,
         lrate: 6.25,
+        startDate:(new Date()).toISOString().substring(0, 10),
+        recurMAmt: 0,
+        recurMDate: (new Date()).toISOString().substring(0, 10),
+        recurAAmt: 0,
+        recurADate: (new Date()).toISOString().substring(0, 10),
+        onePayAmt: 0,
+        onePayDate: (new Date()).toISOString().substring(0, 10),
     });
     const [skip, setSkip] = useState(false);
-    const [lamountVal, setLamountVal] = useState(0);
-    const [lrateVal, setLrateVal] = useState(0);
-    const [ltermVal, setLtermVal] = useState(0);
+    const [lamountVal, setLamountVal] = useState(350000);
+    const [lrateVal, setLrateVal] = useState(6.25);
+    const [ltermVal, setLtermVal] = useState(30);
     const [lData, setLData] = useState([{
         month: 0, 
         principal:0,
@@ -42,7 +49,7 @@ function LoanComp({num}) {
         maximumFractionDigits: 0,
     });
 
-    const {data, error, isLoading}= useFetchAmortizationQuery(args,{skip,});
+    const {data, error, isLoading}= useFetchAmortizationQuery(loan,{skip,});
     // console.log(data, error, isLoading);
     let content =<div>Empty Div</div>;
     if(isLoading) {
@@ -109,6 +116,10 @@ function LoanComp({num}) {
         // setValue(e.target.value)
     };
 
+    const handleOnClick = (e) => {
+        setSkip(false);
+    }
+
     return (
         <div className="mb-96 container-fluid">
             <div className="container">
@@ -121,7 +132,7 @@ function LoanComp({num}) {
                             Enter loan amount, interest rate, and term to see your monthly payments and other detail
                             </Card.Text> */}
                             <Form style={{ gridColumn: '1/3', marginLeft:"5%", marginRight:"5%"}}>
-                                <Form.Group  className="card-header centered-text" style={{display:'flex', justifyContent:'center', marginTop: '-2%', marginLeft:"-8%", marginRight:"-8%"}}>
+                                <Form.Group  className="card-header" style={{display:'flex', justifyContent:'center', marginTop: '-2%', marginLeft:"-8%", marginRight:"-8%"}}>
                                     <Form.Label className="mt-4" style={{fontSize:'2rem',fontWeight:'bold'}}>{num===1?'Reference Loan':'Loan #'+(num-1)}</Form.Label>
                                 </Form.Group>
                                 <Form.Group>
@@ -174,6 +185,11 @@ function LoanComp({num}) {
                                     />
                                     <div className="range-slider ">
                                         <Slider min ={10} max={30} step={'5'} summary={false} minmax="none" value={ltermVal} handleChange={handleChange}  handleSliderUpdate={handleSliderUpdate}/>
+                                    </div>
+                                    <div style={{marginTop:'5rem', display:'flex', justifyContent:'center'}}>
+                                        <Button className='login form-btn' style={{width:'80%', margin:'auto', fontSize:"1.6rem"}} onClick={handleOnClick}>
+                                            Calculate Payments
+                                        </Button>
                                     </div>
                                 </Form.Group>
                             </Form>
