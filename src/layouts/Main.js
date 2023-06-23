@@ -13,13 +13,14 @@ import Escrow from '../pages/Escrow' ;
 import PreQual from '../pages/PreQual' ;
 import Services from '../pages/Services' ;
 import QuoteAnalysis from '../pages/QuoteAnalysis' ;
+import Loans from '../pages/Loans' ;
 import Login from '../pages/login';
 import { useState } from 'react';
 
 function Main() {
   // console.log("Inside Main.js");
   const [showModal, setShowModal] = useState(true);
-  const location=useLocation();
+  const location=useLocation();  
   const currentPath = location.pathname;
 
   const handleOpenModal = (e) => {
@@ -46,6 +47,7 @@ function Main() {
                 <Route path="/escrow" element={<Escrow />} />
                 <Route path="/prequal" element={<PreQual />} />
                 <Route path="/quoteanalysis" element={<QuoteAnalysis />} />
+                <Route path="/loancomp" element={<Loans />} />
                 <Route path="/services" element={<Services />} />
                 <Route path="/login" element={<Login action="login" show={showModal} handleOpen={handleOpenModal} handleClose={handleCloseModal} location={currentPath}/>} />
                 <Route path="/profile" element={<Login action="profile" show={showModal} handleOpen={handleOpenModal} handleClose={handleCloseModal} location={currentPath}/>} />

@@ -19,18 +19,20 @@ const Slider = (props) => {
     });
 
     useEffect(() =>  {
+        setSlider(slider=>({...slider, "value":props.value}));
         if (props.data) {
             setSlider(slider=>({...slider, "visibility":"hidden", "display":"block"}));
         }
-    
-    },[]);
+    },[props.value]);
+
+    console.log(props.value, slider.value);
 
     const updateSlider = (e) => {
         setSlider(slider=>({...slider, "value":e.target.value<props.max?e.target.value:props.max-1}));
 
         const i = slider.value;
         let rows=[];
-
+        console.log(props);
         if (props.data) {
             const dataArray = Object.entries(props.data[i]);
             for (let [key, value] of dataArray) {
@@ -47,6 +49,10 @@ const Slider = (props) => {
         props.handleChange(e);
     }
 
+    const handleOnMouseUp = (e)=> {
+        props.handleSliderUpdate(e);
+    }
+
   return (
         <Form.Group className="rs-range-line">
             {/* <Form.Label></Form.Label> */}
@@ -59,7 +65,9 @@ const Slider = (props) => {
                 id="rs-range-line" 
                 className="rs-range-line"
                 onChange={event => updateSlider(event)}
-                min={0}
+                onMouseUp={event => handleOnMouseUp(event)}
+                min={props.min}
+                step={props.step}
                 max = {props.max}
                 size = 'md'
                 style = {{padding:0, border:"none", outline:0}}

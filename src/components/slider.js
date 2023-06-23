@@ -10,10 +10,10 @@ const Slider = (props) => {
       value={value}
         id="slider-simple" 
         className="slider-simple"
-      onChange={changeEvent => {
-        setValue(changeEvent.target.value);
-        props.handleCallback(changeEvent.target.value);
-    }}
+        onChange={changeEvent => {
+            setValue(changeEvent.target.value);
+            props.handleCallback(changeEvent.target.value);
+        }}
       max = {24}
       size = 'sm'
     />
