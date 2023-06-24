@@ -2,6 +2,7 @@ import className from "classnames";
 import { GoBell, GoCloudDownload, GoDatabase } from 'react-icons/go';
 import Button from '../components/Button';
 import {useState, useEffect, Fragment} from 'react';
+import {parseDate} from '../components/util';
 function Services() {
     const myClassName = className("py-8 px-8 max-w-lg mx-auto bg-white rounded-xl shadow-lg space-y-2 lg:py-4 lg:flex lg:items-center lg:space-y-0 lg:space-x-6")
     
@@ -30,9 +31,9 @@ function Services() {
         <Fragment>
         <div className='card' style={{display:'grid', gridTemplateColumns:'1fr'}}>
             <a className="link" href={item.link} target="_blank" rel="nofollow noopener noreferrer"
-                aria-label={item.link} key={item.link}>
-                <h5 className="card-img-top font-bold text-3xl centered-text">
-                    {item.title + ' - Published on MBD on: '+item.pubDate.slice(0,10)}
+                aria-label={item.link} key={item.link} style={{textDecoration:'none'}}>
+                <h5 className="card-img-top font-bold text-3xl centered-text">{item.title}
+                    <p style={{fontSize:'1.6rem'}} className="font-normal italic">{'Published on MBD on '+parseDate(item.pubDate)}</p>
                 </h5>
             </a>
             <div className="card-hdr">
