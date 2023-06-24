@@ -1,8 +1,7 @@
 import className from "classnames";
 import { GoBell, GoCloudDownload, GoDatabase } from 'react-icons/go';
 import Button from '../components/Button';
-import {useState, useEffect, Fragment} from 'react';
-import {parseDate} from '../components/util';
+import Rss from '../components/Rss';
 function Services() {
     const myClassName = className("py-8 px-8 max-w-lg mx-auto bg-white rounded-xl shadow-lg space-y-2 lg:py-4 lg:flex lg:items-center lg:space-y-0 lg:space-x-6")
     
@@ -10,52 +9,11 @@ function Services() {
         console.log("My first custom Button component works!");
     }
 
-    const rssFeed = 'https://api.rss2json.com/v1/api.json?rss_url=https://www.mortgagenewsdaily.com/rss/rates'
-
-    const MAX_ARTICLES = 10;
-    const [articles, setArticles] = useState();
-    useEffect(() => {
-        const loadArticles = async () => {
-            fetch(rssFeed, { headers: { Accept: 'application/json' } })
-            .then((res) => res.json())
-            .then((data) => data.items.filter((item) => item.title.length > 0))
-            .then((newArticles) => newArticles.slice(0, MAX_ARTICLES))
-            .then((articles) => setArticles(articles))
-            .catch((error) => console.log(error));
-            };
-        loadArticles();
-    }, [MAX_ARTICLES]);
-
-    const content = articles
-        ? articles.map((item) => (
-        <Fragment>
-        <div className='card' style={{display:'grid', gridTemplateColumns:'1fr'}}>
-            <a className="link" href={item.link} target="_blank" rel="nofollow noopener noreferrer"
-                aria-label={item.link} key={item.link} style={{textDecoration:'none'}}>
-                <h5 className="card-img-top font-bold text-3xl centered-text">{item.title}
-                    <p style={{fontSize:'1.6rem'}} className="font-normal italic">{'Published on MBD on '+parseDate(item.pubDate)}</p>
-                </h5>
-            </a>
-            <div className="card-hdr">
-            </div>
-            <div className="card-body" >
-                {/* <h5 className="card-title">{item.title}</h5> */}
-                <div className="card-text" style={{gridColumn:'1/3'}}>
-                    <p className='main-text max-text-box'>{item.description}</p>
-                </div>
-            </div>
-            <br/>
-            {/* <a href="#" className="btn btn-primary">Go somewhere</a> */}
-        </div>
-        </Fragment>
-
-        ))
-        : "no article shown";
-
+    
     return (
         <div className="mt-8">
             <h3 className="heading-primary centered-text">Mortgage News from Mortgage News Daily</h3>
-            {content}
+            <Rss max={10} titleOnly={false}/>
             <br/>
             {/* <span className="text-2xl font-bold py-8 px-8 max-w-lg mx-auto bg-white rounded-xl shadow-lg space-y-2 lg:py-4 lg:flex lg:items-center lg:space-y-0 lg:space-x-6">More details coming soon...</span> */}
             <div className={myClassName}>
