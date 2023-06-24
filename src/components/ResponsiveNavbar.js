@@ -34,7 +34,7 @@ const ResponsiveNavbar = (props) => {
                             <NavDropdown.Item href="/loancomp">Loan Rate/Term Sensitivity Analysis</NavDropdown.Item>                    
 
                         </NavDropdown>
-                        <Nav.Link href="/services">Services</Nav.Link>
+                        <Nav.Link href="/services">Mortgage News</Nav.Link>
                         <Nav.Link href="/contact">Contact</Nav.Link>
                         <Nav.Link href="/about">About</Nav.Link>
                         {/* Conditional rendering of login link */}
