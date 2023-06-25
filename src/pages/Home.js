@@ -66,11 +66,13 @@ function Home() {
                                              to any lender but are provided to give a general idea of where rates are nationally for 
                                              different loan types. This information is calculated from actual locked rates with customers 
                                              across 35% of all mortgage transactions nationwide.</p>
-                                        <iframe loading="eager" id='optimalBlue' name='optimalBlue' src="https://www2.optimalblue.com/OBMMI/widget.php?actbg=520919&amp;inactbg=bcbec0&amp;hoverBG=520919&amp;rate=822636&amp;footer=666666&amp;graph1=520919&amp;graph2=c8ae48&amp;graph3=184742&amp;graph4=bcbec0&amp;graph6=004bf3"  
-                                            data-lazy-src="https://www2.optimalblue.com/OBMMI/widget.php?actbg=520919&amp;inactbg=bcbec0&amp;hoverBG=520919&amp;rate=822636&amp;footer=666666&amp;graph1=520919&amp;graph2=c8ae48&amp;graph3=184742&amp;graph4=bcbec0&amp;graph6=004bf3"
-                                            width={1000} height={500} title='Daily Mortgage Rates' sandbox='allow-scripts allow-same-origin' 
-                                            >
+                                        <div className="" style={{}}>
+                                            <iframe loading="eager" id='optimalBlue' name='optimalBlue' src="https://www2.optimalblue.com/OBMMI/widget.php?actbg=520919&amp;inactbg=bcbec0&amp;hoverBG=520919&amp;rate=822636&amp;footer=666666&amp;graph1=520919&amp;graph2=c8ae48&amp;graph3=184742&amp;graph4=bcbec0&amp;graph6=004bf3"  
+                                                data-lazy-src="https://www2.optimalblue.com/OBMMI/widget.php?actbg=520919&amp;inactbg=bcbec0&amp;hoverBG=520919&amp;rate=822636&amp;footer=666666&amp;graph1=520919&amp;graph2=c8ae48&amp;graph3=184742&amp;graph4=bcbec0&amp;graph6=004bf3"
+                                                style={{}} width='100%' height='500px' title='Daily Mortgage Rates' sandbox='allow-scripts allow-same-origin' 
+                                                >
                                             </iframe>
+                                        </div>
 
                                     </div>
                                 </div>
