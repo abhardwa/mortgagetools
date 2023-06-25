@@ -12,7 +12,7 @@ function Services() {
     return (
         <div className="mt-8">
             <h3 className="heading-primary centered-text">Mortgage News from Mortgage News Daily</h3>
-            <Rss max={10} titleOnly={false}/>
+            <Rss max={10} titleOnly={false} classFromParent='text-center text-3xl'/>
             <br/>
             {/* <span className="text-2xl font-bold py-8 px-8 max-w-lg mx-auto bg-white rounded-xl shadow-lg space-y-2 lg:py-4 lg:flex lg:items-center lg:space-y-0 lg:space-x-6">More details coming soon...</span> */}
             <div className={myClassName}>

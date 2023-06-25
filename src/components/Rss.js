@@ -9,8 +9,8 @@ function Rss ({max, titleOnly, classFromParent}) {
 
     const MAX_ARTICLES = 10;
     const [articles, setArticles] = useState();
-    const title1ClassName= classNames("card-img-top font-bold text-3xl pt-2 tracking-wide", classFromParent);
-    const title2ClassName= classNames("font-normal italic tracking-wide",classFromParent);
+    const title1ClassName= classNames("card-img-top font-bold pt-2 tracking-wide", classFromParent);
+    const title2ClassName= classNames("font-normal italic text-1xl tracking-wide",classFromParent);
 
     // console.log(title2ClassName, typeof(title2ClassName));
     useEffect(() => {
