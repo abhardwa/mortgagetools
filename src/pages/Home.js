@@ -1,10 +1,28 @@
 // import "../css/style.css";
 import {NavLink} from 'react-router-dom';
-import Skeleton from '../components/Skeleton';
 import { AiOutlineCheck } from "react-icons/ai";
+// import {useEffect} from 'react';
 
 function Home() {
     console.log("Inside Home.js")
+
+    // useEffect(() => {
+    //     window.onload = ()=> {
+    //         let frameElement=document.getElementById('optimalBlue');
+    //         console.log(frameElement);
+    //         let doc = frameElement.contentDocument;
+    //         console.log(doc);
+    //         doc.body.innerHTML = doc.body.innerHTML + '<style>#rates#rates {background-color:#e67e22;}</style>'
+    //     }
+    // }, []);
+
+    // window.onload = ()=> {
+    //     let frameElement=document.getElementById('optimalBlue');
+    //     console.log(frameElement);
+    //     let doc = frameElement.contentDocument;
+    //     doc.body.innerHTML = doc.body.innerHTML + '<style>.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {background-color:#e67e22;}</style>'
+    // }
+
     return (
         <div id="home" className="tabcontent">
             <div className="container-fluid">
@@ -48,7 +66,10 @@ function Home() {
                                              to any lender but are provided to give a general idea of where rates are nationally for 
                                              different loan types. This information is calculated from actual locked rates with customers 
                                              across 35% of all mortgage transactions nationwide.</p>
-                                        <iframe loading="lazy" src="https://www2.optimalblue.com/OBMMI/widget.php" width={1000} height={500} title='Daily Mortgage Rates' sandbox='allow-scripts allow-modal' ></iframe>
+                                        <iframe loading="eager" id='optimalBlue' name='optimalBlue' src="https://www2.optimalblue.com/OBMMI/widget.php?actbg=520919&amp;inactbg=bcbec0&amp;hoverBG=520919&amp;rate=822636&amp;footer=666666&amp;graph1=520919&amp;graph2=c8ae48&amp;graph3=184742&amp;graph4=bcbec0&amp;graph6=004bf3"  
+                                             width={1000} height={500} title='Daily Mortgage Rates' sandbox='allow-scripts' 
+                                            >
+                                            </iframe>
 
                                     </div>
                                 </div>
