@@ -2,6 +2,7 @@
 import {NavLink} from 'react-router-dom';
 import { AiOutlineCheck } from "react-icons/ai";
 // import {useEffect} from 'react';
+import Rss from '../components/Rss';
 
 function Home() {
     console.log("Inside Home.js")
@@ -42,15 +43,15 @@ function Home() {
                                         website that we are steadily building out. As we develop a tool to help you with your Home buying process, we will make it available
                                         right away. Our goal is to provide you the homebuyer, with all the necessary tools to make your home buying experience as smooth as possible. 
                                         Following tools are currently available on this website:
-                                        <ul><li className="flex"><AiOutlineCheck className='mt-3 mr-2'/><NavLink  className="link" to="/preQual"> a pre-qualification calculator that tells you how much house you can Afford.</NavLink>
+                                        <ul><li className="flex" ><AiOutlineCheck className='mt-3 mr-2'/><NavLink  className="link" to="/preQual"  style={{textDecoration:'none'}}> a pre-qualification calculator that tells you how much house you can Afford.</NavLink>
                                             </li>
-                                            <li className="flex"><AiOutlineCheck className='mt-3 mr-2'/><NavLink  className="link" to="/amortization"> an amortization schedule calculator that shows how your loan gets paid off over the term of the loan.</NavLink>
+                                            <li className="flex"><AiOutlineCheck className='mt-3 mr-2'/><NavLink  className="link" to="/amortization" style={{textDecoration:'none'}}> an amortization schedule calculator that shows how your loan gets paid off over the term of the loan.</NavLink>
                                             </li>
-                                            <li className="flex"><AiOutlineCheck className='mt-3 mr-2'/><NavLink className="link" to="/buyDown"> a buy-down calculator that shows how you can benefit from lower monthly payments during first 2 years with this option.</NavLink>
+                                            <li className="flex"><AiOutlineCheck className='mt-3 mr-2'/><NavLink className="link" to="/buyDown" style={{textDecoration:'none'}}> a buy-down calculator that shows how you can benefit from lower monthly payments during first 2 years with this option.</NavLink>
                                             </li>
-                                            <li className="flex"><AiOutlineCheck className='mt-3 mr-2'/><NavLink  className="link" to="/escrow"> an escrow amount calculator that shows how much escrow funds you will need at closing.</NavLink>
+                                            <li className="flex"><AiOutlineCheck className='mt-3 mr-2'/><NavLink  className="link" to="/escrow" style={{textDecoration:'none'}}> an escrow amount calculator that shows how much escrow funds you will need at closing.</NavLink>
                                             </li>
-                                            <li className="flex"><AiOutlineCheck className='mt-3 mr-2'/><NavLink  className="link" to="/quoteanalysis"> a tool that alows you to do a meaningful comparison of loan quotes you have received from different vendors.</NavLink> 
+                                            <li className="flex"><AiOutlineCheck className='mt-3 mr-2'/><NavLink  className="link" to="/quoteanalysis" style={{textDecoration:'none'}}> a tool that alows you to do a meaningful comparison of loan quotes you have received from different vendors.</NavLink> 
                                             </li>
                                         </ul>
                                         We are actively working on adding more helpful tools. In the meantime, welcome again, and have a look around. We hope you find something useful during your visit. Happy house hunting!
@@ -67,7 +68,7 @@ function Home() {
                                              different loan types. This information is calculated from actual locked rates with customers 
                                              across 35% of all mortgage transactions nationwide.</p>
                                         <div className="" style={{}}>
-                                            <iframe loading="eager" id='optimalBlue' name='optimalBlue' src="https://www2.optimalblue.com/OBMMI/widget.php?actbg=e67e22&amp;inactbg=bcbec0&amp;hoverBG=e67e22&amp;rate=e67e22&amp;footer=666666&amp;graph1=e67e22&amp;graph2=fae5d3&amp;graph3=184742&amp;graph4=bcbec0&amp;graph6=004bf3"  
+                                            <iframe loading="eager" id='optimalBlue' name='optimalBlue' src="https://www2.optimalblue.com/OBMMI/widget.php?actbg=e67e22&amp;inactbg=bcbec0&amp;hoverBG=e67e22&amp;rate=5e5c5c&amp;footer=666666&amp;graph1=e67e22&amp;graph2=fae5d3&amp;graph3=184742&amp;graph4=bcbec0&amp;graph6=004bf3"  
                                                 data-lazy-src="https://www2.optimalblue.com/OBMMI/widget.php?actbg=e67e22&amp;inactbg=bcbec0&amp;hoverBG=e67e22&amp;rate=822636&amp;footer=666666&amp;graph1=e67e22&amp;graph2=fae5d3&amp;graph3=184742&amp;graph4=bcbec0&amp;graph6=004bf3"
                                                 style={{}} width='100%' height='500px' title='Daily Mortgage Rates' sandbox='allow-scripts allow-same-origin' 
                                                 >
@@ -106,6 +107,12 @@ function Home() {
                                             <p className="small-text link-text">A Comparison Guide to help you compare different quotes side by side</p>
                                         </li>
                                     </ul>
+                                    <div className='bg-orange-500 centered-text text-padding-top text-white tracking-widest'>
+                                        <p className="text-3xl mt-4 mb-4 text-left pl-4">Recent Mortgage News...</p>
+                                    </div>
+                                    <div className='bg-slate-200'>
+                                        <Rss max={3} titleOnly={true} classFromParent='text-left text-2xl'/>
+                                    </div>
                                 </div>
                             </div>
                         </div>

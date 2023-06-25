@@ -2,13 +2,17 @@
 import {useState, useEffect, Fragment} from 'react';
 import {parseDate} from './util';
 import Skeleton from './Skeleton';
+import classNames from 'classnames';
 
-function Rss ({max, titleOnly}) {
+function Rss ({max, titleOnly, classFromParent}) {
     const rssFeed = 'https://api.rss2json.com/v1/api.json?rss_url=https://www.mortgagenewsdaily.com/rss/rates'
 
     const MAX_ARTICLES = 10;
     const [articles, setArticles] = useState();
-    // console.log(max, titleOnly);
+    const title1ClassName= classNames("card-img-top font-bold text-3xl pt-2 tracking-wide", classFromParent);
+    const title2ClassName= classNames("font-normal italic tracking-wide",classFromParent);
+
+    // console.log(title2ClassName, typeof(title2ClassName));
     useEffect(() => {
         // console.log(articles);
         const loadArticles = async () => {
@@ -26,11 +30,11 @@ function Rss ({max, titleOnly}) {
     // console.log(articles);
     const content = articles
         ? articles.map((item, idx) => (
-        <div key={idx} className='card' style={{display:'grid', gridTemplateColumns:'1fr'}}>
+        <div key={idx} className='card border-y-1  mb-2' style={{display:'grid', gridTemplateColumns:'1fr', border:'none'}}>
             <a className="link" href={item.link} target="_blank" rel="nofollow noopener noreferrer"
                 aria-label={item.link} key={item.link} style={{textDecoration:'none'}}>
-                <h5 className="card-img-top font-bold text-3xl centered-text">{item.title}
-                    <p style={{fontSize:'1.6rem'}} className="font-normal italic">{'Published on MBD on '+parseDate(item.pubDate)}</p>
+                <h5 className={title1ClassName}>{item.title}
+                    <p style={{fontSize:'1.6rem'}} className={title2ClassName}>{'Published on MBD on '+parseDate(item.pubDate)}</p>
                 </h5>
             </a>
             <div className="card-hdr">
@@ -41,7 +45,7 @@ function Rss ({max, titleOnly}) {
                     <p className='main-text max-text-box'>{titleOnly?'':item.description}</p>
                 </div>
             </div>
-            <br/>
+            {titleOnly?'':<br/>}
             {/* <a href="#" className="btn btn-primary">Go somewhere</a> */}
         </div>
 
