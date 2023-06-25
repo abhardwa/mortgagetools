@@ -5,12 +5,18 @@ function Skeleton ({times, className}) {
     const innerClassNames = classNames ('animate-shimmer', 'absolute', 'inset-0', '-translate-x-full', 'bg-gradient-to-r','from-gray-200','via-white','to-gray-200', className);
 
     const boxes = Array(times).fill(0).map((_,i) => {
-        return <div key={i} className={outerClassNames}>
-            <div className={innerClassNames}/>
-            
-        </div>
+        return (
+            <div key={i} className={outerClassNames}>
+                <div className={innerClassNames}/>
+                " "
+            </div>
+        )
     });
     console.log('inside Skeleton');
-    return (boxes);
+    return (
+        <div>
+            {boxes};
+        </div>
+    )
 }
 export default Skeleton;

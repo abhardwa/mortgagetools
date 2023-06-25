@@ -37,8 +37,20 @@ function Home() {
                                         </ul>
                                         We are actively working on adding more helpful tools. In the meantime, welcome again, and have a look around. We hope you find something useful during your visit. Happy house hunting!
                                     </div>
-                                    {/* <Skeleton times={1} className='h-40 w-25'/>
-                                    <Skeleton times={3} className='h-10 w-full'/>                                     */}
+                                    <div>
+                                        <p className="heading-tertiary mt-4 mb-2">Mortgage Market Interest Rates</p>
+                                        <p  className="main-text">Interest rates for mortgages can vary significantly from one borrower to the next based on 
+                                            the specific details of the transaction. Some of the main factors that affect the interest 
+                                            rate are credit score, down payment or loan-to-value, the type of mortgage, and how long 
+                                            the interest rate is locked.</p>
+
+                                        <p className="main-text">The information below depicts average rates on a national level. These rates are not specific
+                                             to any lender but are provided to give a general idea of where rates are nationally for 
+                                             different loan types. This information is calculated from actual locked rates with customers 
+                                             across 35% of all mortgage transactions nationwide.</p>
+                                        <iframe loading="lazy" src="https://www2.optimalblue.com/OBMMI/widget.php" width={1000} height={500} title='Daily Mortgage Rates' sandbox='allow-scripts allow-modal' ></iframe>
+
+                                    </div>
                                 </div>
                                 <div className="tools-section">
                                     <h5 className="subheading centered-text text-padding-top">Tools to Explore</h5>

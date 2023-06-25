@@ -1,6 +1,7 @@
 
 import {useState, useEffect, Fragment} from 'react';
 import {parseDate} from './util';
+import Skeleton from './Skeleton';
 
 function Rss ({max, titleOnly}) {
     const rssFeed = 'https://api.rss2json.com/v1/api.json?rss_url=https://www.mortgagenewsdaily.com/rss/rates'
@@ -45,7 +46,7 @@ function Rss ({max, titleOnly}) {
         </div>
 
         ))
-        : "no article shown";
+        : <Skeleton times={10}/>
 
     return (
         <Fragment>

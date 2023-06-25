@@ -9,7 +9,6 @@ function Services() {
         console.log("My first custom Button component works!");
     }
 
-    
     return (
         <div className="mt-8">
             <h3 className="heading-primary centered-text">Mortgage News from Mortgage News Daily</h3>
