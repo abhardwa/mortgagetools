@@ -8,6 +8,14 @@ import './css/style.css';
 import 'react-datepicker/dist/react-datepicker.css';
 import {Provider} from 'react-redux';
 import {store} from './store/store';
+import TagManager from 'react-gtm-module';
+
+const tagManagerArgs = {
+  //Add GTM container ID
+  gtmId: 'GTM-PKKP5XG'
+};
+
+TagManager.initialize(tagManagerArgs);
 
 const el = document.getElementById('root');
 const root = ReactDOM.createRoot(el);

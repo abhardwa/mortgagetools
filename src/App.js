@@ -8,7 +8,26 @@ import './App.scss';
 
 function App() {
   // console.log("Inside App.js");
-const dispatch = useDispatch();
+  const dispatch = useDispatch();
+
+  const category = 'account'
+  const label ='premium';
+  const action = 'login';
+  const value = 1;
+
+  window.dataLayer.push({
+    event: 'pageview'
+  });
+
+  window.dataLayer.push({
+  event: 'event',
+  eventProps: {
+      category: category,
+      action: action,
+      label: label,
+      value: value,
+  }
+});
 
 // check at page load if a user is authenticated
   useEffect(() => {
