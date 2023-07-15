@@ -6,7 +6,7 @@ import {Routes, Route, useLocation} from "react-router-dom";
 // import {Link, Navigate} from 'react-router-dom';
 import Home from '../pages/Home';
 import Contact from '../pages/Contact';
-import About from '../components/About' ;
+// import About from '../components/About' ;
 import Amortization from '../pages/Amortization' ;
 import Buydown from '../pages/Buydown'; 
 import Escrow from '../pages/Escrow' ;
@@ -41,7 +41,7 @@ function Main() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/contact" element={<Contact />} />
-                <Route path="/about" element={<About />} />
+                {/* <Route path="/about" element={<About />} /> */}
                 <Route path="/amortization" element={<Amortization />} />
                 <Route path="/buydown" element={<Buydown />} />
                 <Route path="/escrow" element={<Escrow />} />

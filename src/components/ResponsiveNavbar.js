@@ -36,7 +36,7 @@ const ResponsiveNavbar = (props) => {
                         </NavDropdown>
                         <Nav.Link href="/services">Mortgage News</Nav.Link>
                         <Nav.Link href="/contact">Contact</Nav.Link>
-                        <Nav.Link href="/about">About</Nav.Link>
+                        {/* <Nav.Link href="/about">About</Nav.Link> */}
                         {/* Conditional rendering of login link */}
                         {user ? (
                             <NavDropdown title={user.uName} id="nav-dropdown" user={user} className="navbar-right">

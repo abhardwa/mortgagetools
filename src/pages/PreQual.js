@@ -121,11 +121,7 @@ function PreQual() {
             }
         }
 
-        setData(data => {
-            return {
-            ...data, ...updatedValues
-            }
-        });
+        setData(data => {return {...data, ...updatedValues}});
     };
 
     return (
