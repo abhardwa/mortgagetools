@@ -99,7 +99,7 @@ function Contact() {
                                     <div className="row">
                                         <div className="col-md-12 form-group mb-3">
                                             <label className="col-form-label">Message *</label>
-                                            <textarea className="form-input" name="message" id="message" cols="30" rows="5" placeholder="Write your message here..." value={state.message} onChange={handleChange}></textarea>
+                                            <textarea className="form-input" name="message" id="message" cols="30" rows="5" placeholder="Your message ..." value={state.message} onChange={handleChange}></textarea>
                                         </div>
                                     </div>
                                     <div className="row">
