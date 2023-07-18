@@ -81,7 +81,7 @@ function Contact() {
                                                 <div className="form-group mb-3">
                                                     <label className="col-form-label">Email *</label>
                                                     <input type="email" className="form-input" id="email" placeholder="Your email" value={state.email} onChange={handleChange}/>  
-                                                    <label className="col-form-label">Phone #</label>
+                                                    <label className="col-form-label">Phone</label>
                                                     <input type="tel" className="form-input" id="phone"  maxLength="10"  title="Ten digits code" value={state.phone} onChange={handleChange} pattern="[0-9]{10}" placeholder="1234567890" required/>  
                                                 </div>
 
