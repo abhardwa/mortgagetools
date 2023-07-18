@@ -8,6 +8,7 @@ function Contact() {
     const [state, setState] = useState({
         name: '',
         email: '',
+        phone: '',
         subject:'',
         message:'',
     })
@@ -25,7 +26,7 @@ function Contact() {
             return (alert("Please enter all required fields marked with an *"));
         }
         const userData = {
-            message: `From: ${state.name} \t${state.email}\n\n` + state.message,
+            message: `From: ${state.name}\nEmail: ${state.email}\nPhone: ${state.phone}\n\n` + state.message,
             subject: state.subject,
             email:state.email,
         }
@@ -35,7 +36,7 @@ function Contact() {
             console.log(response);
             if (response === 'ok') {
                 alert("Message Sent.");
-                setState(state=>{return {...state, name:'', subject: '', email: '', message: ''}})
+                setState(state=>{return {...state, name:'', subject: '', email: '', message: '', phone: ''}})
               } else {
                 alert("Message failed to send.")
               }
@@ -77,14 +78,20 @@ function Contact() {
                                         <div className="col-md-6 form-group mb-3">
                                             <label className="col-form-label">Name *</label>
                                             <input id='name' type="text" className="form-input " placeholder="Your name" value={state.name} onChange={handleChange} />
-                                            <div style={{position: "relative !important", height: "0px !important", width: "0px !important", float: "left !important"}}></div></div>
-                                                <div className="col-md-6 form-group mb-3">
+                                                <div className="form-group mb-3">
                                                     <label className="col-form-label">Email *</label>
                                                     <input type="email" className="form-input" id="email" placeholder="Your email" value={state.email} onChange={handleChange}/>  
+                                                    <label className="col-form-label">Phone #</label>
+                                                    <input type="tel" className="form-input" id="phone"  maxLength="10"  title="Ten digits code" value={state.phone} onChange={handleChange} pattern="[0-9]{10}" placeholder="1234567890" required/>  
                                                 </div>
-                                            </div>
-                                            <div className="row">
-                                            <div className="col-md-12 form-group mb-3">
+
+                                            {/* <div style={{position: "relative !important", height: "0px !important", width: "0px !important", float: "left !important"}}>
+                                            </div> */}
+                                        </div>
+
+                                    </div>
+                                    <div className="row">
+                                        <div className="col-md-12 form-group mb-3">
                                             <label className="col-form-label">Subject</label>
                                             <input type="text" className="form-input" id="subject" placeholder="A brief title" value={state.subject} onChange={handleChange}/>  
                                         </div>
@@ -97,7 +104,7 @@ function Contact() {
                                     </div>
                                     <div className="row">
                                         <div className="col-md-12 form-group">
-                                            <input type="submit" value="Send Message" className="btn btn-primary rounded-2 py-2 px-4 main-text mb-96" onClick={handleSubmit}/>
+                                            <input type="submit" value="Send Message" className="btn btn-primary rounded-2 py-2 px-4 main-text mb-96 hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2" onClick={handleSubmit}/>
                                             <span className="submitting"></span>
                                         </div>
                                     </div>
