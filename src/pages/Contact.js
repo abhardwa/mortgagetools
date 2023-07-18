@@ -12,7 +12,7 @@ function Contact() {
         subject:'',
         message:'',
     })
-    const myClassName = className("py-8 px-8 max-w-lg mx-auto bg-white rounded-xl shadow-lg space-y-2 lg:py-4 lg:flex lg:items-center lg:space-y-0 lg:space-x-6")
+    const myClassName = className("py-8 px-8 max-w-lg mx-auto bg-white rounded-xl shadow-lg space-y-2 mt-4 lg:py-4 lg:flex lg:items-start lg:space-y-0 lg:space-x-6")
     
     const handleClick = () => {
         console.log("My first custom Button component works!");
@@ -48,20 +48,20 @@ function Contact() {
         <div>
             <div className="container-fluid">
                 <div className="container content-area">
-                    <div className="row align-items-stretch no-gutters contact-wrap">
+                    <div className="row no-gutters contact-wrap">
                         <div className="col-md-12">
                             <div className="form">
                             {/* <span className="text-2xl font-bold py-8 px-8 max-w-lg mx-auto bg-white rounded-xl shadow-lg space-y-2 lg:py-4 lg:flex lg:items-center lg:space-y-0 lg:space-x-6">More details coming soon...</span> */}
                             <div className={myClassName}>
                                 <img className="block mx-auto h-40 rounded-full lg:mx-0 lg:shrink-0" src={require("../img/shachiHeadShot.png")} alt="Woman's Face" />
-                                <div className="text-center space-y-2 lg:text-left">
+                                <div className="text-left space-y-2 lg:text-left">
                                     <div className="space-y-0.5">
-                                    <p className="text-3xl text-black tracking-wider font-semibold">
-                                        Shachi Bhardwaj
-                                    </p>
-                                    <p className="text-slate-600 tracking-wider font-medium mb-3 text-2xl">
-                                        Mortgage Banker
-                                    </p>
+                                        <p className="text-3xl text-black tracking-wider font-semibold">
+                                            Shachi Bhardwaj
+                                        </p>
+                                        <p className="text-slate-600 tracking-wider font-medium mb-3 text-2xl">
+                                            Mortgage Banker
+                                        </p>
                                     </div>
                                     <span className="text-2xl tracking-wide text-black">If you are considering purchasing a home and would like to understand better your loan options, please contact me at 
                                     <a href="https://banksouthmortgage.com/loan-officer/shachi-bhardwaj/" target="_blank" rel="noopener noreferrer"
@@ -104,7 +104,7 @@ function Contact() {
                                     </div>
                                     <div className="row">
                                         <div className="col-md-12 form-group">
-                                            <input type="submit" value="Send Message" className="btn btn-primary rounded-2 py-2 px-4 main-text mb-96 hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2" onClick={handleSubmit}/>
+                                            <input type="submit" value="Send Message" className="btn btn-primary rounded-2 py-2 px-4 main-text mb-84 hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2" onClick={handleSubmit}/>
                                             <span className="submitting"></span>
                                         </div>
                                     </div>
