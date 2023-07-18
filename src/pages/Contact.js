@@ -77,10 +77,10 @@ function Contact() {
                                     <div className="row">
                                         <div className="col-md-6 form-group mb-3">
                                             <label className="col-form-label">Name *</label>
-                                            <input id='name' type="text" className="form-input " placeholder="Your name" value={state.name} onChange={handleChange} />
+                                            <input id='name' type="text" className="form-input " placeholder="Your name" value={state.name} onChange={handleChange} /><br/>
                                                 <div className="form-group mb-3">
                                                     <label className="col-form-label">Email *</label>
-                                                    <input type="email" className="form-input" id="email" placeholder="Your email" value={state.email} onChange={handleChange}/>  
+                                                    <input type="email" className="form-input" id="email" placeholder="Your email" value={state.email} onChange={handleChange}/><br/>  
                                                     <label className="col-form-label">Phone</label>
                                                     <input type="tel" className="form-input" id="phone"  maxLength="10"  title="Ten digits code" value={state.phone} onChange={handleChange} pattern="[0-9]{10}" placeholder="1234567890" required/>  
                                                 </div>
