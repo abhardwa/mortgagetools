@@ -29,6 +29,7 @@ GREY COLOR: #343a40
   #555 
   #333
 
+
 --- 05 SHADOWS
 0 2.4rem 4.8rem rgba(0, 0, 0, 0.075);
 
@@ -446,12 +447,13 @@ caption {
 .input-block {
   grid-column: 1/2;
   grid-row: auto;
-  margin-bottom: 3rem;
-  padding: 2rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
   /* width: 50%; */
   box-shadow: .5rem .8rem 1.0rem rgba(0, 0, 0, 0.10);
   border-radius: 5%;
   background-color:#fffaf5;
+  color:#000
   /* background-color: #fae5d3; */
 }
 .qualify{
@@ -466,7 +468,7 @@ background-color: #dbe6d5;
 .form {
   display: grid;
   /* width: 50%; */
-  grid-template-columns: 1.5fr 1.5fr 0.7fr;
+  grid-template-columns: 2.5fr 1fr 2fr;
   grid-template-rows: auto auto auto;
   gap: 0.3rem 0.3rem;
   font-weight: bold;
