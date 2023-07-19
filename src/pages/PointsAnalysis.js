@@ -139,7 +139,7 @@ function PointsAnalysis() {
                                 <input data-type="number" type="number"  step="0.125" min = "0.125"  name="intRateNoPoints" id="intRateNoPoints" 
                                     className="intRateNoPoints form-input" value={data.intRateNoPoints||''} onChange={handleChange}/>
                                 <div className="range-slider" style={{width:'50%'}}>
-                                    <Slider min ={0} max={15} step={'.125'} summary={false} minmax="none" value={data.intRateNoPoints} handleChange={handleChange} handleSliderUpdate={handleSliderUpdate} />
+                                    <Slider min ={0} max={10} step={'.125'} summary={false} minmax="none" value={data.intRateNoPoints} handleChange={handleChange} handleSliderUpdate={handleSliderUpdate} />
                                 </div>
                             </form>
                             <form className="form form--intRate" style={{gridTemplateColumns:'1.5fr 1fr 2fr'}}>
@@ -150,15 +150,15 @@ function PointsAnalysis() {
                                     <Slider min ={0} max={10} step={'.125'} summary={false} minmax="none" value={data.intRatePoints} handleChange={handleChange} handleSliderUpdate={handleSliderUpdate} />
                                 </div>
                             </form>                            
-                            <form className="form form--pointsPaid" style={{gridTemplateColumns:'1.5fr 1fr 2fr'}}>
+                            <form className="form" style={{gridTemplateColumns:'1.5fr 1fr 2fr'}}>
                                 <label className="form-label" >Number of Points Paid:</label>
                                 <input id="pointsPaid" name="pointsPaid" type="number" min="0" step="0.125" className="pointsPaid form-input" value={data.pointsPaid} onChange={handleChange}>
                                 </input>
                                 <div className="range-slider" style={{width:'50%'}}>
-                                    <Slider min ={0} max={5} step={.125} summary={false} minmax="none" value={data.pointsPaid} handleChange={handleChange} handleSliderUpdate={handleSliderUpdate} />
+                                    <Slider min ={0} max={5} step={'0.125'} summary={false} minmax="none" value={data.pointsPaid} handleChange={handleChange} handleSliderUpdate={handleSliderUpdate} />
                                 </div>
                             </form>
-                            <form></form>
+                            <form><label></label><input/></form>
                         </div>
     
                         <section className="white-section " id="monthly-tbl">
