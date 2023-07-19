@@ -25,14 +25,14 @@ const Slider = (props) => {
         }
     },[props.value]);
 
-    console.log(props.value, slider.value);
+    // console.log(props.value, slider.value);
 
     const updateSlider = (e) => {
         setSlider(slider=>({...slider, "value":e.target.value<props.max?e.target.value:props.max-1}));
 
         const i = slider.value;
         let rows=[];
-        console.log(props);
+        // console.log(props);
         if (props.data) {
             const dataArray = Object.entries(props.data[i]);
             for (let [key, value] of dataArray) {

@@ -13,6 +13,7 @@ import Escrow from '../pages/Escrow' ;
 import PreQual from '../pages/PreQual' ;
 import Services from '../pages/Services' ;
 import QuoteAnalysis from '../pages/QuoteAnalysis' ;
+import PointsAnalysis from '../pages/PointsAnalysis';
 import Loans from '../pages/Loans' ;
 import Login from '../pages/login';
 import { useState } from 'react';
@@ -44,6 +45,7 @@ function Main() {
                 {/* <Route path="/about" element={<About />} /> */}
                 <Route path="/amortization" element={<Amortization />} />
                 <Route path="/buydown" element={<Buydown />} />
+                <Route path="/pointsanalysis" element={<PointsAnalysis />} />
                 <Route path="/escrow" element={<Escrow />} />
                 <Route path="/prequal" element={<PreQual />} />
                 <Route path="/quoteanalysis" element={<QuoteAnalysis />} />
