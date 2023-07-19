@@ -7,7 +7,7 @@ function PointsAnalysis() {
         term:30,
         intRateNoPoints: 6.25,
         intRatePoints: 5.75,
-        pointsPaid: 1,         
+        pointsPaid: 0,         
     });
     const out = {
         costOfPoints: 0,
@@ -141,7 +141,7 @@ function PointsAnalysis() {
                                 <div className="range-slider" style={{width:'50%'}}>
                                     <Slider min ={0} max={15} step={'.125'} summary={false} minmax="none" value={data.intRateNoPoints} handleChange={handleChange} handleSliderUpdate={handleSliderUpdate} />
                                 </div>
-                            </form><br/>
+                            </form>
                             <form className="form form--intRate" style={{gridTemplateColumns:'1.5fr 1fr 2fr'}}>
                                 <label className="form-label">Interest Rate - With Points (%):</label>
                                 <input data-type="number" type="number"  step="0.125" min = "0.125"  name="intRatePoints" id="intRatePoints" 
@@ -155,10 +155,10 @@ function PointsAnalysis() {
                                 <input id="pointsPaid" name="pointsPaid" type="number" min="0" step="0.125" className="pointsPaid form-input" value={data.pointsPaid} onChange={handleChange}>
                                 </input>
                                 <div className="range-slider" style={{width:'50%'}}>
-                                    <Slider min ={0} max={5} step={'.125'} summary={false} minmax="none" value={data.pointsPaid} handleChange={handleChange} handleSliderUpdate={handleSliderUpdate} />
+                                    <Slider min ={0} max={5} step={.125} summary={false} minmax="none" value={data.pointsPaid} handleChange={handleChange} handleSliderUpdate={handleSliderUpdate} />
                                 </div>
-                                <div></div>
                             </form>
+                            <form></form>
                         </div>
     
                         <section className="white-section " id="monthly-tbl">
