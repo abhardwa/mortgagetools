@@ -546,12 +546,12 @@ background-color: #dbe6d5;
   padding-top: 0.3rem;
   align-self: center;
 }
-#moDebts {
+/* #moDebts {
   color: #e67e22;
   cursor: pointer;
   font-weight: 700;
   align-self: center;
-}
+} */
 #questions-container {
   grid-column: 1/4;
   display: none; /* set to grid later in js */

@@ -239,9 +239,9 @@ function PreQual() {
                                                 <Slider min ={100} max={50000} step={'100'} summary={false} minmax="none" value={data.ccMPay} handleChange={handleChange} handleSliderUpdate={handleSliderUpdate} />
                                             </div>
 
-                                            <label className="form-label" title="Your liabilities include payments for mortgage, car loans, other loans, student loans, and credit card payments" >Total Monthly Liabilities:</label>
+                                            {/* <label className="form-label" title="Your liabilities include payments for mortgage, car loans, other loans, student loans, and credit card payments" >Total Monthly Liabilities:</label>
                                             <span type="text" title="Your liabilities include payments for mortgage, car loans, other loans, student loans, and credit card payments" name="moDebts" id="moDebts" className="form-out subheading">{out.moDebts.toFixed(0)}</span>
-                                            <span className="form-suffix">$/month</span>
+                                            <span className="form-suffix">$/month</span> */}
 
                                         </form>
                                     </div>
@@ -261,27 +261,27 @@ function PreQual() {
                                     <div className = "input-block qualify">
                                         <form className = "form">
                                             <div className="form-subheading mx-0 px-0">
-                                                <h1 className="tertiary-text centered-text mx-0 px-0" style={{marginBottom:'0rem !important' , paddingBottom:'0rem !important', lineHeight:'2rem', color:out.qualifyColor}}>A home worth <span id="purchaseAmt" className="font-bold" >{noDecimals.format(out.purchaseAmt)} </span> {out.qualifyYN}</h1>
+                                                <h1 className="tertiary-text centered-text mx-0 px-0" style={{marginBottom:'0rem !important' , paddingBottom:'0rem !important', lineHeight:'2rem', color:out.qualifyColor}}>A home worth <span id="purchaseAmt" className="font-bold" >{noDecimals.format(out.purchaseAmt>data.downPayAmt?out.purchaseAmt:data.downPayAmt)} </span> {out.qualifyYN}</h1>
                                                 <h3 className="small-text centered-text italic-text text-sky-600/100"  style={{marginTop:'1rem', paddingTop:'0rem'}}>Your debt to income ratio for this amount is <span id="DtiIRatio" className="font-bold text-2xl mt-0 underline underline-offset-4">{(data.DtiIRatio).toFixed(2)} </span></h3>
                                             </div>
 
                                             <label className="form-label">Home Price:</label>
-                                            <span type="text" name="purchaseAmt" id="purchaseAmt" className="form-out">{thouSep.format(out.purchaseAmt.toFixed(0))} </span>
+                                            <span type="text" name="purchaseAmt" id="purchaseAmt" className="form-out">{thouSep.format((out.purchaseAmt>data.downPayAmt?out.purchaseAmt:data.downPayAmt).toFixed(0))} </span>
                                             <span className="form-suffix">$</span>
                                             <label className="form-label" >Loan Amount:</label>
-                                            <span type="text" name="loanAmt" id="loanAmt" size="15" className="form-out">{thouSep.format(out.loanAmt.toFixed(0))}</span>
+                                            <span type="text" name="loanAmt" id="loanAmt" size="15" className="form-out">{thouSep.format((out.loanAmt>0?out.loanAmt:0).toFixed(0))}</span>
                                             <span className="form-suffix">$</span>
                                             <label className="form-label" >Mortgage Payment (P&I only):</label>
-                                            <span type="text" name="pmtPI" id="pmtPI" className="form-out">{thouSep.format(out.pmtPI.toFixed(2))}</span>
+                                            <span type="text" name="pmtPI" id="pmtPI" className="form-out">{thouSep.format((out.pmtPI>0?out.pmtPI:0).toFixed(2))}</span>
                                             <span className="form-suffix">$/month</span>
                                             <label className="form-label" >Housing Pymt (incl. Tax, Ins, HOA):</label>
-                                            <span type="text" name="pmtPITI" id="pmtPITI" className="form-out">{thouSep.format(out.pmtPITI.toFixed(2))}</span>
+                                            <span type="text" name="pmtPITI" id="pmtPITI" className="form-out">{thouSep.format((out.pmtPITI>0?out.pmtPITI:0).toFixed(2))}</span>
                                             <span className="form-suffix">$/month</span>
                                             <label className="form-label" >Other Debt Payments:</label>
                                             <span type="text" name="moDebts" id="moDebts" className="form-out">{thouSep.format(out.moDebts.toFixed(2))}</span>
                                             <span className="form-suffix">$/month</span>
                                             <label className="form-label" >Total Payments:</label>
-                                            <span type="text" name="totalPymt" id="totalPymt" className="form-out">{thouSep.format((out.pmtPITI+out.moDebts).toFixed(2))}</span>
+                                            <span type="text" name="totalPymt" id="totalPymt" className="form-out">{thouSep.format(((out.pmtPITI>0?out.pmtPITI:0)+out.moDebts).toFixed(2))}</span>
                                             <span className="form-suffix">$/month</span>
                                             <br/>
                                             <div className="form-subheading subheading">
