@@ -39,12 +39,13 @@ function Rss ({max, titleOnly, classFromParent}) {
             </a>
             <div className="card-hdr">
             </div>
-            <div className="card-body" >
+            <div className="card-body">
                 {/* <h5 className="card-title">{item.title}</h5> */}
                 <div className="card-text" style={{gridColumn:'1/3'}}>
                     <p className='main-text max-text-box'>{titleOnly?'':item.description}</p>
                 </div>
             </div>
+            <hr style={{height: '1px', width:'100%'}}/>
             {titleOnly?'':<br/>}
             {/* <a href="#" className="btn btn-primary">Go somewhere</a> */}
         </div>
