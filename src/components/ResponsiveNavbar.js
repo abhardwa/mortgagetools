@@ -20,7 +20,7 @@ const ResponsiveNavbar = (props) => {
         <div>
             <Navbar bg="dark" collapseOnSelect expand="sm">
                 <Container>
-                    <Navbar.Brand href="/">MortgageToolsUSA</Navbar.Brand>
+                    <Navbar.Brand href="/"><img className="block mx-auto rounded-full lg:mx-0 lg:shrink-0" style={{height:'6rem'}} src={require("../img/BrandWhite.png")} alt="MortgageToolsUSA" /></Navbar.Brand>
                     <Navbar.Toggle aria-controls="navbar-toggle" />
                     <Navbar.Collapse id="navbar-toggle">
                     <Nav activeKey={location.pathname} className="mr-auto sub-nav">

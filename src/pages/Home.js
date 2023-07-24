@@ -34,7 +34,7 @@ function Home() {
                             <div id="" className="home-grid">
                                 <hr></hr>
                                 <div className="content-section">
-                                    <h3 className="heading-primary">Welcome to <span className = "brand-name">MortgageToolsUSA</span></h3>
+                                    <h3 className="heading-primary" style={{display:'flex'}}>Welcome to <span className = "" style={{color:'var(--textColorAccent)', marginLeft:'1rem', marginTop:'-1rem'}}><img className="block mx-auto h-40 rounded-full lg:mx-0 lg:shrink-0" src={require("../img/brand.png")} alt="MortgageToolsUSA" /></span></h3>
                                     <h4 className="heading-tertiary">A website dedicated to making the home mortgage process
                                         easy
                                         and fun for the average home buyer.</h4>
