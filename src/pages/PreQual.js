@@ -140,7 +140,7 @@ function PreQual() {
                                     <p className="main-text max-text-box">Enter your income, loan detail, property taxes, home insurance, HOA payments, and other liabilities below to get an estimate of how much house you could qualify for. The
                                         calculator will calculate your estimated monthly payments, and based on your income and liabilities, suggest a maximum home value you can qualify for. 
                                     </p>
-                                    <h1 className="tertiary-text centered-text mx-0 px-0 text-sky-600/100" style={{ lineHeight:'4rem'}}>Suggested Maximum Home Value: <span id="maxHomeAmt" className="font-bold" >{noDecimals.format(out.maxHomeAmt)} </span></h1>
+                                    <h1 className="tertiary-text centered-text mx-0 px-0" style={{ lineHeight:'4rem', color:'var(--textColorPrimary)'}}>Suggested Maximum Home Value: <span id="maxHomeAmt" className="font-bold" style={{color:'var(--textColorAccent)'}}>{noDecimals.format(out.maxHomeAmt)} </span></h1>
                                 </div>
                             </div>
                             <div className = "grid-container">
@@ -261,8 +261,8 @@ function PreQual() {
                                     <div className = "input-block qualify">
                                         <form className = "form">
                                             <div className="form-subheading mx-0 px-0">
-                                                <h1 className="tertiary-text centered-text mx-0 px-0" style={{marginBottom:'0rem !important' , paddingBottom:'0rem !important', lineHeight:'2rem', color:out.qualifyColor}}>A home worth <span id="purchaseAmt" className="font-bold" >{noDecimals.format(out.purchaseAmt>data.downPayAmt?out.purchaseAmt:data.downPayAmt)} </span> {out.qualifyYN}</h1>
-                                                <h3 className="small-text centered-text italic-text text-sky-600/100"  style={{marginTop:'1rem', paddingTop:'0rem'}}>Your debt to income ratio for this amount is <span id="DtiIRatio" className="font-bold text-2xl mt-0 underline underline-offset-4">{(data.DtiIRatio).toFixed(2)} </span></h3>
+                                                <h1 className="tertiary-text centered-text mx-0 px-0" style={{marginBottom:'0rem !important' , paddingBottom:'0rem !important', lineHeight:'3.5rem', color:out.qualifyColor}}>A home worth <span id="purchaseAmt" className="font-bold">{noDecimals.format(out.purchaseAmt>data.downPayAmt?out.purchaseAmt:data.downPayAmt)} </span> {out.qualifyYN}</h1>
+                                                <h3 className="small-text centered-text italic-text "  style={{marginTop:'1rem', paddingTop:'0rem', color:'var(--textColorAccent'}}>Your debt to income ratio for this amount is <span id="DtiIRatio" className="font-bold text-2xl mt-0 underline underline-offset-4">{(data.DtiIRatio).toFixed(2)} </span></h3>
                                             </div>
 
                                             <label className="form-label">Home Price:</label>
@@ -284,7 +284,7 @@ function PreQual() {
                                             <span type="text" name="totalPymt" id="totalPymt" className="form-out">{thouSep.format(((out.pmtPITI>0?out.pmtPITI:0)+out.moDebts).toFixed(2))}</span>
                                             <span className="form-suffix">$/month</span>
                                             <br/>
-                                            <div className="form-subheading subheading">
+                                            <div className="form-subheading subheading" style={{color:'var(--textColorHighlight)'}}>
                                                 Note: This estimate does not include PMI payment
                                             </div>
                                         </form>

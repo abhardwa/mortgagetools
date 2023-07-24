@@ -30,7 +30,7 @@ function Rss ({max, titleOnly, classFromParent}) {
     // console.log(articles);
     const content = articles
         ? articles.map((item, idx) => (
-        <div key={idx} className='card border-y-1  mb-2' style={{display:'grid', gridTemplateColumns:'1fr', border:'none'}}>
+        <div key={idx} className='card border-y-1  mb-2' style={{display:'grid', gridTemplateColumns:'1fr', border:'none', backgroundColor:'var(--bgColorPrimary)'}}>
             <a className="link" href={item.link} target="_blank" rel="nofollow noopener noreferrer"
                 aria-label={item.link} key={item.link} style={{textDecoration:'none'}}>
                 <h5 className={title1ClassName}>{item.title}

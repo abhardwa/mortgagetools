@@ -214,7 +214,7 @@ insurance, they will give you what is called an escrow refund. If their analysis
                     <table className="GoodResults small-text  right-text">
                         <tbody>
                             <tr className = "bold-text">
-                                <th className="banner">&nbsp;</th>
+                                <th className="banner">Expense Type</th>
                                 <th className="banner">Annual Payment</th>
                                 <th className="banner">Month Due</th>
                                 <th className="banner">Cushion</th>

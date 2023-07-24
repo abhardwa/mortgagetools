@@ -114,51 +114,53 @@ function PointsAnalysis() {
                                     The calculator tells you how long it will take you to recover the additional upfront payment, based on the resulting monthly payment savings due to a lower interest rate. 
                                        <br/>For example, you may refinance your loan, or move to another home, before you have recovered the additional upfront costs. 
                                     </p>
-                                    <h1 className="tertiary-text centered-text mx-0 px-0 text-sky-600/100" style={{ lineHeight:'4rem'}}>You would need to carry the loan for <span id="recoveryPeriod" className="font-bold" >{out.recoveryPeriod} </span>months to fully recover the cost of points.</h1>
+                                    <h1 className="tertiary-text centered-text mx-0 px-0 " style={{color:'var(--textColorPrimary)', lineHeight:'4rem'}}>You would need to carry the loan for <span id="recoveryPeriod" className="font-bold" style={{color:'var(--textColorAccent)',}}>{out.recoveryPeriod} </span>months to fully recover the cost of points.</h1>
                                 </div>
                                 <br/><br/>
                             </div>
-                            <form className="form form--loanAmt" style={{gridTemplateColumns:'1.5fr 1fr 2fr'}}>
-                                <label className="form-label">Loan Amount ($):</label>
-                                <input name="loanAmt" id="loanAmt" size="15" className="loanAmt form-input"
-                                    pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" data-type="currency" type="number" min='5000' step='5000' value={data.loanAmt} onChange={handleChange}/>
-                                <div className="range-slider" style={{width:'50%'}}>
-                                    <Slider min ={5000} max={1000000} step={'5000'} summary={false} minmax="none" value={data.loanAmt} handleChange={handleChange} handleSliderUpdate={handleSliderUpdate} />
-                                </div>
-                            </form>
-                            <form className="form form--term" style={{gridTemplateColumns:'1.5fr 1fr 2fr'}}>
-                                <label className="form-label" >Loan Term (years):</label>
-                                <input id="term" name="term" type="number" step='5' className="term form-input" value={data.term} onChange={handleChange}>
-                                </input>
-                                <div className="range-slider" style={{width:'50%'}}>
-                                    <Slider min ={5} max={30} step={'5'} summary={false} minmax="none" value={data.term} handleChange={handleChange} handleSliderUpdate={handleSliderUpdate} />
-                                </div>
-                            </form>
-                            <form className="form form--intRate" style={{gridTemplateColumns:'1.5fr 1fr 2fr'}}>
-                                <label className="form-label">Interest Rate - No Points (%):</label>
-                                <input data-type="number" type="number"  step="0.125" min = "0.125"  name="intRateNoPoints" id="intRateNoPoints" 
-                                    className="intRateNoPoints form-input" value={data.intRateNoPoints||''} onChange={handleChange}/>
-                                <div className="range-slider" style={{width:'50%'}}>
-                                    <Slider min ={0} max={10} step={'.125'} summary={false} minmax="none" value={data.intRateNoPoints} handleChange={handleChange} handleSliderUpdate={handleSliderUpdate} />
-                                </div>
-                            </form>
-                            <form className="form form--intRate" style={{gridTemplateColumns:'1.5fr 1fr 2fr'}}>
-                                <label className="form-label">Interest Rate - With Points (%):</label>
-                                <input data-type="number" type="number"  step="0.125" min = "0.125"  name="intRatePoints" id="intRatePoints" 
-                                    className="intRatePoints form-input" value={data.intRatePoints||''} onChange={handleChange}/>
-                                <div className="range-slider" style={{width:'50%'}}>
-                                    <Slider min ={0} max={10} step={'.125'} summary={false} minmax="none" value={data.intRatePoints} handleChange={handleChange} handleSliderUpdate={handleSliderUpdate} />
-                                </div>
-                            </form>                            
-                            <form className="form" style={{gridTemplateColumns:'1.5fr 1fr 2fr'}}>
-                                <label className="form-label" >Number of Points Paid:</label>
-                                <input id="pointsPaid" name="pointsPaid" type="number" min="0" step="0.125" className="pointsPaid form-input" value={data.pointsPaid} onChange={handleChange}>
-                                </input>
-                                <div className="range-slider" style={{width:'50%'}}>
-                                    <Slider min ={0} max={5} step={'0.125'} summary={false} minmax="none" value={data.pointsPaid} handleChange={handleChange} handleSliderUpdate={handleSliderUpdate} />
-                                </div>
-                            </form>
-                            <form><label></label><input/></form>
+                            <div className='input-block'>
+                                <form className="form form--loanAmt" style={{gridTemplateColumns:'1.5fr 1fr 2fr'}}>
+                                    <label className="form-label">Loan Amount ($):</label>
+                                    <input name="loanAmt" id="loanAmt" size="15" className="loanAmt form-input"
+                                        pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" data-type="currency" type="number" min='5000' step='5000' value={data.loanAmt} onChange={handleChange}/>
+                                    <div className="range-slider" style={{width:'50%'}}>
+                                        <Slider min ={5000} max={1000000} step={'5000'} summary={false} minmax="none" value={data.loanAmt} handleChange={handleChange} handleSliderUpdate={handleSliderUpdate} />
+                                    </div>
+                                </form>
+                                <form className="form form--term" style={{gridTemplateColumns:'1.5fr 1fr 2fr'}}>
+                                    <label className="form-label" >Loan Term (years):</label>
+                                    <input id="term" name="term" type="number" step='5' className="term form-input" value={data.term} onChange={handleChange}>
+                                    </input>
+                                    <div className="range-slider" style={{width:'50%'}}>
+                                        <Slider min ={5} max={30} step={'5'} summary={false} minmax="none" value={data.term} handleChange={handleChange} handleSliderUpdate={handleSliderUpdate} />
+                                    </div>
+                                </form>
+                                <form className="form form--intRate" style={{gridTemplateColumns:'1.5fr 1fr 2fr'}}>
+                                    <label className="form-label">Interest Rate - No Points (%):</label>
+                                    <input data-type="number" type="number"  step="0.125" min = "0.125"  name="intRateNoPoints" id="intRateNoPoints" 
+                                        className="intRateNoPoints form-input" value={data.intRateNoPoints||''} onChange={handleChange}/>
+                                    <div className="range-slider" style={{width:'50%'}}>
+                                        <Slider min ={0} max={10} step={'.125'} summary={false} minmax="none" value={data.intRateNoPoints} handleChange={handleChange} handleSliderUpdate={handleSliderUpdate} />
+                                    </div>
+                                </form>
+                                <form className="form form--intRate" style={{gridTemplateColumns:'1.5fr 1fr 2fr'}}>
+                                    <label className="form-label">Interest Rate - With Points (%):</label>
+                                    <input data-type="number" type="number"  step="0.125" min = "0.125"  name="intRatePoints" id="intRatePoints" 
+                                        className="intRatePoints form-input" value={data.intRatePoints||''} onChange={handleChange}/>
+                                    <div className="range-slider" style={{width:'50%'}}>
+                                        <Slider min ={0} max={10} step={'.125'} summary={false} minmax="none" value={data.intRatePoints} handleChange={handleChange} handleSliderUpdate={handleSliderUpdate} />
+                                    </div>
+                                </form>                            
+                                <form className="form" style={{gridTemplateColumns:'1.5fr 1fr 2fr'}}>
+                                    <label className="form-label" >Number of Points Paid:</label>
+                                    <input id="pointsPaid" name="pointsPaid" type="number" min="0" step="0.125" className="pointsPaid form-input" value={data.pointsPaid} onChange={handleChange}>
+                                    </input>
+                                    <div className="range-slider" style={{width:'50%'}}>
+                                        <Slider min ={0} max={5} step={'0.125'} summary={false} minmax="none" value={data.pointsPaid} handleChange={handleChange} handleSliderUpdate={handleSliderUpdate} />
+                                    </div>
+                                </form>
+                                <form><label></label><input/></form>
+                            </div>
                         </div>
     
                         <section className="white-section " id="monthly-tbl">
@@ -177,7 +179,7 @@ function PointsAnalysis() {
                                                 <th colSpan="1" className = 'px-2'>Total Payments</th>
                                                 <th colSpan="1" className = 'px-2'>Total Interest Paid</th>
                                                 <th colSpan="1" className = 'px-2'>Monthly Savings</th>
-                                                <th colSpan="1" className = 'px-2 text-rose-500'>Months to Recover Cost</th>
+                                                <th colSpan="1" className = 'px-2' style={{color:'var(--textColorHighlight)'}}>Months to Recover Cost</th>
                                             </tr>
                                             <tr>
                                                 <td colSpan="1">Loan with No Points</td>
@@ -190,7 +192,7 @@ function PointsAnalysis() {
                                                 <td className="totalPymtsNoPoints" id="">{noDecimals.format(out.totalPymtsNoPoints)}</td>
                                                 <td className="totalIntNoPoints" id="">{noDecimals.format(out.totalIntNoPoints)}</td>
                                                 <td className="moSavings" id="">N/A</td>
-                                                <td className="recoveryPeriod text-rose-500 font-extrabold" id="">N/A</td>
+                                                <td className="recoveryPeriod font-extrabold" style={{color:'var(--textColorHighlight)'}} id="">N/A</td>
                                             </tr>
                                             <tr>
                                                 <td colSpan="1">Loan With Points</td>
@@ -203,7 +205,7 @@ function PointsAnalysis() {
                                                 <td className="totalPymtsPoints" id="">{noDecimals.format(out.totalPymtsPoints)}</td>
                                                 <td className="totalIntPoints" id="">{noDecimals.format(out.totalIntPoints)}</td>
                                                 <td className="moSavings" id="">{noDecimals.format(out.moSavings)}</td>
-                                                <td className="recoveryPeriod text-rose-500 font-extrabold" id="">{out.recoveryPeriod}</td>
+                                                <td className="recoveryPeriod font-extrabold" style={{color:'var(--textColorHighlight)'}} id="">{out.recoveryPeriod}</td>
                                             </tr>
                                         </tbody>
                                     </table>

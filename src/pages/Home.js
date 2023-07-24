@@ -68,8 +68,8 @@ function Home() {
                                              different loan types. This information is calculated from actual locked rates with customers 
                                              across 35% of all mortgage transactions nationwide.</p>
                                         <div className="" style={{}}>
-                                            <iframe loading="eager" id='optimalBlue' name='optimalBlue' src="https://www2.optimalblue.com/OBMMI/widget.php?actbg=e67e22&amp;inactbg=bcbec0&amp;hoverBG=e67e22&amp;rate=5e5c5c&amp;footer=666666&amp;graph1=e67e22&amp;graph2=fae5d3&amp;graph3=184742&amp;graph4=bcbec0&amp;graph6=004bf3"  
-                                                data-lazy-src="https://www2.optimalblue.com/OBMMI/widget.php?actbg=e67e22&amp;inactbg=bcbec0&amp;hoverBG=e67e22&amp;rate=822636&amp;footer=666666&amp;graph1=e67e22&amp;graph2=fae5d3&amp;graph3=184742&amp;graph4=bcbec0&amp;graph6=004bf3"
+                                            <iframe loading="eager" id='optimalBlue' name='optimalBlue' src="https://www2.optimalblue.com/OBMMI/widget.php?actbg=0284c7&amp;inactbg=bcbec0&amp;hoverBG=0284c7&amp;rate=0284c7&amp;footer=666666&amp;graph1=0284c7&amp;graph2=7dd3fc&amp;graph3=e0f2fe&amp;graph4=f0f9ff&amp;graph6=075985"  
+                                                data-lazy-src="https://www2.optimalblue.com/OBMMI/widget.php?actbg=e67e22&amp;inactbg=bcbec0&amp;hoverBG=0284c7&amp;rate=0284c7&amp;footer=666666&amp;graph1=0284c7&amp;graph2=7dd3fc&amp;graph3=e0f2fe&amp;graph4=f0f9ff&amp;graph6=075985"
                                                 style={{}} width='100%' height='500px' title='Daily Mortgage Rates' sandbox='allow-scripts allow-same-origin' 
                                                 >
                                             </iframe>
@@ -107,10 +107,10 @@ function Home() {
                                             <p className="small-text link-text">A Comparison Guide to help you compare different quotes side by side</p>
                                         </li>
                                     </ul>
-                                    <div className='bg-orange-500 centered-text text-padding-top text-white tracking-widest'>
+                                    <div className='centered-text text-padding-top tracking-widest' style={{backgroundColor:'var(--bgColorAccent)', color:'var(--textColorWhite)'}}>
                                         <p className="text-3xl mt-4 mb-4 text-left pl-4">Recent Mortgage News...</p>
                                     </div>
-                                    <div className='bg-slate-200'>
+                                    <div className='' style={{backgroundColor:'var(--bgColorPrimary)'}}>
                                         <Rss max={3} titleOnly={true} classFromParent='text-left text-2xl'/>
                                     </div>
                                 </div>

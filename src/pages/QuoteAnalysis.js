@@ -27,6 +27,7 @@ function QuoteAnalysis() {
         totalCosts:0,
         totalNormalizedCosts:0,
         totalDiff:0,
+
     };
     const out = {
         q1: {...outTemplate},
@@ -54,22 +55,22 @@ function QuoteAnalysis() {
         lenderCredit:0,
     }
 
-    const legendClass1="shadow-lg border-3 rounded-xl text-base md:text-2xl/[2.5rem] tracking-wide text-center align-top mt-[40px] font-light bg-blue-900  text-white ";
-    const legendClass2="shadow-lg border-3 rounded-xl text-base md:text-2xl/[2.5rem] tracking-wide text-center align-top mt-[20px] font-normal bg-orange-100  text-slate-950 ";
-    const legendClass3="shadow-lg border-3 rounded-xl text-base md:text-2xl/[2.5rem] tracking-wide text-center align-top mt-[20px] font-normal bg-green-300  text-slate-950 ";
+    const legendClass1="shadow-lg border-3 rounded-xl text-base md:text-2xl/[2.5rem] tracking-wide text-center align-top mt-[40px] font-light";
+    const legendClass2="shadow-lg border-3 rounded-xl text-base md:text-2xl/[2.5rem] tracking-wide text-center align-top mt-[20px] font-normal";
+    const legendClass3="shadow-lg border-3 rounded-xl text-base md:text-2xl/[2.5rem] tracking-wide text-center align-top mt-[20px] font-normal";
     
     const cellClass= "text-base md:text-2xl text-right";
     const lHeadingClass="mt-[0rem] text-base md:text-4xl/[4rem] text-center font-bold";
     const lHeadingClass2="mt-[2rem] text-base md:text-4xl/[4rem] text-center font-bold";
-    const subtotalClass="shadow-md border-2 rounded-xl text-base md:text-3xl/[2.5rem] tracking-wide text-right align-top mt-[40px] bg-gray-500  text-white ";
-    const totalClass="shadow-md border-2 rounded-xl text-base md:text-4xl/[2.5rem] tracking-wide text-right align-top mt-[40px] bg-gray-600  text-white ";
-    const diffClass="shadow-md border-2 rounded-xl text-base md:text-4xl/[2.5rem] tracking-wide text-right align-top mt-[40px] bg-slate-200 text-white  ";
+    const subtotalClass="shadow-md border-2 rounded-xl text-base md:text-3xl/[2.5rem] tracking-wide text-right align-top mt-[40px]";
+    const totalClass="shadow-md border-2 rounded-xl text-base md:text-4xl/[2.5rem] tracking-wide text-right align-top mt-[40px]";
+    const diffClass="shadow-md border-2 rounded-xl text-base md:text-4xl/[2.5rem] tracking-wide text-right align-top mt-[40px] ";
         
-    const q1Class = "bg-orange-100 text-base md:text-3xl text-center";
-    const q2Class = "bg-orange-200 text-base md:text-3xl text-center";
-    const q3Class = "bg-orange-300 text-base md:text-3xl text-center";
-    const q4Class = "bg-orange-400 text-base md:text-3xl text-center";
-    const dClass = "bg-gray-200 text-base md:text-3xl text-center";
+    const q1Class = "text-base md:text-3xl text-center";
+    const q2Class = "text-base md:text-3xl text-center";
+    const q3Class = "text-base md:text-3xl text-center";
+    const q4Class = "text-base md:text-3xl text-center";
+    const dClass = "text-base md:text-3xl text-center";
 
     const catDescriptions = {
         loanInfo:"",
@@ -143,10 +144,9 @@ function QuoteAnalysis() {
         <div className="">
             <p className="main-text max-text-box mx-auto text-base md:text-2xl text-orange-500"><b>Bonus Tip:</b> Create an account and login to save your 
                                         information for later visits with the "Login to Save your Data" button.</p>
-            <button className={classNames("w-96  bg-slate-200", btnSubClass)} onClick={handleLogin}>Login to Save your Data</button>
+            <button className={classNames("w-96", btnSubClass)} style={{backgroundColor:'var(--bgColorPrimary)'}} onClick={handleLogin}>Login to Save your Data</button>
         </div>: 
-            <button className={classNames("w-80  bg-green-200", btnSubClass )} onClick={handleSave}>Save Data</button>
-
+            <button className={classNames("w-80", btnSubClass )} style={{backgroundColor:'var(--bgColorAccentHighlight)'}} onClick={handleSave}>Save Data</button>
     }
 
     const LoadOption = () => {
@@ -154,7 +154,7 @@ function QuoteAnalysis() {
         // console.log(savedDataRef.current);
 
         if (savedDataRef.current) {
-            return <button className={classNames( "w-80  bg-blue-200", btnSubClass)} onClick={handleDataLoad}>Load Saved Data</button>
+            return <button className={classNames( "w-80", btnSubClass)} style={{backgroundColor:'var(--bgColorAccent)', color:'var(--textColorWhite)'}} onClick={handleDataLoad}>Load Saved Data</button>
         } else {
             return'';
         }
@@ -366,26 +366,26 @@ function QuoteAnalysis() {
                                                 <table style={{width: "100%", tableLayout:"fixed"}} id="originalTbl" className="gap-8">
                                                     <colgroup>
                                                     <col span="1" style={{width:"30%", overflow:"hidden"}}></col>
-                                                    <col span="1" className={dClass} style={{width:"22%", overflow:"hidden"}}></col>
-                                                    <col span="1" className={q1Class} style={{width:"12%", overflow:"hidden"}}></col>
-                                                    <col span="1" className={q2Class} style={{width:"12%", overflow:"hidden"}}></col>
-                                                    <col span="1" className={q3Class} style={{width:"12%", overflow:"hidden"}}></col>
-                                                    <col span="1" className={q4Class} style={{width:"12%", overflow:"hidden"}}></col>
+                                                    <col span="1" className={dClass} style={{width:"22%", overflow:"hidden", backgroundColor:'var(--bgColorPrimary)'}}></col>
+                                                    <col span="1" className={q1Class} style={{width:"12%", overflow:"hidden", backgroundColor:'var(--bgColorCard2)'}}></col>
+                                                    <col span="1" className={q2Class} style={{width:"12%", overflow:"hidden", backgroundColor:'var(--bgColorCard3)'}}></col>
+                                                    <col span="1" className={q3Class} style={{width:"12%", overflow:"hidden", backgroundColor:'var(--bgColorCard4)'}}></col>
+                                                    <col span="1" className={q4Class} style={{width:"12%", overflow:"hidden", backgroundColor:'var(--bgColorCard5)'}}></col>
                                                     </colgroup>
                                                     <thead>
                                                         <tr >
                                                             <th className="text-base md:text-3xl text-center">About these items</th>
                                                             <th className="text-base md:text-3xl text-right">Item Description</th>                                              
-                                                            <th className={q1Class}>BankSouth Quote</th>
-                                                            <th className={q2Class}>Quote 1</th>
-                                                            <th className={q3Class}>Quote 2</th>
-                                                            <th className={q4Class} >Quote 3</th>
+                                                            <th className={q1Class} style={{backgroundColor:'var(--bgColorCard2)'}}>BankSouth Quote</th>
+                                                            <th className={q2Class} style={{backgroundColor:'var(--bgColorCard3)'}}>Quote 1</th>
+                                                            <th className={q3Class} style={{backgroundColor:'var(--bgColorCard4)'}}>Quote 2</th>
+                                                            <th className={q4Class} style={{backgroundColor:'var(--bgColorCard5)'}}>Quote 3</th>
                                                 
                                                         </tr>
                                                     </thead>
                                                     <tbody className={cellClass}>
                                                         <tr className="">
-                                                            <td rowSpan="15" className={legendClass1}><div className={lHeadingClass2}>Lender Fees </div>{catDescriptions.lenderFees}</td>
+                                                            <td rowSpan="15" className={legendClass1} style={{backgroundColor:'var(--bgColorAccentDark)', color:'var(--textColorWhite)'}}><div className={lHeadingClass2}>Lender Fees </div>{catDescriptions.lenderFees}</td>
                                                             
                                                             <td>Origination Fees</td>
                                                             <td><input id="q1-originationFees" className="" value={data.q1.originationFees||""} onChange={handleChange} type="number" step=".01"/></td>
@@ -484,7 +484,7 @@ function QuoteAnalysis() {
                                                             <td><input id="q3-mortgageElectronicRegSystem" className="" value={data.q3.mortgageElectronicRegSystem||""} onChange={handleChange} type="number" step=".01"></input></td>
                                                             <td><input id="q4-mortgageElectronicRegSystem" className="" value={data.q4.mortgageElectronicRegSystem||""} onChange={handleChange} type="number" step=".01"></input></td>
                                                         </tr>
-                                                        <tr className={subtotalClass}>
+                                                        <tr className={subtotalClass} style={{backgroundColor:'var(--bgColorPrimaryDark)', color:'var(--textColorWhite)'}}>
                                                             <td className="text-white">Lender Fees</td>
                                                             <td id="q1-lenderFees" className="text-white">{currency.format(out.q1.lenderFees)}</td>
                                                             <td id="q2-lenderFees" className="text-white">{currency.format(out.q2.lenderFees)}</td>
@@ -493,7 +493,7 @@ function QuoteAnalysis() {
                                                         </tr>
                                                         <tr className="h-8"></tr>
                                                         <tr>
-                                                            <td rowSpan='9' className={legendClass2}><div className={lHeadingClass}>Title Fees</div>{catDescriptions.titleFees}</td>
+                                                            <td rowSpan='9' className={legendClass2} style={{backgroundColor:'var(--bgColorAccentLight)', color:'var(--textColorPrimary)'}}><div className={lHeadingClass}>Title Fees</div>{catDescriptions.titleFees}</td>
                                                             <td>Attorney/Settlement Fee</td>
                                                             <td><input id="q1-SettlementFee" className="" value={data.q1.SettlementFee||""} onChange={handleChange} type="number" step=".01"/></td>
                                                             <td><input id="q2-SettlementFee" className="" value={data.q2.SettlementFee||""} onChange={handleChange} type="number" step=".01"/></td>
@@ -549,7 +549,7 @@ function QuoteAnalysis() {
                                                             <td><input id="q3-additionalTitleFees" className="" value={data.q3.additionalTitleFees||""} onChange={handleChange} type="number" step=".01"/></td>
                                                             <td><input id="q4-additionalTitleFees" className="" value={data.q4.additionalTitleFees||""} onChange={handleChange} type="number" step=".01"/></td>
                                                         </tr>
-                                                        <tr className={subtotalClass}>
+                                                        <tr className={subtotalClass} style={{backgroundColor:'var(--bgColorPrimaryDark', color:'var(--textColorWhite)'}}>
                                                             <td className="text-white text-bold">Title Fees</td>
                                                             <td id="q1-titleFees" className="text-white text-bold">{currency.format(out.q1.titleFees)}</td>
                                                             <td id="q2-titleFees" className="text-white text-bold">{currency.format(out.q2.titleFees)}</td>
@@ -558,7 +558,7 @@ function QuoteAnalysis() {
                                                         </tr>  
                                                         <tr className="h-8"></tr>  
                                                         <tr>
-                                                            <td rowSpan="6"  className={legendClass2}><div className={lHeadingClass}>Government Fees</div>{catDescriptions.govTaxFees}</td>
+                                                            <td rowSpan="6"  className={legendClass2}  style={{backgroundColor:'var(--bgColorAccentLight)', color:'var(--textColorPrimary)'}}><div className={lHeadingClass}>Government Fees</div>{catDescriptions.govTaxFees}</td>
                                                             <td>Government Recording Fees</td>
                                                             <td><input id="q1-govRecordingFees" className="" value={data.q1.govRecordingFees||""} onChange={handleChange} type="number" step=".01"/></td>
                                                             <td><input id="q2-govRecordingFees" className="" value={data.q2.govRecordingFees||""} onChange={handleChange} type="number" step=".01"/></td>
@@ -593,7 +593,7 @@ function QuoteAnalysis() {
                                                             <td><input id="q3-eRecordingFee" className="" value={data.q3.eRecordingFee||""} onChange={handleChange} type="number" step=".01"/></td>
                                                             <td><input id="q4-eRecordingFee" className="" value={data.q4.eRecordingFee||""} onChange={handleChange} type="number" step=".01"/></td>
                                                         </tr>
-                                                        <tr className={subtotalClass}>
+                                                        <tr className={subtotalClass} style={{backgroundColor:'var(--bgColorPrimaryDark)', color:'var(--textColorWhite)'}}>
                                                             <td className="text-white text-bold">Government Taxes and Fees</td>
                                                             <td id="q1-govTaxFees" className="text-white text-bold">{currency.format(out.q1.govTaxFees)}</td>
                                                             <td id="q2-govTaxFees" className="text-white text-bold">{currency.format(out.q2.govTaxFees)}</td>
@@ -602,7 +602,7 @@ function QuoteAnalysis() {
                                                         </tr>
                                                         <tr className="h-8"></tr>
                                                         <tr>
-                                                            <td rowSpan='3'  className={legendClass2}><div className={lHeadingClass}>Estimated Pre-paid Items</div>{catDescriptions.estPrepaid}</td>
+                                                            <td rowSpan='3'  className={legendClass2}  style={{backgroundColor:'var(--bgColorAccentLight)', color:'var(--textColorPrimary)'}}><div className={lHeadingClass}>Estimated Pre-paid Items</div>{catDescriptions.estPrepaid}</td>
                                                             <td>Interest due ( from closing date until month end)</td>
                                                             <td><input id="q1-interestDue" className="" value={data.q1.interestDue||""} onChange={handleChange} type="number" step=".01"/></td>
                                                             <td><input id="q2-interestDue" className="" value={data.q2.interestDue||""} onChange={handleChange} type="number" step=".01"/></td>
@@ -625,7 +625,7 @@ function QuoteAnalysis() {
                                                         </tr>
                                                         <tr className="h-8"></tr>
                                                         <tr>
-                                                            <td rowSpan='4'  className={legendClass2}><div className={lHeadingClass}>Escrow Items</div>{catDescriptions.escrowDeposit}</td>
+                                                            <td rowSpan='4'  className={legendClass2} style={{backgroundColor:'var(--bgColorAccentLight)', color:'var(--textColorPrimary)'}}><div className={lHeadingClass}>Escrow Items</div>{catDescriptions.escrowDeposit}</td>
                                                             <td>Homeowner's Insurance</td>
                                                             <td><input id="q1-homeownerIns" className="" value={data.q1.homeownerIns||""} onChange={handleChange} type="number" step=".01"/></td>
                                                             <td><input id="q2-homeownerIns" className="" value={data.q2.homeownerIns||""} onChange={handleChange} type="number" step=".01"/></td>
@@ -646,7 +646,7 @@ function QuoteAnalysis() {
                                                             <td><input id="q3-cityPropTax" className="" value={data.q3.cityPropTax||""} onChange={handleChange} type="number" step=".01"/></td>
                                                             <td><input id="q4-cityPropTax" className="" value={data.q4.cityPropTax||""} onChange={handleChange} type="number" step=".01"/></td>
                                                         </tr>
-                                                        <tr className={subtotalClass}>
+                                                        <tr className={subtotalClass} style={{backgroundColor:'var(--bgColorPrimaryDark)', color:'var(--textColorWhite)'}}>
                                                             <td className="text-white text-bold">Escrow Items</td>
                                                             <td id="q1-escrowTotal" className="text-white text-bold">{currency.format(out.q1.escrowTotal)}</td>
                                                             <td id="q2-escrowTotal" className="text-white text-bold">{currency.format(out.q2.escrowTotal)}</td>
@@ -655,7 +655,7 @@ function QuoteAnalysis() {
                                                         </tr>
                                                         <tr className="h-8"></tr>
                                                         <tr>
-                                                            <td rowSpan='5'  className={legendClass2}><div className={lHeadingClass}>HOA Items</div>{catDescriptions.HOADues}</td>
+                                                            <td rowSpan='5'  className={legendClass2} style={{backgroundColor:'var(--bgColorAccentLight)', color:'var(--textColorPrimary)'}}><div className={lHeadingClass}>HOA Items</div>{catDescriptions.HOADues}</td>
                                                             <td>HOA Initiation Dues</td>
                                                             <td><input id="q1-HOAInitiationDues" className="" value={data.q1.HOAInitiationDues||""} onChange={handleChange} type="number" step=".01"/></td>
                                                             <td><input id="q2-HOAInitiationDues" className="" value={data.q2.HOAInitiationDues||""} onChange={handleChange} type="number" step=".01"/></td>
@@ -684,7 +684,7 @@ function QuoteAnalysis() {
                                                             <td><input id="q3-HOACapitalContr" className="" value={data.q3.HOACapitalContr||""} onChange={handleChange} type="number" step=".01"/></td>
                                                             <td><input id="q4-HOACapitalContr" className="" value={data.q4.HOACapitalContr||""} onChange={handleChange} type="number" step=".01"/></td>
                                                         </tr>
-                                                        <tr className={subtotalClass}>
+                                                        <tr className={subtotalClass} style={{backgroundColor:'var(--bgColorPrimaryDark)', color:'var(--textColorWhite)'}}>
                                                             <td className="text-white text-bold">HOA Items</td>
                                                             <td id="q1-HOATotal" className="text-white text-bold">{currency.format(out.q1.HOATotal)}</td>
                                                             <td id="q2-HOATotal" className="text-white text-bold">{currency.format(out.q2.HOATotal)}</td>
@@ -693,7 +693,7 @@ function QuoteAnalysis() {
                                                         </tr>
                                                         <tr className="h-8"></tr>
                                                         <tr>
-                                                            <td rowSpan='3'  className={legendClass3}><div className={lHeadingClass}>Builder/Lender Credits</div>{catDescriptions.credits}</td>
+                                                            <td rowSpan='3'  className={legendClass3} style={{backgroundColor:'var(--bgColorAccentHighlight)', color:'var(--textColorPrimary)'}}><div className={lHeadingClass}>Builder/Lender Credits</div>{catDescriptions.credits}</td>
                                                             <td>Builder Credit Towards Closing Costs</td>
                                                             <td><input id="q1-builderCredit" className="" value={data.q1.builderCredit||""} onChange={handleChange} type="number" step=".01"/></td>
                                                             <td><input id="q2-builderCredit" className="" value={data.q2.builderCredit||""} onChange={handleChange} type="number" step=".01"/></td>
@@ -707,7 +707,7 @@ function QuoteAnalysis() {
                                                             <td><input id="q3-lenderCredit" className="" value={data.q3.lenderCredit||""} onChange={handleChange} type="number" step=".01"/></td>
                                                             <td><input id="q4-lenderCredit" className="" value={data.q4.lenderCredit||""} onChange={handleChange} type="number" step=".01"/></td>
                                                         </tr> 
-                                                        <tr className={subtotalClass}>
+                                                        <tr className={subtotalClass} style={{backgroundColor:'var(--bgColorPrimaryDark)', color:'var(--textColorWhite)'}}>
                                                             <td className="text-white text-bold">Builder/Lender Credits</td>
                                                             <td id="q1-creditTotal" className="text-white text-bold">{currency.format(out.q1.creditTotal)}</td>
                                                             <td id="q2-creditTotal" className="text-white text-bold">{currency.format(out.q2.creditTotal)}</td>
@@ -715,7 +715,7 @@ function QuoteAnalysis() {
                                                             <td id="q4-creditTotal" className="text-white text-bold">{currency.format(out.q4.creditTotal)}</td>
                                                         </tr>
                                                         <tr className="h-8"></tr>
-                                                        <tr className={totalClass}>
+                                                        <tr className={totalClass}  style={{backgroundColor:'var(--bgColorPrimaryDarker)', color:'var(--textColorWhite)'}}>
                                                             <td></td>
                                                             <td className="text-white text-bold">Total Loan Related Costs</td>
                                                             <td id="q1-totalCosts" className="text-white text-bold">{currency.format(out.q1.totalCosts)}</td>
@@ -731,26 +731,26 @@ function QuoteAnalysis() {
                                                 <table style={{width: "100%", tableLayout:"fixed"}} id="normalizedTbl"  className="gap-8">
                                                     <colgroup>
                                                     <col span="1" style={{width:"30%", overflow:"hidden"}}></col>
-                                                    <col span="1" className={dClass} style={{width:"22%", overflow:"hidden"}}></col>
-                                                    <col span="1" className={q1Class} style={{width:"12%", overflow:"hidden"}}></col>
-                                                    <col span="1" className={q2Class} style={{width:"12%", overflow:"hidden"}}></col>
-                                                    <col span="1" className={q3Class} style={{width:"12%", overflow:"hidden"}}></col>
-                                                    <col span="1" className={q4Class} style={{width:"12%", overflow:"hidden"}}></col>
+                                                    <col span="1" className={dClass} style={{width:"22%", overflow:"hidden", backgroundColor:'var(--bgColorPrimary)'}}></col>
+                                                    <col span="1" className={q1Class} style={{width:"12%", overflow:"hidden", backgroundColor:'var(--bgColorCard2)'}}></col>
+                                                    <col span="1" className={q2Class} style={{width:"12%", overflow:"hidden", backgroundColor:'var(--bgColorCard3)'}}></col>
+                                                    <col span="1" className={q3Class} style={{width:"12%", overflow:"hidden", backgroundColor:'var(--bgColorCard4)'}}></col>
+                                                    <col span="1" className={q4Class} style={{width:"12%", overflow:"hidden", backgroundColor:'var(--bgColorCard5)'}}></col>
                                                     </colgroup>
                                                     <thead>
                                                         <tr>
                                                             <th className="text-base md:text-3xl text-center">About these items</th>
                                                             <th className="text-base md:text-3xl">Item Description</th>                                             
-                                                            <th className={q1Class}>BankSouth Quote</th>
-                                                            <th className={q2Class}>Quote 1</th>
-                                                            <th className={q3Class}>Quote 2</th>
-                                                            <th className={q4Class} >Quote 3</th>
+                                                            <th className={q1Class} style={{backgroundColor:'var(--bgColorCard2)'}}>BankSouth Quote</th>
+                                                            <th className={q2Class} style={{backgroundColor:'var(--bgColorCard3)'}}>Quote 1</th>
+                                                            <th className={q3Class} style={{backgroundColor:'var(--bgColorCard4)'}}>Quote 2</th>
+                                                            <th className={q4Class} style={{backgroundColor:'var(--bgColorCard5)'}} >Quote 3</th>
                                                 
                                                         </tr>
                                                     </thead>
                                                     <tbody  className={cellClass}>
                                                         <tr>
-                                                            <td rowSpan="15" className={legendClass1}><div className={lHeadingClass}>Lender Fees </div>{catDescriptions.lenderFees}</td>
+                                                            <td rowSpan="15" className={legendClass1} style={{backgroundColor:'var(--bgColorAccentDark)', color:'var(--textColorWhite)'}}><div className={lHeadingClass}>Lender Fees </div>{catDescriptions.lenderFees}</td>
                                                             <td>Origination Fees</td>
                                                             <td><input id="q1-originationFees" className="" value={data.q1.originationFees||""} onChange={handleChange} type="number" step=".01"/></td>
                                                             <td><input id="q2-originationFees" className="" value={data.q2.originationFees||""} onChange={handleChange} type="number" step=".01"/></td>
@@ -848,14 +848,14 @@ function QuoteAnalysis() {
                                                             <td><input id="q3-mortgageElectronicRegSystem" className="" value={data.q3.mortgageElectronicRegSystem||""} onChange={handleChange} type="number" step=".01"></input></td>
                                                             <td><input id="q4-mortgageElectronicRegSystem" className="" value={data.q4.mortgageElectronicRegSystem||""} onChange={handleChange} type="number" step=".01"></input></td>
                                                         </tr>
-                                                        <tr className={subtotalClass}>
+                                                        <tr className={subtotalClass} style={{backgroundColor:'var(--bgColorPrimaryDark)', color:'var(--textColorWhite)'}}>
                                                             <td className="text-white">Lender Fees</td>
                                                             <td id="q1-lenderFees" className="text-white">{currency.format(out.q1.lenderFees)}</td>
                                                             <td id="q2-lenderFees" className="text-white">{currency.format(out.q2.lenderFees)}</td>
                                                             <td id="q3-lenderFees" className="text-white">{currency.format(out.q3.lenderFees)}</td>
                                                             <td id="q4-lenderFees" className="text-white">{currency.format(out.q4.lenderFees)}</td>
                                                         </tr>
-                                                        <tr className={twMerge(`${diffClass}`, 'md:text-3xl/[1.0rem]')}>
+                                                        <tr className={twMerge(`${diffClass}`, 'md:text-3xl/[1.0rem]')}  style={{backgroundColor:'var(--bgColorPrimary)', color:'var(--textColorPrimary)'}}>
                                                             <td></td>
                                                             <td className="align-right text-slate-800">Cost Difference</td>
                                                             <td id="q1-totalDiff" className={q1DiffClass}>{currency.format(out.q1.totalDiff)}</td>
@@ -865,7 +865,7 @@ function QuoteAnalysis() {
                                                         </tr>        
                                                         <tr className="h-8"></tr>
                                                         <tr>
-                                                            <td rowSpan='9' className={legendClass2}><div className={lHeadingClass}>Title Fees</div>{catDescriptions.titleFees}</td>
+                                                            <td rowSpan='9' className={legendClass2} style={{backgroundColor:'var(--bgColorAccentLight)', color:'var(--textColorPrimary)'}}><div className={lHeadingClass}>Title Fees</div>{catDescriptions.titleFees}</td>
                                                             <td>Attorney/Settlement Fee</td>
                                                             <td><input id="q1-SettlementFee" className="" value={data.q1.SettlementFee||""} onChange={handleChange} type="number" step=".01"/></td>
                                                             <td id="q2-SettlementFee" className="">{data.q1.SettlementFee}</td>
@@ -926,7 +926,7 @@ function QuoteAnalysis() {
                                                             <td id="q3-additionalTitleFees" className="">{data.q1.additionalTitleFees}</td>
                                                             <td id="q4-additionalTitleFees" className="">{data.q1.additionalTitleFees}</td>
                                                         </tr>
-                                                        <tr className={subtotalClass}>
+                                                        <tr className={subtotalClass} style={{backgroundColor:'var(--bgColorPrimaryDark)', color:'var(--textColorWhite)'}}>
                                                             <td className="text-white text-bold">Title Fees<div className='text-xl md:text-xl italic font-light'>(Will be same across all lenders)</div></td>
                                                             <td id="q1-titleFees" className="text-white text-bold">{currency.format(out.q1.titleFees)}</td>
                                                             <td id="q2-titleFees" className="text-white text-bold">{currency.format(out.q1.titleFees)}</td>
@@ -935,7 +935,7 @@ function QuoteAnalysis() {
                                                         </tr>  
                                                         <tr className="h-8"></tr>  
                                                         <tr>
-                                                            <td rowSpan="6"  className={legendClass2}><div className={lHeadingClass}>Government Fees</div>{catDescriptions.govTaxFees}</td>
+                                                            <td rowSpan="6"  className={legendClass2} style={{backgroundColor:'var(--bgColorAccentLight)', color:'var(--textColorPrimary)'}}><div className={lHeadingClass}>Government Fees</div>{catDescriptions.govTaxFees}</td>
                                                             <td>Government Recording Fees</td>
                                                             <td><input id="q1-govRecordingFees" className="" value={data.q1.govRecordingFees||""} onChange={handleChange} type="number" step=".01"/></td>
                                                             
@@ -974,7 +974,7 @@ function QuoteAnalysis() {
                                                             <td id="q3-eRecordingFee" className="">{data.q1.eRecordingFee}</td>
                                                             <td id="q4-eRecordingFee" className="">{data.q1.eRecordingFee}</td>
                                                         </tr>
-                                                        <tr className={subtotalClass}>
+                                                        <tr className={subtotalClass} style={{backgroundColor:'var(--bgColorPrimaryDark)', color:'var(--textColorWhite)'}}>
                                                             <td className="text-white text-bold">Government Taxes and Fees<div className='text-xl md:text-xl italic font-light'>(Will be same across all lenders)</div></td>
                                                             <td id="q1-govTaxFees" className="text-white text-bold">{currency.format(out.q1.govTaxFees)}</td>
                                                             <td id="q2-govTaxFees" className="text-white text-bold">{currency.format(out.q1.govTaxFees)}</td>
@@ -983,7 +983,7 @@ function QuoteAnalysis() {
                                                         </tr>
                                                         <tr className="h-8"></tr>
                                                         <tr>
-                                                            <td rowSpan='3'  className={legendClass2}><div className={lHeadingClass}>Estimated Pre-paid Items</div>{catDescriptions.estPrepaid}</td>
+                                                            <td rowSpan='3'  className={legendClass2} style={{backgroundColor:'var(--bgColorAccentLight)', color:'var(--textColorPrimary)'}}><div className={lHeadingClass}>Estimated Pre-paid Items</div>{catDescriptions.estPrepaid}</td>
                                                             <td>Interest due ( from closing date until month end)</td>
                                                             <td><input id="q1-interestDue" className="" value={data.q1.interestDue||""} onChange={handleChange} type="number" step=".01"/></td>
                                                            
@@ -999,7 +999,7 @@ function QuoteAnalysis() {
                                                             <td id="q3-firstYearHomeownerInsPremium" className="">{data.q1.firstYearHomeownerInsPremium}</td>
                                                             <td id="q4-firstYearHomeownerInsPremium" className="">{data.q1.firstYearHomeownerInsPremium}</td>
                                                         </tr>
-                                                        <tr className={subtotalClass}>
+                                                        <tr className={subtotalClass} style={{backgroundColor:'var(--bgColorPrimaryDark)', color:'var(--textColorWhite)'}}>
                                                             <td className="text-white text-bold">Estimated Pre-paid Items<div className='text-xl md:text-xl italic font-light'>(Will be same across all lenders)</div></td>
                                                             <td id="q1-prepaidTotal" className="text-white text-bold">{currency.format(out.q1.prepaidTotal)}</td>
                                                             <td id="q2-prepaidTotal" className="text-white text-bold">{currency.format(out.q1.prepaidTotal)}</td>
@@ -1008,7 +1008,7 @@ function QuoteAnalysis() {
                                                         </tr>
                                                         <tr className="h-8"></tr>
                                                         <tr>
-                                                            <td rowSpan='4'  className={legendClass2}><div className={lHeadingClass}>Escrow Items</div>{catDescriptions.escrowDeposit}</td>
+                                                            <td rowSpan='4'  className={legendClass2} style={{backgroundColor:'var(--bgColorAccentLight)', color:'var(--textColorPrimary)'}}><div className={lHeadingClass}>Escrow Items</div>{catDescriptions.escrowDeposit}</td>
                                                             <td>Homeowner's Insurance</td>
                                                             <td><input id="q1-homeownerIns" className="" value={data.q1.homeownerIns||""} onChange={handleChange} type="number" step=".01"/></td>
                                                             
@@ -1032,7 +1032,7 @@ function QuoteAnalysis() {
                                                             <td id="q3-cityPropTax" className="">{data.q1.cityPropTax}</td>
                                                             <td id="q4-cityPropTax" className="">{data.q1.cityPropTax}</td>
                                                         </tr>
-                                                        <tr className={subtotalClass}>
+                                                        <tr className={subtotalClass} style={{backgroundColor:'var(--bgColorPrimaryDark)', color:'var(--textColorWhite)'}}>
                                                             <td className="text-white text-bold">Escrow Items<div className='text-xl md:text-xl italic font-light'>(Will be same across all lenders)</div></td>
                                                             <td id="q1-escrowTotal" className="text-white text-bold">{currency.format(out.q1.escrowTotal)}</td>
                                                             <td id="q2-escrowTotal" className="text-white text-bold">{currency.format(out.q1.escrowTotal)}</td>
@@ -1041,7 +1041,7 @@ function QuoteAnalysis() {
                                                         </tr>
                                                         <tr className="h-8"></tr>
                                                         <tr>
-                                                            <td rowSpan='5'  className={legendClass2}><div className={lHeadingClass}>HOA Items</div>{catDescriptions.HOADues}</td>
+                                                            <td rowSpan='5'  className={legendClass2} style={{backgroundColor:'var(--bgColorAccentLight)', color:'var(--textColorPrimary)'}}><div className={lHeadingClass}>HOA Items</div>{catDescriptions.HOADues}</td>
                                                             <td>HOA Initiation Dues</td>
                                                             <td><input id="q1-HOAInitiationDues" className="" value={data.q1.HOAInitiationDues||""} onChange={handleChange} type="number" step=".01"/></td>
                                                             
@@ -1074,7 +1074,7 @@ function QuoteAnalysis() {
                                                             <td id="q3-HOACapitalContr" className="">{data.q1.HOACapitalContr}</td>
                                                             <td id="q4-HOACapitalContr" className="">{data.q1.HOACapitalContr}</td>
                                                         </tr>
-                                                        <tr className={subtotalClass}>
+                                                        <tr className={subtotalClass} style={{backgroundColor:'var(--bgColorPrimaryDark)', color:'var(--textColorWhite)'}}>
                                                             <td className="text-white text-bold">HOA Items<div className='text-xl md:text-xl italic font-light'>(Will be same across all lenders)</div></td>
                                                             <td id="q1-HOATotal" className="text-white text-bold">{currency.format(out.q1.HOATotal)}</td>
                                                             <td id="q2-HOATotal" className="text-white text-bold">{currency.format(out.q1.HOATotal)}</td>
@@ -1083,7 +1083,7 @@ function QuoteAnalysis() {
                                                         </tr>
                                                         <tr className="h-8"></tr>
                                                         <tr>
-                                                            <td rowSpan='3'  className={legendClass3}><div className={lHeadingClass}>Builder/Lender Credits</div>{catDescriptions.credits}</td>
+                                                            <td rowSpan='3'  className={legendClass3} style={{backgroundColor:'var(--bgColorAccentHighlight)', color:'var(--textColorPrimary)'}}><div className={lHeadingClass}>Builder/Lender Credits</div>{catDescriptions.credits}</td>
                                                             <td>Builder Credit Towards Closing Costs</td>
                                                             <td><input id="q1-builderCredit" className="" value={data.q1.builderCredit||""} onChange={handleChange} type="number" step=".01"/></td>
                                                             <td><input id="q2-builderCredit" className="" value={data.q2.builderCredit||""} onChange={handleChange} type="number" step=".01"/></td>
@@ -1097,7 +1097,7 @@ function QuoteAnalysis() {
                                                             <td><input id="q3-lenderCredit" className="" value={data.q3.lenderCredit||""} onChange={handleChange} type="number" step=".01"/></td>
                                                             <td><input id="q4-lenderCredit" className="" value={data.q4.lenderCredit||""} onChange={handleChange} type="number" step=".01"/></td>
                                                         </tr> 
-                                                        <tr className={subtotalClass}>
+                                                        <tr className={subtotalClass} style={{backgroundColor:'var(--bgColorPrimaryDark)', color:'var(--textColorWhite)'}}>
                                                             <td className="text-white text-bold">Builder/Lender Credits</td>
                                                             <td id="q1-creditTotal" className="text-white text-bold">{currency.format(out.q1.creditTotal)}</td>
                                                             <td id="q2-creditTotal" className="text-white text-bold">{currency.format(out.q2.creditTotal)}</td>
@@ -1105,7 +1105,7 @@ function QuoteAnalysis() {
                                                             <td id="q4-creditTotal" className="text-white text-bold">{currency.format(out.q4.creditTotal)}</td>
                                                         </tr>
                                                         <tr className="h-8"></tr>
-                                                        <tr className={totalClass}>
+                                                        <tr className={totalClass} style={{backgroundColor:'var(--bgColorPrimaryDarker)', color:'var(--textColorWhite)'}}>
                                                             <td></td>
                                                             <td className="text-white text-bold">Normalized Costs</td>
                                                             <td id="q1-totalCosts" className="text-white text-bold">{currency.format(out.q1.totalCosts)}</td>
@@ -1114,7 +1114,7 @@ function QuoteAnalysis() {
                                                             <td id="q4-totalCosts" className="text-white text-bold">{currency.format(out.q4.totalNormalizedCosts)}</td>
                                                         </tr>
                                                         <tr className="h-8"></tr>
-                                                        <tr className={diffClass+" align-right text-rose-600"}>
+                                                        <tr className={diffClass+" align-right"} style={{backgroundColor:'var(--bgColorPrimary)', color:'var(--textColorHighlight)'}}>
                                                             <td></td>
                                                             <td className="align-right text-text-slate-800">Cost Difference</td>
                                                             <td id="q1-totalDiff" className={q1DiffClass}>{currency.format(out.q1.totalDiff)}</td>
@@ -1125,7 +1125,7 @@ function QuoteAnalysis() {
                                                     </tbody>
                                                 </table>
                                                 <div className='calcAmort-btn  form-btn'><button onClick={(event)=>handleSelect(event, "1")}>Go to Original View</button></div>
-                                                <div className='text-base md:text-2xl text-center font-semibold text-orange-500'>If you have any questions or need further help in understanding the different quotes, please contact me at 
+                                                <div className='text-base md:text-2xl text-center font-semibold' style={{color:'var(--textColorAccent)'}}>If you have any questions or need further help in understanding the different quotes, please contact me at 
                                                     <a href="https://banksouthmortgage.com/loan-officer/shachi-bhardwaj/" target="_blank" rel="noopener noreferrer" 
                                                        className="text-blue-800 font-semibold">&nbsp;shachibhardwaj.com.</a></div>
                                             </Tab>
