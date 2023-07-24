@@ -34,10 +34,13 @@ function Home() {
                             <div id="" className="home-grid">
                                 <hr></hr>
                                 <div className="content-section">
-                                    <h3 className="heading-primary" style={{display:'flex'}}>Welcome to <span className = "" style={{color:'var(--textColorAccent)', marginLeft:'1rem', marginTop:'-1rem'}}><img className="block mx-auto h-40 rounded-full lg:mx-0 lg:shrink-0" src={require("../img/brand.png")} alt="MortgageToolsUSA" /></span></h3>
-                                    <h4 className="heading-tertiary">A website dedicated to making the home mortgage process
-                                        easy
-                                        and fun for the average home buyer.</h4>
+                                    <div className=''>
+                                        <p className="text-4xl md:text-7xl mb-5 font-bold" style={{display:'flex'}}>Welcome to <span className = "" style={{display:'flex', color:'var(--textColorAccent)', marginLeft:'1rem', marginTop:'0rem'}}><img className="block mx-auto h-20 lg:mx-0 lg:shrink-0" src={require("../img/house-30-64.png")} alt="MortgageToolsUSA" />MortgageToolsUSA</span></p>
+                                        <p className="text-3xl md:text-5xl mb-0 font-bold">A website dedicated to making the home mortgage process
+                                            easy
+                                            and fun for the average home buyer.
+                                        </p>
+                                    </div>
                                     <br></br>
                                     <div className="main-text">Here is a quick roadmap of what to expect on this site. It's a young
                                         website that we are steadily building out. As we develop a tool to help you with your Home buying process, we will make it available
@@ -57,7 +60,7 @@ function Home() {
                                         We are actively working on adding more helpful tools. In the meantime, welcome again, and have a look around. We hope you find something useful during your visit. Happy house hunting!
                                     </div>
                                     <div>
-                                        <p className="heading-tertiary mt-4 mb-2">Mortgage Market Interest Rates</p>
+                                        <p className="text-3xl md:text-5xl font-bold mt-4 mb-2">Mortgage Market Interest Rates</p>
                                         <p  className="main-text">Interest rates for mortgages can vary significantly from one borrower to the next based on 
                                             the specific details of the transaction. Some of the main factors that affect the interest 
                                             rate are credit score, down payment or loan-to-value, the type of mortgage, and how long 
