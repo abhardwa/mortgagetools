@@ -35,7 +35,7 @@ function Home() {
                                 <hr></hr>
                                 <div className="content-section">
                                     <div className=''>
-                                        <p className="text-4xl md:text-7xl mb-5 font-bold" style={{display:'flex'}}>Welcome to <span className = "" style={{display:'flex', color:'var(--textColorAccent)', marginLeft:'1rem', marginTop:'0rem'}}><img className="block mx-auto h-14 mt-1 lg:mx-0 lg:shrink-0" src={require("../img/house-30-64.png")} alt="MortgageToolsUSA" />MortgageToolsUSA</span></p>
+                                        <p className="text-4xl md:text-7xl mb-5 font-bold" style={{display:'flex'}}>Welcome to <span className = "" style={{display:'flex', color:'var(--textColorAccent)', marginLeft:'1rem', marginTop:'0rem'}}><img className="block mx-auto h-8 md:h-14 mt-1 lg:mx-0 lg:shrink-0" src={require("../img/house-30-64.png")} alt="MortgageToolsUSA" />MortgageToolsUSA</span></p>
                                         <p className="text-3xl md:text-5xl mb-0 font-bold">A website dedicated to making the home mortgage process
                                             easy
                                             and fun for the average home buyer.
