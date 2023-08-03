@@ -57,7 +57,7 @@ class LoanTable extends Component {
   getRows = year => {
     let rows = [];
     const detail = year.detail || [];
-    const color = this.isExpanded(year) ? "lightblue" : "blue";
+    const color = this.isExpanded(year) ? "lightblue" : "var(--plainLightBlueColor)";
     const backgroundColor = this.isExpanded(year) ? "lightblue" : "";
     const firstRow = (
       <tr className="parent-row" key={year.id} >
