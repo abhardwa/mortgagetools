@@ -182,7 +182,7 @@ function PreQual() {
                     and based on your income and liabilities, suggest a maximum
                     home value you can qualify for.
                   </p>
-                  <h1
+                  {/* <h1
                     className="tertiary-text centered-text mx-0 px-0"
                     style={{
                       lineHeight: "4rem",
@@ -197,7 +197,7 @@ function PreQual() {
                     >
                       {noDecimals.format(out.maxHomeAmt)}{" "}
                     </span>
-                  </h1>
+                  </h1> */}
                 </div>
               </div>
               <div className="grid-container">
@@ -563,7 +563,7 @@ function PreQual() {
                         marginTop: "2rem !important",
                         lineHeight: "2.5rem",
                         color: "var(--textColorPrimary)",
-                        backgroundColor: "var(--plainWhiteColor)",
+                        // backgroundColor: "var(--plainWhiteColor)",
                       }}
                     >
                       Suggested Maximum Home Price:{" "}
