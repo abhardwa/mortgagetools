@@ -575,7 +575,7 @@ function PreQual() {
                           Home Affordability with DTI Ratio of{" "}
                           <span id="DtiIRatio" className="font-black mt-0 ">
                             {data.DtiIRatio.toFixed(2)}
-                            {": "}
+                            {" is "}
                           </span>
                           <span id="purchaseAmt" className="font-bold">
                             {noDecimals.format(
