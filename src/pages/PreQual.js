@@ -15,7 +15,7 @@ function PreQual() {
     otMPay: 0,
     stLoanBal: 0,
     ccMPay: 0,
-    DtiIRatio: 0.43,
+    DtiIRatio: 0.45,
   });
   const out = {
     purchaseAmt: 0,
@@ -41,7 +41,7 @@ function PreQual() {
   });
 
   const thouSep = new Intl.NumberFormat("en-US");
-  const maxDTI = 0.43;
+  const maxDTI = 0.45;
 
   function calcPreQual() {
     // ///////////////////////////////////////////////
@@ -76,7 +76,7 @@ function PreQual() {
     out.pmtPI = amortization(purchase, "");
     out.pmtPITI = out.pmtPI + out.moTaxInsHoa;
 
-    if (data.DtiIRatio <= 0.43) {
+    if (data.DtiIRatio <= 0.45) {
       out.qualifyYN = "is within your budget.";
       out.qualifyColor = "rgb(16, 115, 9)";
     } else {
@@ -182,22 +182,6 @@ function PreQual() {
                     and based on your income and liabilities, suggest a maximum
                     home value you can qualify for.
                   </p>
-                  {/* <h1
-                    className="tertiary-text centered-text mx-0 px-0"
-                    style={{
-                      lineHeight: "4rem",
-                      color: "var(--textColorPrimary)",
-                    }}
-                  >
-                    Suggested Maximum Home Price:{" "}
-                    <span
-                      id="maxHomeAmt"
-                      className="font-bold"
-                      style={{ color: "var(--textColorAccent)" }}
-                    >
-                      {noDecimals.format(out.maxHomeAmt)}{" "}
-                    </span>
-                  </h1> */}
                 </div>
               </div>
               <div className="grid-container">
@@ -205,7 +189,10 @@ function PreQual() {
                   <div className="input-block purchase">
                     <form className="form">
                       <div className="form-subheading">
-                        <p className="main-text">
+                        <p
+                          className="main-text "
+                          style={{ color: "var(--textColorHighlight)" }}
+                        >
                           All inputs can be entered directly or by using the
                           slider
                         </p>
@@ -516,10 +503,6 @@ function PreQual() {
                           handleSliderUpdate={handleSliderUpdate}
                         />
                       </div>
-
-                      {/* <label className="form-label" title="Your liabilities include payments for mortgage, car loans, other loans, student loans, and credit card payments" >Total Monthly Liabilities:</label>
-                                            <span type="text" title="Your liabilities include payments for mortgage, car loans, other loans, student loans, and credit card payments" name="moDebts" id="moDebts" className="form-out subheading">{out.moDebts.toFixed(0)}</span>
-                                            <span className="form-suffix">$/month</span> */}
                     </form>
                   </div>
                   <div className="input-block DTI">
@@ -560,18 +543,13 @@ function PreQual() {
                     <h1
                       className="tertiary-text centered-text mx-0 px-0"
                       style={{
-                        marginTop: "2rem !important",
                         lineHeight: "2.5rem",
-                        color: "var(--textColorPrimary)",
-                        // backgroundColor: "var(--plainWhiteColor)",
+                        color: "var(--bgColorBrand)",
+                        backgroundColor: "var(--bgColorAccent)",
                       }}
                     >
                       Suggested Maximum Home Price:{" "}
-                      <span
-                        id="maxHomeAmt"
-                        className="font-bold"
-                        style={{ color: "var(--textColorAccent)" }}
-                      >
+                      <span id="maxHomeAmt">
                         {noDecimals.format(out.maxHomeAmt)}{" "}
                       </span>
                     </h1>
@@ -616,7 +594,7 @@ function PreQual() {
                           Your debt to income ratio for this amount is{" "}
                           <span
                             id="DtiIRatio"
-                            className="font-bold text-2xl mt-0 underline underline-offset-4"
+                            className="font-black text-3xl mt-0 underline underline-offset-4"
                           >
                             {data.DtiIRatio.toFixed(2)}{" "}
                           </span>
