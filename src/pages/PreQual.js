@@ -517,7 +517,7 @@ function PreQual() {
                         type="number"
                         min={0.01}
                         max={0.45}
-                        title="Enter a DTI Ratio"
+                        title="Enter a Debt to Income Ratio"
                         id="DtiIRatio"
                         data-type="number"
                         className="DtiIRatio liab-input form-input"
@@ -561,8 +561,8 @@ function PreQual() {
                           marginTop: "-1rem !important",
                         }}
                       >
-                        <h1
-                          className="tertiary-text centered-text mx-0 px-0"
+                        <h2
+                          className="text-4xl centered-text mx-0 px-0"
                           style={{
                             paddingTop: "-1rem !important",
                             marginTop: "-1rem !important",
@@ -572,18 +572,20 @@ function PreQual() {
                             color: out.qualifyColor,
                           }}
                         >
-                          A{" "}
+                          Max Home Price with Debt to Income Ratio of{" "}
+                          <span id="DtiIRatio" className="font-black mt-0 ">
+                            {data.DtiIRatio.toFixed(2)}
+                            {": "}
+                          </span>
                           <span id="purchaseAmt" className="font-bold">
                             {noDecimals.format(
                               out.purchaseAmt > data.downPayAmt
                                 ? out.purchaseAmt
                                 : data.downPayAmt
-                            )}{" "}
-                            Home
-                          </span>{" "}
-                          {out.qualifyYN}
-                        </h1>
-                        <h3
+                            )}
+                          </span>
+                        </h2>
+                        {/* <h3
                           className="small-text centered-text italic-text "
                           style={{
                             marginTop: "1rem",
@@ -598,7 +600,7 @@ function PreQual() {
                           >
                             {data.DtiIRatio.toFixed(2)}{" "}
                           </span>
-                        </h3>
+                        </h3> */}
                       </div>
 
                       <label className="form-label">Home Price:</label>
