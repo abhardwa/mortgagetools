@@ -572,7 +572,7 @@ function PreQual() {
                             color: out.qualifyColor,
                           }}
                         >
-                          Max Home Price with Debt to Income Ratio of{" "}
+                          Home Affordability with DTI Ratio of{" "}
                           <span id="DtiIRatio" className="font-black mt-0 ">
                             {data.DtiIRatio.toFixed(2)}
                             {": "}
