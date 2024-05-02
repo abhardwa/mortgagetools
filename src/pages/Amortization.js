@@ -458,7 +458,7 @@ function Amortization() {
                   <Accordion defaultActiveKey="1">
                     <Accordion.Item eventKey="0">
                       <Accordion.Header>
-                        Click for Extra Mortgage Payment Calculator
+                        Click here for Extra Mortgage Payment Calculator
                       </Accordion.Header>
                       <Accordion.Body>
                         <div className="optional" id="">
