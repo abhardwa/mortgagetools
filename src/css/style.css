@@ -34,8 +34,6 @@ Image Compression Tool: SQOOSH
 ICON WEBSITES: Phosphor incons, ionicons, icons8, heroicons.com
 */
 
-
-
 /* style sheet for mortgage calculator */
 * {
   padding: 0;
@@ -44,7 +42,7 @@ ICON WEBSITES: Phosphor incons, ionicons, icons8, heroicons.com
 }
 /* root variables (custom properties used throughout */
 :root {
-/*
+  /*
 # hsl(221, 23%, 25%)
 # hsl(220, 27%, 44%)
 # hsl(207, 46%, 70%)
@@ -56,110 +54,117 @@ ICON WEBSITES: Phosphor incons, ionicons, icons8, heroicons.com
 # hsl(210, 8%, 28%)
 */
 
-    --gray10Color: hsl(206, 14%, 10%);
-    --gray9Color: hsl(220, 24%, 25%);
-    --gray8Color: hsl(204, 8%, 25%);
-    --gray7Color: hsl(202, 5%, 45%);
-    --gray6Color: hsl(210, 6%, 65%);
-    --gray5Color: hsl(210, 8%, 85%);
-    --gray0Color: hsl(0, 0%, 100%);
-    --gray1Color: hsl(0, 0%, 95%);
-    --gray2Color: hsl(0, 0%, 91%);
-    --gray3Color: hsl(0, 0%, 85%);
-    --gray4Color: hsl(0, 0%, 80%);
-    --plainWhiteColor: white;
-    --plainBlackColor:black;
-    --plainBlueColor:hsl(220, 27%, 44%);
-    --plainCoralColor:coral;    
-    --plainLightBlueColor:rgb(7, 133, 218);
-    --plainSlate50: hsl(210,40%,98%); /*rgb(248,250,252)*/
-    --plainSlate100: hsl(210,40%,96.1%); /*rgb(241,245,249)*/
-    --plainSlate200: hsl(214.3,31.8%,91.4%); /*rgb(226,232,240)*/
-    --plainSlate300: hsl(212.7,26.8%,83.9%); /*rgb(203,213,225)*/
-    --plainSlate400:hsl(215,20.2%,65.1%); /*rgb(148,163,184)*/
-    --plainSlate500:hsl(215.4,16.3%,46.9%); /*rgb(100,116,139)*/
-    --plainSlate700:hsl(215.3,25%,26.7%); /*rgb(51,65,85)*/
-    --plainSlate900:hsl(222.2,47.4%,11.2%); /*rgb(15,23,42)*/
-    --plainGray200:hsl(220,13%,91%); /*rgb(229,231,235)*/
-    --plainGray500:hsl(220,8.9%,46.1%); /*rgb(107,114,128)*/
-    --plainGray600: hsl(215,13.8%,34.1%); /*rgb(75,85,99)*/
-    --plainGray700: hsl(216.9,19.1%,26.7%); /*rgb(55,65,81)*/
-    --plainOrange50: hsl(33.3,100%,96.5%); /*rgb(255,247,237)*/
-    --plainOrange100:hsl(34.3,100%,91.8%); /*rgb(255,237,213)*/
-    --plainOrange200:hsl(32.1,97.7%,83.1%); /*rgb(254,215,170)*/
-    --plainOrange300:hsl(30.7,97.2%,72.4%); /*rgb(253,186,116)*/
-    --plainOrange400:hsl(27,96%,61%); /*rgb(251,146,60)*/
-    --plainOrange500:hsl(24.6,95%,53.1%); /*rgb(249,115,22)*/
-    --plainOrange600:hsl(20.5,90.2%,48.2%); /*rgb(234,88,12)*/
-    --plainGreen300:hsl(141.7,76.6%,73.1%); /*rgb(134,239,172)*/
-    --plainBlue800:hsl(220, 27%, 44%); /*rgb(30,64,175)*/
-    --plainBlue900:hsl(206, 14%, 10%);; /*rgb(30,58,138)*/
-    --plainSky50: hsl(204,100%,97.1%); /*rgb(240,249,255)*/
-    --plainSky100: hsl(204,93.8%,93.7%); /*rgb(224,242,254)*/
-    --plainSky200: hsl(200.6,94.4%,86.1%); /*rgb(186,230,253)*/
-    --plainSky300: hsl(199.4,95.5%,73.9%); /*rgb(125,211,252)*/
-    --plainSky400: hsl(198.4,93.2%,59.6%); /*rgb(56,189,248)*/
-    --plainSky500: hsl(198.6,88.7%,48.4%); /*rgb(14,165,233)*/
-    --plainSky600:hsl(200.4,98%,39.4%); /*rgb(2,132,199)*/
-    --plainSky700:hsl(201.3,96.3%,32.2%); /*rgb(3,105,161)*/
-    --plainSky800:hsl(201,90%,27.5%); /*rgb(7,89,133)*/
-    --plainSky900:hsl(202,80.3%,23.9%); /*rgb(12,74,110)*/
-    --plainPurple200:hsl(268.6,100%,91.8%); /*rgb(233,213,255)*/
-    --plainPurple600:hsl(271.5,81.3%,55.9%); /*rgb(147,51,234)*/
-    --plainRose500:hsl(349.7,89.2%,60.2%); /*rgb(244,63,94)*/
-    --plainLime600:hsl(84.8,85.2%,34.5%); /*rgb(101,163,13)*/
-    --plainLime300:hsl(82,84.5%,67.1%);/*rgb(190,242,100)*/
-    --plainLime100:hsl(79.6,89.1%,89.2%); /*rgb(236,252,203)*/
-    --plainLime50: hsl(78.3,92%,95.1%); /*rgb(247,254,231)*/
-    --plainYellow300:hsl(50.4,97.8%,63.5%); /*rgb(253,224,71)*/
+  --gray10Color: hsl(206, 14%, 10%);
+  --gray9Color: hsl(220, 24%, 25%);
+  --gray8Color: hsl(204, 8%, 25%);
+  --gray7Color: hsl(202, 5%, 45%);
+  --gray6Color: hsl(210, 6%, 65%);
+  --gray5Color: hsl(210, 8%, 85%);
+  --gray0Color: hsl(0, 0%, 100%);
+  --gray1Color: hsl(0, 0%, 95%);
+  --gray2Color: hsl(0, 0%, 91%);
+  --gray3Color: hsl(0, 0%, 85%);
+  --gray4Color: hsl(0, 0%, 80%);
+  --plainWhiteColor: white;
+  --plainBlackColor: black;
+  --plainBlueColor: hsl(220, 27%, 44%);
+  --plainCoralColor: coral;
+  --plainLightBlueColor: rgb(7, 133, 218);
+  --plainSlate50: hsl(210, 40%, 98%); /*rgb(248,250,252)*/
+  --plainSlate100: hsl(210, 40%, 96.1%); /*rgb(241,245,249)*/
+  --plainSlate200: hsl(214.3, 31.8%, 91.4%); /*rgb(226,232,240)*/
+  --plainSlate300: hsl(212.7, 26.8%, 83.9%); /*rgb(203,213,225)*/
+  --plainSlate400: hsl(215, 20.2%, 65.1%); /*rgb(148,163,184)*/
+  --plainSlate500: hsl(215.4, 16.3%, 46.9%); /*rgb(100,116,139)*/
+  --plainSlate700: hsl(215.3, 25%, 26.7%); /*rgb(51,65,85)*/
+  --plainSlate900: hsl(222.2, 47.4%, 11.2%); /*rgb(15,23,42)*/
+  --plainGray200: hsl(220, 13%, 91%); /*rgb(229,231,235)*/
+  --plainGray500: hsl(220, 8.9%, 46.1%); /*rgb(107,114,128)*/
+  --plainGray600: hsl(215, 13.8%, 34.1%); /*rgb(75,85,99)*/
+  --plainGray700: hsl(216.9, 19.1%, 26.7%); /*rgb(55,65,81)*/
+  --plainOrange50: hsl(33.3, 100%, 96.5%); /*rgb(255,247,237)*/
+  --plainOrange100: hsl(34.3, 100%, 91.8%); /*rgb(255,237,213)*/
+  --plainOrange200: hsl(32.1, 97.7%, 83.1%); /*rgb(254,215,170)*/
+  --plainOrange300: hsl(30.7, 97.2%, 72.4%); /*rgb(253,186,116)*/
+  --plainOrange400: hsl(27, 96%, 61%); /*rgb(251,146,60)*/
+  --plainOrange500: hsl(24.6, 95%, 53.1%); /*rgb(249,115,22)*/
+  --plainOrange600: hsl(20.5, 90.2%, 48.2%); /*rgb(234,88,12)*/
+  --plainGreen300: hsl(141.7, 76.6%, 73.1%); /*rgb(134,239,172)*/
+  --plainBlue800: hsl(220, 27%, 44%); /*rgb(30,64,175)*/
+  --plainBlue900: hsl(206, 14%, 10%); /*rgb(30,58,138)*/
+  --plainSky50: hsl(204, 100%, 97.1%); /*rgb(240,249,255)*/
+  --plainSky100: hsl(204, 93.8%, 93.7%); /*rgb(224,242,254)*/
+  --plainSky200: hsl(200.6, 94.4%, 86.1%); /*rgb(186,230,253)*/
+  --plainSky300: hsl(199.4, 95.5%, 73.9%); /*rgb(125,211,252)*/
+  --plainSky400: hsl(198.4, 93.2%, 59.6%); /*rgb(56,189,248)*/
+  --plainSky500: hsl(198.6, 88.7%, 48.4%); /*rgb(14,165,233)*/
+  --plainSky600: hsl(200.4, 98%, 39.4%); /*rgb(2,132,199)*/
+  --plainSky700: hsl(201.3, 96.3%, 32.2%); /*rgb(3,105,161)*/
+  --plainSky800: hsl(201, 90%, 27.5%); /*rgb(7,89,133)*/
+  --plainSky900: hsl(202, 80.3%, 23.9%); /*rgb(12,74,110)*/
+  --plainPurple200: hsl(268.6, 100%, 91.8%); /*rgb(233,213,255)*/
+  --plainPurple600: hsl(271.5, 81.3%, 55.9%); /*rgb(147,51,234)*/
+  --plainRose500: hsl(349.7, 89.2%, 60.2%); /*rgb(244,63,94)*/
+  --plainLime600: hsl(84.8, 85.2%, 34.5%); /*rgb(101,163,13)*/
+  --plainLime300: hsl(82, 84.5%, 67.1%); /*rgb(190,242,100)*/
+  --plainLime100: hsl(79.6, 89.1%, 89.2%); /*rgb(236,252,203)*/
+  --plainLime50: hsl(78.3, 92%, 95.1%); /*rgb(247,254,231)*/
+  --plainYellow300: hsl(50.4, 97.8%, 63.5%); /*rgb(253,224,71)*/
 
-    --bgColorPrimary: var(--plainSlate200);
-    --bgColorPrimaryDark: var(--plainSlate500);
-    --bgColorPrimaryDarker: var(--plainSlate700);
-    --bgColorAccent: var(--plainSky600);
-    --bgColorAccentDark:var(--plainBlue900);
-    --bgColorAccentLight:var(--plainSky100);
-    --bgColorAccentHighlight:var(--plainGreen300);
-    --textColorPrimary: var(--plainSlate900);
-    --textColorAccent: var(--plainSky800);
-    --textColorHighlight: var(--plainRose500);
-    --textColorWhite: var(--plainWhiteColor);
-    --bodyColor: var(--plainGray700);
-    --bgColorBrand: var(--plainYellow300);
-    --rangeBulletColor:var(--plainSky500);
-    --linkTextColor:var(--plainBlue900);
-    --boxShadow:0px 10px 10px rgba(0, 0, 0, 0.25);
-    --bgColorFocus: var(--plainSlate400);
-    --lighten: 20%;
-    --darken: 15%;
-    --bgColorBtnPrimary: var(--plainSky800);
-    --bgColorBtnPrimaryLight: var(--plainSky600);
-    --bgColorBtnPrimary-h:201;
-    --bgColorBtnPrimary-s:90%;
-    --bgColorBtnPrimary-l:27.5%; 
-    --bgColorBtnPrimary-light: (var(--bgColorBtnPrimary-h), var(--bgColorBtnPrimary-s), calc(var(--bgColorBtnPrimary-l) + var(--lighten)));
-    --bgColorBtnSecondary: var(--plainGray500);   
-    --textColorBtnPrimary: var(--plainWhiteColor);
-    --bgColorInput: var(--plainSlate200);
-    --bgColorInput-h:128;
-    --bgColorInput-s:100%;
-    --bgColorInput-l:92%;
-    --bgColorInput-light: (var(--bgColorInput-h), var(--bgColorInput-s), calc(var(--bgColorInput-l) + 8%));
-    --bgColorOutput1: #var(--plainOrange50);
-    --bgColorOutput2: var(--plainWhiteColor);
-    --bgColorTblHdr: var(--plainSky100);
-    --bgColorEvenChild: var(--plainWhiteColor);
-    --bgColorOddChild:var(--plainSlate50);
-    --borderBottomColor:var(--plainGray700);
-    --bgColorInputBlock: var(--plainSky50);
-    --bgColorOutputBlock: var(--plainOrange100);
-    --bgColorCard1: var(--plainWhiteColor);
-    --bgColorCard2: var(--plainSlate50);
-    --bgColorCard3: var(--plainSlate100);
-    --bgColorCard4: var(--plainSlate200);
-    --bgColorCard5: var(--plainSlate300);
-    --bgLightGray: var(--plainGray500);
-
+  --bgColorPrimary: var(--plainSlate200);
+  --bgColorPrimaryDark: var(--plainSlate500);
+  --bgColorPrimaryDarker: var(--plainSlate700);
+  --bgColorAccent: var(--plainSky600);
+  --bgColorAccentDark: var(--plainBlue900);
+  --bgColorAccentLight: var(--plainSky100);
+  --bgColorAccentHighlight: var(--plainGreen300);
+  --textColorPrimary: var(--plainSlate900);
+  --textColorAccent: var(--plainSky800);
+  --textColorHighlight: var(--plainRose500);
+  --textColorWhite: var(--plainWhiteColor);
+  --bodyColor: var(--plainGray700);
+  --bgColorBrand: var(--plainYellow300);
+  --rangeBulletColor: var(--plainSky500);
+  --linkTextColor: var(--plainBlue900);
+  --boxShadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
+  --bgColorFocus: var(--plainSlate400);
+  --lighten: 20%;
+  --darken: 15%;
+  --bgColorBtnPrimary: var(--plainSky800);
+  --bgColorBtnPrimaryLight: var(--plainSky600);
+  --bgColorBtnPrimary-h: 201;
+  --bgColorBtnPrimary-s: 90%;
+  --bgColorBtnPrimary-l: 27.5%;
+  --bgColorBtnPrimary-light: (
+    var(--bgColorBtnPrimary-h),
+    var(--bgColorBtnPrimary-s),
+    calc(var(--bgColorBtnPrimary-l) + var(--lighten))
+  );
+  --bgColorBtnSecondary: var(--plainGray500);
+  --textColorBtnPrimary: var(--plainWhiteColor);
+  --bgColorInput: var(--plainSlate200);
+  --bgColorInput-h: 128;
+  --bgColorInput-s: 100%;
+  --bgColorInput-l: 92%;
+  --bgColorInput-light: (
+    var(--bgColorInput-h),
+    var(--bgColorInput-s),
+    calc(var(--bgColorInput-l) + 8%)
+  );
+  --bgColorOutput1: #var(--plainOrange50);
+  --bgColorOutput2: var(--plainWhiteColor);
+  --bgColorTblHdr: var(--plainSky100);
+  --bgColorEvenChild: var(--plainWhiteColor);
+  --bgColorOddChild: var(--plainSlate50);
+  --borderBottomColor: var(--plainGray700);
+  --bgColorInputBlock: var(--plainSky50);
+  --bgColorOutputBlock: var(--plainOrange100);
+  --bgColorCard1: var(--plainWhiteColor);
+  --bgColorCard2: var(--plainSlate50);
+  --bgColorCard3: var(--plainSlate100);
+  --bgColorCard4: var(--plainSlate200);
+  --bgColorCard5: var(--plainSlate300);
+  --bgLightGray: var(--plainGray500);
 }
 html {
   /* font-size: 10px; */
@@ -188,7 +193,7 @@ body {
   /* background: linear-gradient(180deg, #bfe9ee 0%, #d2bdd8 100%) no-repeat; */
   width: 100vw;
   margin: 0 0;
-  top:0;
+  top: 0;
 }
 .heading-primary,
 .heading-secondary,
@@ -226,7 +231,7 @@ body {
   text-transform: uppercase;
   margin-bottom: 1.6rem;
   letter-spacing: 0.75px;
-  font-weight:700;
+  font-weight: 700;
 }
 .tertiary-text {
   font-size: 3rem;
@@ -255,7 +260,7 @@ body {
   font-weight: 700;
 }
 .upper-text {
-  text-transform:uppercase;
+  text-transform: uppercase;
 }
 .link-text {
   font-size: 1.6rem;
@@ -274,7 +279,7 @@ body {
 }
 .max-text-box {
   width: 75%;
-  margin-right:15%;
+  margin-right: 15%;
   margin-left: 15%;
 }
 .item-spacer-bottom {
@@ -315,7 +320,7 @@ hr {
   -webkit-appearance: none;
 }
 .rs-bullet.rs-range-line.rs-range-line::focus {
-  border:none;
+  border: none;
   outline: none;
 }
 .rs-range-line::-webkit-slider-runnable-track {
@@ -344,7 +349,7 @@ hr {
   height: 20px;
   width: 20px;
   border-radius: 20px;
-  background:var(--rangeBulletColor);
+  background: var(--rangeBulletColor);
   cursor: pointer;
   -webkit-appearance: none;
   margin-top: -10px;
@@ -421,12 +426,12 @@ hr {
 
 /* The next 2 classes allow a slider to be inflow with the text */
 .range-slider__wrap {
-  display:inline; 
-  align-items:center;
+  display: inline;
+  align-items: center;
 }
 .slider-container {
   width: 35%;
-  display:inline-block;
+  display: inline-block;
   align-items: center;
 }
 
@@ -440,17 +445,15 @@ hr {
   animation: fadeEffect 1s; /*Fading effect takes 1 second */
 }
 
-
 .centered-tbl {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 70%;
   margin-left: auto;
-  margin-right:auto;
+  margin-right: auto;
   margin-top: -1vh;
-  box-shadow: .5rem 1rem .8rem var(--boxShadow);
-
+  box-shadow: 0.5rem 1rem 0.8rem var(--boxShadow);
 }
 table {
   border-collapse: collapse;
@@ -461,7 +464,7 @@ table {
 }
 
 .amts {
-  width:90%;
+  width: 90%;
 }
 
 .input-field {
@@ -522,7 +525,7 @@ caption {
   width: 100%;
 }
 .main-grid {
-  display:grid;
+  display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
   gap: 0.3rem 2rem;
@@ -536,20 +539,20 @@ caption {
   padding: 1rem;
   /* width: 50%; */
   /* box-shadow: var(--boxShadow); */
-  border:1px;
+  border: 1px;
   border-style: solid;
   border-color: var(--borderBottomColor);
   border-radius: 1%;
   background-color: var(--bgColorCard1);
-  color:var(--textColorPrimary);
+  color: var(--textColorPrimary);
 }
-.qualify{
-grid-column: 2/3;
-grid-row: 1/2;
-align-items: center;
-position:sticky;
-top: 30%;
-background-color: var(--bgColorCard4);
+.qualify {
+  grid-column: 2/3;
+  grid-row: 1/2;
+  align-items: center;
+  position: sticky;
+  top: 30%;
+  background-color: var(--bgColorCard4);
 }
 
 .form {
@@ -563,9 +566,8 @@ background-color: var(--bgColorCard4);
 .form-subheading {
   grid-column: 1/4;
   /* display: inline; */
-  text-align:center;
+  text-align: center;
   margin-top: 2rem;
-
 }
 /* Exceptions for long text */
 .form-double {
@@ -604,13 +606,13 @@ background-color: var(--bgColorCard4);
   font-weight: bold;
   text-align: left;
   line-height: 1.8;
-  color:var(--textColorPrimary);
+  color: var(--textColorPrimary);
   padding: 0.3rem 0.3rem;
   border-radius: 1px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
   transition: all 0.3s;
-  border-bottom-color:var(--borderBottomColor);
+  border-bottom-color: var(--borderBottomColor);
   border-bottom-width: 1px;
 }
 
@@ -636,18 +638,18 @@ background-color: var(--bgColorCard4);
 #questions-container {
   grid-column: 1/4;
   display: none; /* set to grid later in js */
-    /* width: 50%; */
+  /* width: 50%; */
   grid-template-columns: 1.5fr 1.5fr 0.7fr;
   grid-template-rows: auto auto auto;
   gap: 0.3rem 0.3rem;
   font-weight: bold;
-  background-color:var(--bgColorInputBlock);
+  background-color: var(--bgColorInputBlock);
   border-radius: 2rem;
 }
 .q-grid {
   grid-column: 1/4;
   padding-top: 1rem;
-  display:grid;
+  display: grid;
   grid-template-columns: 1.5fr 1.5fr 0.7fr;
   grid-template-rows: auto auto auto;
   gap: 0.3rem 0.3rem;
@@ -656,8 +658,8 @@ background-color: var(--bgColorCard4);
 #next-btn {
   grid-column: 2;
   grid-row: 2;
-  font-size: 2.0rem;
-  margin-top: .5rem;
+  font-size: 2rem;
+  margin-top: 0.5rem;
   margin-left: 1rem;
   margin-bottom: 1rem;
   padding: 10px 20px;
@@ -732,8 +734,10 @@ background-color: var(--bgColorCard4);
 .card-year3 {
   background-color: var(--bgColorCard3);
 }
-.card-year1, .card-year2, .card-year3 {
-  box-shadow: .5rem 1.5rem 1.2rem rgba(0, 0, 0, 0.13);
+.card-year1,
+.card-year2,
+.card-year3 {
+  box-shadow: 0.5rem 1.5rem 1.2rem rgba(0, 0, 0, 0.13);
   border-radius: 1rem;
 }
 .card-header {
@@ -824,7 +828,7 @@ background-color: var(--bgColorCard4);
   margin-left: 5%;
   margin-right: 3%;
   line-height: 1.2;
-  letter-spacing: .1rem;
+  letter-spacing: 0.1rem;
 }
 .disclaimer {
   display: grid;
@@ -833,7 +837,7 @@ background-color: var(--bgColorCard4);
   grid-template-rows: auto auto auto;
   gap: 0.2rem 0.1rem;
   line-height: 1.2;
-  letter-spacing: .1rem;
+  letter-spacing: 0.1rem;
 }
 .image-8 {
   width: 6rem;
@@ -866,9 +870,9 @@ background-color: var(--bgColorCard4);
   grid-column: 1;
   grid-row: 1;
   text-align: left;
-  font-size:1rem;
+  font-size: 1rem;
   /* font-weight: bold; */
-  letter-spacing: .2rem;
+  letter-spacing: 0.2rem;
 }
 .card2-title-right {
   grid-column: 2;
@@ -915,10 +919,10 @@ background-color: var(--bgColorCard4);
   /* padding: 1vh 0.3vw; */
 }
 #savingsMsg {
-grid-row: 4/5;
-grid-column: 1/span all;
-padding-top: 1rem;
-padding-bottom: 1rem;
+  grid-row: 4/5;
+  grid-column: 1 / span all;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 .sc-labels {
   padding-top: 1rem;
@@ -967,10 +971,9 @@ padding-bottom: 1rem;
   padding-bottom: 1rem;
   padding-top: 0.5rem;
   text-align: left;
-  border-right:none;
-  border-top:none;
-  border-bottom:none;
-
+  border-right: none;
+  border-top: none;
+  border-bottom: none;
 }
 .chart-grid {
   display: grid;
@@ -1094,12 +1097,11 @@ padding-bottom: 1rem;
   color: var(--textColorPrimary);
   padding: 0vh 0.3vw;
   /* border: 1px solid #000000;*/
-  border-radius: 1rem; 
+  border-radius: 1rem;
   transition: all 0.3s;
 }
-.home-grid 
-{
-  display:flex;
+.home-grid {
+  display: flex;
   gap: 2%;
   margin-top: 10vh;
 }
@@ -1113,7 +1115,7 @@ padding-bottom: 1rem;
   /* font-size: 0.8vw; */
   border-top: 1rem solid var(--bgColorAccent);
   border-bottom: 1rem solid var(--bgColorAccent);
-  background-color: var(--bgColorPrimary);;
+  background-color: var(--bgColorPrimary);
   gap: 0 0 1rem 1rem;
 }
 .home-grid hr {
@@ -1121,7 +1123,7 @@ padding-bottom: 1rem;
   grid-row: auto; */
   order: 0;
   height: 100vh;
-  width: .2vw;
+  width: 0.2vw;
   /* margin-left: 26%; */
   /* border-width: .3; */
   background-color: var(--bgColorAccent);
@@ -1132,7 +1134,7 @@ padding-bottom: 1rem;
 .content-section {
   /* grid-column: 3;
   grid-row: 1; */
-  order:1;
+  order: 1;
   flex: 3;
   /* text-align: left; */
   /* font-weight: bold; */
@@ -1156,13 +1158,12 @@ padding-bottom: 1rem;
   /* font-weight: bold; */
 }
 
-
 .link:link {
   font-weight: bold;
   font-size: 1.6rem;
   margin-bottom: 0.1rem;
   text-align: center;
-  cursor:pointer;
+  cursor: pointer;
 }
 
 .link:visited {
@@ -1192,11 +1193,11 @@ span[type="text"]:hover::before,
   opacity: 1;
   transition: opacity 0.3s ease;
 }
-input[type='number'] {
-    width: 100%; 
-    box-sizing: border-box;
-    -webkit-box-sizing:border-box;
-    -moz-box-sizing: border-box;
+input[type="number"] {
+  width: 100%;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
 }
 
 input[type="text"]:hover::after,
@@ -1205,9 +1206,9 @@ span[type="text"]:hover::after,
 .btn:hover::after {
   content: "";
   position: absolute;
-  width:0;
+  width: 0;
   height: 0;
-  font-weight:bold;
+  font-weight: bold;
   border-style: solid;
   border-width: 5px 5px 0 5px;
   border-color: var(--bgColorPrimary) transparent transparent transparent;
@@ -1218,7 +1219,7 @@ span[type="text"]:hover::after,
 }
 
 input[type="text"]:hover::before,
-input[type="text"]:hover::after, 
+input[type="text"]:hover::after,
 span[type="text"]:hover::before,
 span[type="text"]:hover::after,
 .form-label:hover::before,
@@ -1232,23 +1233,25 @@ span[type="text"]:hover::after,
   font-size: 1.8rem;
   font-weight: 700;
   color: var(--bgColorBtnPrimary);
+  text-transform: uppercase;
+  text-align: center;
 }
 .accordion-item.accordion-item {
   margin-bottom: 4rem;
+  font-weight: 800;
   border: none;
 }
 /* //////////////////////////////////////////////////// */
 @media screen and (max-width: 900px) {
   html {
-      /* font-size: 10px; */
-  
-      /* 10px / 16px = 0.625 = 62.5% */
-      /* Percentage of user's browser font-size setting */
-      font-size: 60%;
+    /* font-size: 10px; */
 
-    }
+    /* 10px / 16px = 0.625 = 62.5% */
+    /* Percentage of user's browser font-size setting */
+    font-size: 60%;
+  }
   legend {
-      font-size: 2.5rem;
+    font-size: 2.5rem;
   }
   .year,
   .first-month {
@@ -1277,17 +1280,18 @@ span[type="text"]:hover::after,
 }
 @media screen and (max-width: 600px) {
   html {
-      /* font-size: 10px; */
-  
-      /* 10px / 16px = 0.625 = 62.5% */
-      /* Percentage of user's browser font-size setting */
-      font-size: 55%;
-  
-    }
+    /* font-size: 10px; */
+
+    /* 10px / 16px = 0.625 = 62.5% */
+    /* Percentage of user's browser font-size setting */
+    font-size: 55%;
+  }
   .centered-tbl {
     width: 100%;
   }
-  .reduction-tbl, .red-tbl-body>.main-text, .GoodResults{
+  .reduction-tbl,
+  .red-tbl-body > .main-text,
+  .GoodResults {
     font-size: 1.4rem;
   }
 
@@ -1375,8 +1379,8 @@ span[type="text"]:hover::after,
   }
   #savingsMsg {
     grid-row: 6/7;
-    grid-column: 1/span all;
-    display:none;
+    grid-column: 1 / span all;
+    display: none;
   }
   /* .card2-data {
     grid-row: 3/4;
@@ -1476,7 +1480,7 @@ span[type="text"]:hover::after,
     border-radius: 1rem;
     transition: all 0.3s;
   }
- 
+
   .tools-section {
     grid-column: 1;
     grid-row: 2;
@@ -1514,17 +1518,17 @@ span[type="text"]:hover::after,
     font-weight: bold;
   } */
 
- .home-grid hr {
-   grid-column: 2;
-   grid-row: auto;
-   height: 0;
-   width: 0;
-   /* margin-left: 26%; */
-   /* border-width: .3; */
-   /* background-color: gold;
+  .home-grid hr {
+    grid-column: 2;
+    grid-row: auto;
+    height: 0;
+    width: 0;
+    /* margin-left: 26%; */
+    /* border-width: .3; */
+    /* background-color: gold;
    display: block;
    transform: rotate(90); */
- }
+  }
 
   .link:link {
     font-weight: bold;
@@ -1560,20 +1564,20 @@ span[type="text"]:hover::after,
     margin-right: 5%;
     margin-left: 0;
   }
-    input[type="text"]:hover::before,
-    span[type="text"]:hover::before,
-    .form-label:hover::before,
-    .btn:hover::before {
-      content: "";
-}
-/* Go from zero to full opacity */
-@keyframes fadeEffect {
-  from {
-    opacity: 0;
+  input[type="text"]:hover::before,
+  span[type="text"]:hover::before,
+  .form-label:hover::before,
+  .btn:hover::before {
+    content: "";
   }
+  /* Go from zero to full opacity */
+  @keyframes fadeEffect {
+    from {
+      opacity: 0;
+    }
 
-  to {
-    opacity: 1;
+    to {
+      opacity: 1;
+    }
   }
-}
 }
