@@ -83,7 +83,10 @@ function Buydown() {
     /// Year 1
     const buyDown0 = data.buyDownType;
     out1[0].phase = `${buyDown0}% Lower`;
-    out1[0].rate = `${data.intRate - buyDown0}%`;
+    out1[0].rate = `${(data.intRate - buyDown0).toFixed(2)}%`;
+    // console.log(
+    //   `out rate:${out1[0].rate}, in rate:${data.intRate}, in buydownType${data.buyDownType}, ws-buyDownType${buyDown0}`
+    // );
     out1[0].reductionM = out1[0].payWoBuydown - out1[0].payWBuydown;
     out1[0].reductionA = (out1[0].payWoBuydown - out1[0].payWBuydown) * 12;
     out1[0].yearRed = out1[0].payWoBuydown - out1[0].payWBuydown;
@@ -91,7 +94,7 @@ function Buydown() {
     /// Year 2
     const buyDown1 = data.buyDownType > 1 ? data.buyDownType - 1 : 0;
     out1[1].phase = `${buyDown1}% Lower`;
-    out1[1].rate = `${data.intRate - buyDown1}%`;
+    out1[1].rate = `${(data.intRate - buyDown1).toFixed(2)}%`;
     out1[1].reductionM = out1[1].payWoBuydown - out1[1].payWBuydown;
     out1[1].reductionA = (out1[1].payWoBuydown - out1[1].payWBuydown) * 12;
     out1[1].yearRed = out1[1].payWoBuydown - out1[1].payWBuydown;
@@ -99,7 +102,7 @@ function Buydown() {
     /// Year 3
     const buyDown2 = data.buyDownType > 2 ? data.buyDownType - 2 : 0;
     out1[2].phase = `${buyDown2}% Lower`;
-    out1[2].rate = `${data.intRate - buyDown2}%`;
+    out1[2].rate = `${(data.intRate - buyDown2).toFixed(2)}%`;
     out1[2].reductionM = out1[2].payWoBuydown - out1[2].payWBuydown;
     out1[2].reductionA = (out1[2].payWoBuydown - out1[2].payWBuydown) * 12;
     out1[2].yearRed = out1[2].payWoBuydown - out1[2].payWBuydown;

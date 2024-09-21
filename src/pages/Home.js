@@ -103,9 +103,9 @@ function Home() {
                           style={{ textDecoration: "none" }}
                         >
                           {" "}
-                          a buy-down calculator that shows how you can benefit
-                          from lower monthly payments during the first 1-3
-                          years.
+                          a temporary buy-down calculator that shows how you can
+                          benefit from lower monthly payments during the first
+                          1-3 years.
                         </NavLink>
                       </li>
                       <li className="flex">
