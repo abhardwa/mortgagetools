@@ -161,7 +161,7 @@ function Buydown() {
               <div id="">
                 <div className="content-area">
                   <h3 className="heading-primary centered-text">
-                    Mortgage BuyDown Calculator
+                    Temporary BuyDown Calculator
                   </h3>
                   <h4 className="heading-tertiary centered-text">
                     Does it make sense to get a buy-down option?
