@@ -137,6 +137,16 @@ function Buydown() {
   //     setMonths(value);
   // }
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      // Trigger your desired action here
+      //   console.log(e);
+      e.preventDefault(); //prevent page reload
+      e.target.blur(); // Remove focus from the input field
+      handleChange(e);
+    }
+  };
+
   const handleChange = (e) => {
     if (e.target.id === "rs-range-line") setMonths(e.target.value);
     else {
@@ -228,6 +238,7 @@ function Buydown() {
                   type="text"
                   value={data.loanAmt}
                   onChange={handleChange}
+                  onKeyDown={handleKeyDown}
                 />
                 <span className="form-suffix">$</span>
               </form>
@@ -243,6 +254,7 @@ function Buydown() {
                   className="form-input"
                   value={data.intRate || ""}
                   onChange={handleChange}
+                  onKeyDown={handleKeyDown}
                 />
                 <span className="form-suffix">%</span>
               </form>
