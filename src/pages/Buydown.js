@@ -182,10 +182,17 @@ function Buydown() {
                     years of their loan, with payments increasing slightly once
                     the buydown period is over. A seller-paid buydown helps
                     reduce the buyer's monthly mortgage payment for an initial
-                    period — typically one or two years — and can bring the
-                    borrower significant savings. The amount of savings each
+                    period — typically one, two, or three years — and can bring
+                    the borrower significant savings. The amount of savings each
                     month depends on the terms of the buydown, interest rate,
                     and the loan amount.
+                  </p>
+                  <br></br>
+                  <hr></hr>
+                  <p className="centered-text small-text italic-text bold-text">
+                    📝 Select the Buy Down Type, and enter a Loan Amount,
+                    Interest Rate, and Loan Term, to see the savings in the
+                    first 1-3 years
                   </p>
                   <br></br>
                 </div>
@@ -342,18 +349,16 @@ function Buydown() {
                     </tbody>
                   </table>
                 </div>
-                <p className="tiny-text bold-text text-padding-top ">
+                <p className="tiny-text bold-text  ">
                   💡 These funds will need to be contributed by the seller or
                   the builder into an escrow account that will fund the Buydown.
                   If you refinance before the escrow funds are completely drawn,
                   the remaining escrow balance can be used to pay down your loan
                   balance.
                 </p>
-                <br></br>
-                <br></br>
                 <h2 className="tbl-header  item-spacer-bottom bold-text ">
                   You Will Need{" "}
-                  <span id="seller-funds" className="price-text">
+                  <span id="seller-funds" className=" text-orange-400">
                     {currency.format(out2.totalSavings)}
                   </span>{" "}
                   From The Seller/Builder
@@ -364,7 +369,7 @@ function Buydown() {
                 <div className="container embed-slider main-text">
                   <span className="text">
                     If you refinance before using up your full&nbsp;
-                    <span id="escrow-amt" className="price-text inline">
+                    <span id="escrow-amt" className="text-orange-400 inline">
                       {currency.format(out2.totalSavings)}
                     </span>
                     &nbsp;credit, you can pay down your loan balance with what's
@@ -388,7 +393,7 @@ function Buydown() {
                       </span>
                       <span className="">
                         &nbsp;months you will have{" "}
-                        <span id="rem-escrow" className="price-text">
+                        <span id="rem-escrow" className="text-lime-600">
                           {currency.format(out2.remEscrow)}
                         </span>{" "}
                         remaining in your escrow account that will lower your

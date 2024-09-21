@@ -40,7 +40,7 @@ const ResponsiveNavbar = (props) => {
                   Amortization
                 </NavDropdown.Item>
                 <NavDropdown.Item href="/buydown">
-                  Temporary Buydown (3-2-1)
+                  Temporary Buydown (3-2-1, 2-1, 1-0)
                 </NavDropdown.Item>
                 <NavDropdown.Item href="/pointsanalysis">
                   Should I Pay Points?
