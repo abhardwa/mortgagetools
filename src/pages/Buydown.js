@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { amortization } from "../components/calcAmort.js";
-import BuydownYear from "./BuydownYear.jsx";
+import BuydownYear from "../components/BuydownYear.jsx";
 // import Slider from "../components/slider.js";
 import Slider from "../components/MySlider.js";
 
