@@ -372,7 +372,10 @@ function Buydown() {
                 <div className="container embed-slider main-text">
                   <span className="text">
                     If you refinance before using up your full&nbsp;
-                    <span id="escrow-amt" className="text-orange-400 inline">
+                    <span
+                      id="escrow-amt"
+                      className="text-orange-400 bold-text inline"
+                    >
                       {currency.format(out2.totalSavings)}
                     </span>
                     &nbsp;credit, you can pay down your loan balance with what's
@@ -396,7 +399,10 @@ function Buydown() {
                       </span>
                       <span className="">
                         &nbsp;months you will have{" "}
-                        <span id="rem-escrow" className="text-lime-600">
+                        <span
+                          id="rem-escrow"
+                          className="text-lime-600 bold-text"
+                        >
                           {currency.format(out2.remEscrow)}
                         </span>{" "}
                         remaining in your escrow account that will lower your
