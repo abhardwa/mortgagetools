@@ -104,8 +104,8 @@ function Home() {
                         >
                           {" "}
                           a buy-down calculator that shows how you can benefit
-                          from lower monthly payments during first 2 years with
-                          this option.
+                          from lower monthly payments during the first 3 years
+                          with this option.
                         </NavLink>
                       </li>
                       <li className="flex">
@@ -224,7 +224,7 @@ function Home() {
                     </li>
                     <li>
                       <NavLink className="link" to="/buyDown">
-                        2-1 Buydown
+                        Temporary Buydown (3-2-1)
                       </NavLink>
                       <p className="small-text link-text">
                         This option can save you through lower payments in the
