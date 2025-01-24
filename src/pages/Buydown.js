@@ -72,12 +72,19 @@ function Buydown() {
     out1[3].payWoBuydown = out1[0].payWoBuydown;
     loan.intRate = data.intRate >= buyDownType ? data.intRate - buyDownType : 0;
     out1[0].payWBuydown = amortization(loan, ""); // first year
-    buyDownType -= 1;
-    loan.intRate = data.intRate >= buyDownType ? data.intRate - buyDownType : 0;
-    out1[1].payWBuydown = amortization(loan, ""); // second year
-    buyDownType -= 1;
-    loan.intRate = data.intRate >= buyDownType ? data.intRate - buyDownType : 0;
-    out1[2].payWBuydown = amortization(loan, ""); // third year
+    out1[1].payWBuydown = out1[2].payWBuydown = out1[0].payWoBuydown; // set the second and third year with buydown amount to the full payment. If necessary it will change in the following code
+    if (data.buyDownType > 1) {
+      buyDownType -= 1;
+      loan.intRate =
+        data.intRate >= buyDownType ? data.intRate - buyDownType : 0;
+      out1[1].payWBuydown = amortization(loan, ""); // second year
+    }
+    if (data.buyDownType > 2) {
+      buyDownType -= 1;
+      loan.intRate =
+        data.intRate >= buyDownType ? data.intRate - buyDownType : 0;
+      out1[2].payWBuydown = amortization(loan, ""); // third year
+    }
     out1[3].payWBuydown = out1[3].payWoBuydown; // 4-30 years
     // console.log(out);
     /// Year 1
@@ -106,10 +113,13 @@ function Buydown() {
     out1[2].reductionM = out1[2].payWoBuydown - out1[2].payWBuydown;
     out1[2].reductionA = (out1[2].payWoBuydown - out1[2].payWBuydown) * 12;
     out1[2].yearRed = out1[2].payWoBuydown - out1[2].payWBuydown;
+    // console.log(
+    //   `WOBuydown: ${out1[2].payWoBuydown}, ;with buydown: ${out1[2].payWBuydown}`
+    // );
 
     const totalRed = (out1[0].yearRed + out1[1].yearRed + out1[2].yearRed) * 12;
-    // console.log(out.yearOneRed, out.yearTwoRed, totalRed);
 
+    // console.log(out1[0].yearRed, out1[1].yearRed, out1[2].yearRed, totalRed);
     /// Year 4
     out1[3].phase = "Fixed Rate";
     out1[3].rate = `${data.intRate}%`;
